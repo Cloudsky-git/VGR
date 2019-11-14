@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Video_Games_Rental.Models.game>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_EntryLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.genre.genre1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.language.language1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.platform.platform1)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.amount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.genre.genre1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.language.language1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.platform.platform1)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.game_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.game_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.game_id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,67 @@
+﻿@model Video_Games_Rental.Models.game
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_EntryLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>game</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.genre.genre1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.genre.genre1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.language.language1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.language.language1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.platform.platform1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.platform.platform1)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.game_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
