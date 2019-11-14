@@ -1,0 +1,606 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="game">
+          <Key>
+            <PropertyRef Name="game_id" />
+          </Key>
+          <Property Name="game_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="platform_id" Type="int" Nullable="false" />
+          <Property Name="language_id" Type="int" Nullable="false" />
+          <Property Name="genre_id" Type="int" Nullable="false" />
+          <Property Name="title" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="amount" Type="int" Nullable="false" />
+          <Property Name="price" Type="decimal" Precision="8" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="genre">
+          <Key>
+            <PropertyRef Name="genre_id" />
+          </Key>
+          <Property Name="genre_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="genre" Type="nvarchar" MaxLength="64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="language">
+          <Key>
+            <PropertyRef Name="language_id" />
+          </Key>
+          <Property Name="language_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="language" Type="nvarchar" MaxLength="64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="order">
+          <Key>
+            <PropertyRef Name="order_id" />
+          </Key>
+          <Property Name="order_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="order_type_id" Type="int" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="status_id" Type="int" Nullable="false" />
+          <Property Name="date" Type="date" Nullable="false" />
+          <Property Name="cost" Type="decimal" Precision="8" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="order_detail">
+          <Key>
+            <PropertyRef Name="order_type_id" />
+          </Key>
+          <Property Name="order_type_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="order_id" Type="int" Nullable="false" />
+          <Property Name="game_id" Type="int" Nullable="false" />
+          <Property Name="amount" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="order_type">
+          <Key>
+            <PropertyRef Name="order_type_id" />
+          </Key>
+          <Property Name="order_type_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="type" Type="nvarchar" MaxLength="64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="platform">
+          <Key>
+            <PropertyRef Name="platform_id" />
+          </Key>
+          <Property Name="platform_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="platform" Type="nvarchar" MaxLength="64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="status">
+          <Key>
+            <PropertyRef Name="status_id" />
+          </Key>
+          <Property Name="status_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="status" Type="nvarchar" MaxLength="64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="64" Nullable="false" />
+        </EntityType>
+        <Association Name="game_genre">
+          <End Role="genre" Type="Self.genre" Multiplicity="1" />
+          <End Role="game" Type="Self.game" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="genre">
+              <PropertyRef Name="genre_id" />
+            </Principal>
+            <Dependent Role="game">
+              <PropertyRef Name="genre_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="game_language">
+          <End Role="language" Type="Self.language" Multiplicity="1" />
+          <End Role="game" Type="Self.game" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="language">
+              <PropertyRef Name="language_id" />
+            </Principal>
+            <Dependent Role="game">
+              <PropertyRef Name="language_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="game_platform">
+          <End Role="platform" Type="Self.platform" Multiplicity="1" />
+          <End Role="game" Type="Self.game" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="platform">
+              <PropertyRef Name="platform_id" />
+            </Principal>
+            <Dependent Role="game">
+              <PropertyRef Name="platform_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="order_order_type">
+          <End Role="order_type" Type="Self.order_type" Multiplicity="1" />
+          <End Role="order" Type="Self.order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="order_type">
+              <PropertyRef Name="order_type_id" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="order_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="reservation_detail_game">
+          <End Role="game" Type="Self.game" Multiplicity="1" />
+          <End Role="order_detail" Type="Self.order_detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="game">
+              <PropertyRef Name="game_id" />
+            </Principal>
+            <Dependent Role="order_detail">
+              <PropertyRef Name="game_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="reservation_detail_reservation">
+          <End Role="order" Type="Self.order" Multiplicity="1" />
+          <End Role="order_detail" Type="Self.order_detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="order">
+              <PropertyRef Name="order_id" />
+            </Principal>
+            <Dependent Role="order_detail">
+              <PropertyRef Name="order_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="reservation_status">
+          <End Role="status" Type="Self.status" Multiplicity="1" />
+          <End Role="order" Type="Self.order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status">
+              <PropertyRef Name="status_id" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="reservation_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="order" Type="Self.order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="game" EntityType="Self.game" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="genre" EntityType="Self.genre" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="language" EntityType="Self.language" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="order" EntityType="Self.order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="order_detail" EntityType="Self.order_detail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="order_type" EntityType="Self.order_type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="platform" EntityType="Self.platform" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="status" EntityType="Self.status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user" EntityType="Self.user" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="game_genre" Association="Self.game_genre">
+            <End Role="genre" EntitySet="genre" />
+            <End Role="game" EntitySet="game" />
+          </AssociationSet>
+          <AssociationSet Name="game_language" Association="Self.game_language">
+            <End Role="language" EntitySet="language" />
+            <End Role="game" EntitySet="game" />
+          </AssociationSet>
+          <AssociationSet Name="game_platform" Association="Self.game_platform">
+            <End Role="platform" EntitySet="platform" />
+            <End Role="game" EntitySet="game" />
+          </AssociationSet>
+          <AssociationSet Name="order_order_type" Association="Self.order_order_type">
+            <End Role="order_type" EntitySet="order_type" />
+            <End Role="order" EntitySet="order" />
+          </AssociationSet>
+          <AssociationSet Name="reservation_detail_game" Association="Self.reservation_detail_game">
+            <End Role="game" EntitySet="game" />
+            <End Role="order_detail" EntitySet="order_detail" />
+          </AssociationSet>
+          <AssociationSet Name="reservation_detail_reservation" Association="Self.reservation_detail_reservation">
+            <End Role="order" EntitySet="order" />
+            <End Role="order_detail" EntitySet="order_detail" />
+          </AssociationSet>
+          <AssociationSet Name="reservation_status" Association="Self.reservation_status">
+            <End Role="status" EntitySet="status" />
+            <End Role="order" EntitySet="order" />
+          </AssociationSet>
+          <AssociationSet Name="reservation_user" Association="Self.reservation_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="order" EntitySet="order" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="game">
+          <Key>
+            <PropertyRef Name="game_id" />
+          </Key>
+          <Property Name="game_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="platform_id" Type="Int32" Nullable="false" />
+          <Property Name="language_id" Type="Int32" Nullable="false" />
+          <Property Name="genre_id" Type="Int32" Nullable="false" />
+          <Property Name="title" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="amount" Type="Int32" Nullable="false" />
+          <Property Name="price" Type="Decimal" Precision="8" Scale="2" Nullable="false" />
+          <NavigationProperty Name="genre" Relationship="Self.game_genre" FromRole="game" ToRole="genre" />
+          <NavigationProperty Name="language" Relationship="Self.game_language" FromRole="game" ToRole="language" />
+          <NavigationProperty Name="platform" Relationship="Self.game_platform" FromRole="game" ToRole="platform" />
+          <NavigationProperty Name="order_detail" Relationship="Self.reservation_detail_game" FromRole="game" ToRole="order_detail" />
+        </EntityType>
+        <EntityType Name="genre">
+          <Key>
+            <PropertyRef Name="genre_id" />
+          </Key>
+          <Property Name="genre_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="genre1" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="games" Relationship="Self.game_genre" FromRole="genre" ToRole="game" />
+        </EntityType>
+        <EntityType Name="language">
+          <Key>
+            <PropertyRef Name="language_id" />
+          </Key>
+          <Property Name="language_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="language1" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="games" Relationship="Self.game_language" FromRole="language" ToRole="game" />
+        </EntityType>
+        <EntityType Name="order">
+          <Key>
+            <PropertyRef Name="order_id" />
+          </Key>
+          <Property Name="order_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="order_type_id" Type="Int32" Nullable="false" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="status_id" Type="Int32" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="cost" Type="Decimal" Precision="8" Scale="2" Nullable="false" />
+          <NavigationProperty Name="order_type" Relationship="Self.order_order_type" FromRole="order" ToRole="order_type" />
+          <NavigationProperty Name="order_detail" Relationship="Self.reservation_detail_reservation" FromRole="order" ToRole="order_detail" />
+          <NavigationProperty Name="status" Relationship="Self.reservation_status" FromRole="order" ToRole="status" />
+          <NavigationProperty Name="user" Relationship="Self.reservation_user" FromRole="order" ToRole="user" />
+        </EntityType>
+        <EntityType Name="order_detail">
+          <Key>
+            <PropertyRef Name="order_type_id" />
+          </Key>
+          <Property Name="order_type_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="order_id" Type="Int32" Nullable="false" />
+          <Property Name="game_id" Type="Int32" Nullable="false" />
+          <Property Name="amount" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="game" Relationship="Self.reservation_detail_game" FromRole="order_detail" ToRole="game" />
+          <NavigationProperty Name="order" Relationship="Self.reservation_detail_reservation" FromRole="order_detail" ToRole="order" />
+        </EntityType>
+        <EntityType Name="order_type">
+          <Key>
+            <PropertyRef Name="order_type_id" />
+          </Key>
+          <Property Name="order_type_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="type" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="orders" Relationship="Self.order_order_type" FromRole="order_type" ToRole="order" />
+        </EntityType>
+        <EntityType Name="platform">
+          <Key>
+            <PropertyRef Name="platform_id" />
+          </Key>
+          <Property Name="platform_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="platform1" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="games" Relationship="Self.game_platform" FromRole="platform" ToRole="game" />
+        </EntityType>
+        <EntityType Name="status">
+          <Key>
+            <PropertyRef Name="status_id" />
+          </Key>
+          <Property Name="status_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="status1" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="orders" Relationship="Self.reservation_status" FromRole="status" ToRole="order" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="orders" Relationship="Self.reservation_user" FromRole="user" ToRole="order" />
+        </EntityType>
+        <Association Name="game_genre">
+          <End Role="genre" Type="Self.genre" Multiplicity="1" />
+          <End Role="game" Type="Self.game" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="genre">
+              <PropertyRef Name="genre_id" />
+            </Principal>
+            <Dependent Role="game">
+              <PropertyRef Name="genre_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="game_language">
+          <End Role="language" Type="Self.language" Multiplicity="1" />
+          <End Role="game" Type="Self.game" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="language">
+              <PropertyRef Name="language_id" />
+            </Principal>
+            <Dependent Role="game">
+              <PropertyRef Name="language_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="game_platform">
+          <End Role="platform" Type="Self.platform" Multiplicity="1" />
+          <End Role="game" Type="Self.game" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="platform">
+              <PropertyRef Name="platform_id" />
+            </Principal>
+            <Dependent Role="game">
+              <PropertyRef Name="platform_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="reservation_detail_game">
+          <End Role="game" Type="Self.game" Multiplicity="1" />
+          <End Role="order_detail" Type="Self.order_detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="game">
+              <PropertyRef Name="game_id" />
+            </Principal>
+            <Dependent Role="order_detail">
+              <PropertyRef Name="game_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="order_order_type">
+          <End Role="order_type" Type="Self.order_type" Multiplicity="1" />
+          <End Role="order" Type="Self.order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="order_type">
+              <PropertyRef Name="order_type_id" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="order_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="reservation_detail_reservation">
+          <End Role="order" Type="Self.order" Multiplicity="1" />
+          <End Role="order_detail" Type="Self.order_detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="order">
+              <PropertyRef Name="order_id" />
+            </Principal>
+            <Dependent Role="order_detail">
+              <PropertyRef Name="order_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="reservation_status">
+          <End Role="status" Type="Self.status" Multiplicity="1" />
+          <End Role="order" Type="Self.order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status">
+              <PropertyRef Name="status_id" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="reservation_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="order" Type="Self.order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="VGR_DBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="games" EntityType="Self.game" />
+          <EntitySet Name="genres" EntityType="Self.genre" />
+          <EntitySet Name="languages" EntityType="Self.language" />
+          <EntitySet Name="orders" EntityType="Self.order" />
+          <EntitySet Name="order_detail" EntityType="Self.order_detail" />
+          <EntitySet Name="order_type" EntityType="Self.order_type" />
+          <EntitySet Name="platforms" EntityType="Self.platform" />
+          <EntitySet Name="status" EntityType="Self.status" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="users" EntityType="Self.user" />
+          <AssociationSet Name="game_genre" Association="Self.game_genre">
+            <End Role="genre" EntitySet="genres" />
+            <End Role="game" EntitySet="games" />
+          </AssociationSet>
+          <AssociationSet Name="game_language" Association="Self.game_language">
+            <End Role="language" EntitySet="languages" />
+            <End Role="game" EntitySet="games" />
+          </AssociationSet>
+          <AssociationSet Name="game_platform" Association="Self.game_platform">
+            <End Role="platform" EntitySet="platforms" />
+            <End Role="game" EntitySet="games" />
+          </AssociationSet>
+          <AssociationSet Name="reservation_detail_game" Association="Self.reservation_detail_game">
+            <End Role="game" EntitySet="games" />
+            <End Role="order_detail" EntitySet="order_detail" />
+          </AssociationSet>
+          <AssociationSet Name="order_order_type" Association="Self.order_order_type">
+            <End Role="order_type" EntitySet="order_type" />
+            <End Role="order" EntitySet="orders" />
+          </AssociationSet>
+          <AssociationSet Name="reservation_detail_reservation" Association="Self.reservation_detail_reservation">
+            <End Role="order" EntitySet="orders" />
+            <End Role="order_detail" EntitySet="order_detail" />
+          </AssociationSet>
+          <AssociationSet Name="reservation_status" Association="Self.reservation_status">
+            <End Role="status" EntitySet="status" />
+            <End Role="order" EntitySet="orders" />
+          </AssociationSet>
+          <AssociationSet Name="reservation_user" Association="Self.reservation_user">
+            <End Role="user" EntitySet="users" />
+            <End Role="order" EntitySet="orders" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="VGR_DBEntities">
+          <EntitySetMapping Name="games">
+            <EntityTypeMapping TypeName="Model.game">
+              <MappingFragment StoreEntitySet="game">
+                <ScalarProperty Name="game_id" ColumnName="game_id" />
+                <ScalarProperty Name="platform_id" ColumnName="platform_id" />
+                <ScalarProperty Name="language_id" ColumnName="language_id" />
+                <ScalarProperty Name="genre_id" ColumnName="genre_id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="price" ColumnName="price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="genres">
+            <EntityTypeMapping TypeName="Model.genre">
+              <MappingFragment StoreEntitySet="genre">
+                <ScalarProperty Name="genre_id" ColumnName="genre_id" />
+                <ScalarProperty Name="genre1" ColumnName="genre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="languages">
+            <EntityTypeMapping TypeName="Model.language">
+              <MappingFragment StoreEntitySet="language">
+                <ScalarProperty Name="language_id" ColumnName="language_id" />
+                <ScalarProperty Name="language1" ColumnName="language" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="orders">
+            <EntityTypeMapping TypeName="Model.order">
+              <MappingFragment StoreEntitySet="order">
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+                <ScalarProperty Name="order_type_id" ColumnName="order_type_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="status_id" ColumnName="status_id" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="cost" ColumnName="cost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="order_detail">
+            <EntityTypeMapping TypeName="Model.order_detail">
+              <MappingFragment StoreEntitySet="order_detail">
+                <ScalarProperty Name="order_type_id" ColumnName="order_type_id" />
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+                <ScalarProperty Name="game_id" ColumnName="game_id" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="order_type">
+            <EntityTypeMapping TypeName="Model.order_type">
+              <MappingFragment StoreEntitySet="order_type">
+                <ScalarProperty Name="order_type_id" ColumnName="order_type_id" />
+                <ScalarProperty Name="type" ColumnName="type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="platforms">
+            <EntityTypeMapping TypeName="Model.platform">
+              <MappingFragment StoreEntitySet="platform">
+                <ScalarProperty Name="platform_id" ColumnName="platform_id" />
+                <ScalarProperty Name="platform1" ColumnName="platform" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="status">
+            <EntityTypeMapping TypeName="Model.status">
+              <MappingFragment StoreEntitySet="status">
+                <ScalarProperty Name="status_id" ColumnName="status_id" />
+                <ScalarProperty Name="status1" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Model.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="Model.user">
+              <MappingFragment StoreEntitySet="user">
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
