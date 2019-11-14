@@ -25,15 +25,15 @@ namespace Video_Games_Rental.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<game> games { get; set; }
         public virtual DbSet<genre> genres { get; set; }
         public virtual DbSet<language> languages { get; set; }
-        public virtual DbSet<order> orders { get; set; }
-        public virtual DbSet<order_detail> order_detail { get; set; }
         public virtual DbSet<order_type> order_type { get; set; }
         public virtual DbSet<platform> platforms { get; set; }
         public virtual DbSet<status> status { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<user> users { get; set; }
+        public virtual DbSet<order_detail> order_detail { get; set; }
+        public virtual DbSet<order> orders { get; set; }
+        public virtual DbSet<game> games { get; set; }
     }
 }

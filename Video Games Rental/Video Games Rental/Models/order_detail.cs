@@ -14,12 +14,12 @@ namespace Video_Games_Rental.Models
     
     public partial class order_detail
     {
-        public int order_type_id { get; set; }
+        public int order_detail_id { get; set; }
         public int order_id { get; set; }
         public int game_id { get; set; }
         public int amount { get; set; }
     
-        public virtual game game { get; set; }
         public virtual order order { get; set; }
+        public virtual game game { get; set; }
     }
 }

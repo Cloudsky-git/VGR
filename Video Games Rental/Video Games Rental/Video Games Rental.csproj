@@ -200,6 +200,7 @@
     <Content Include="Content\css\owl.theme.default.min.css" />
     <Content Include="Content\css\reg.css" />
     <Content Include="Content\css\reg.min.css" />
+    <Content Include="Content\css\panel.css" />
     <Content Include="Content\css\style.css" />
     <Content Include="Content\img\about\1.jpg" />
     <Content Include="Content\img\about\2.jpg" />
@@ -251,18 +252,6 @@
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Content\scss\agency.scss" />
-    <Content Include="Content\scss\base\_mixins.scss" />
-    <Content Include="Content\scss\base\_page.scss" />
-    <Content Include="Content\scss\base\_variables.scss" />
-    <Content Include="Content\scss\components\_buttons.scss" />
-    <Content Include="Content\scss\components\_navbar.scss" />
-    <Content Include="Content\scss\layout\_contact.scss" />
-    <Content Include="Content\scss\layout\_footer.scss" />
-    <Content Include="Content\scss\layout\_masthead.scss" />
-    <Content Include="Content\scss\layout\_polecane.scss" />
-    <Content Include="Content\scss\layout\_services.scss" />
-    <Content Include="Content\scss\layout\_timeline.scss" />
     <EntityDeploy Include="Models\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
@@ -371,11 +360,6 @@
     <Content Include="Views\Shared\_EntryLayout.cshtml" />
     <Content Include="Views\Shared\_LoginLayout.cshtml" />
     <Content Include="Views\Shared\_SearchLayout.cshtml" />
-    <Content Include="Views\games\Create.cshtml" />
-    <Content Include="Views\games\Delete.cshtml" />
-    <Content Include="Views\games\Details.cshtml" />
-    <Content Include="Views\games\Edit.cshtml" />
-    <Content Include="Views\games\Index.cshtml" />
     <Content Include="Views\genres\Create.cshtml" />
     <Content Include="Views\genres\Delete.cshtml" />
     <Content Include="Views\genres\Details.cshtml" />
@@ -416,6 +400,11 @@
     <Content Include="Views\users\Details.cshtml" />
     <Content Include="Views\users\Edit.cshtml" />
     <Content Include="Views\users\Index.cshtml" />
+    <Content Include="Views\games\Create.cshtml" />
+    <Content Include="Views\games\Delete.cshtml" />
+    <Content Include="Views\games\Details.cshtml" />
+    <Content Include="Views\games\Edit.cshtml" />
+    <Content Include="Views\games\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

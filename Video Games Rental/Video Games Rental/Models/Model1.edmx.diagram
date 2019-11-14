@@ -5,24 +5,24 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="2ade197067ee4f23a5c8facdf4b8fa22" Name="Diagram1">
-        <EntityTypeShape EntityType="Model.game" Width="1.5" PointX="3" PointY="11.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.genre" Width="1.5" PointX="0.75" PointY="10.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.language" Width="1.5" PointX="0.75" PointY="12.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.order" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.order_detail" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.genre" Width="1.5" PointX="3.375" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.language" Width="1.5" PointX="5.5" PointY="10.625" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.order_type" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.platform" Width="1.5" PointX="0.75" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.platform" Width="1.5" PointX="7.875" PointY="9.5" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.status" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.sysdiagram" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.user" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
-        <AssociationConnector Association="Model.game_genre" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.game_language" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.game_platform" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.reservation_detail_game" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.order_order_type" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.reservation_detail_reservation" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.reservation_status" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.reservation_user" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Model.order_detail" Width="1.5" PointX="5.5" PointY="2" />
+        <EntityTypeShape EntityType="Model.order" Width="1.5" PointX="3.125" PointY="1.375" />
+        <AssociationConnector Association="Model.order_order_type" />
+        <AssociationConnector Association="Model.reservation_detail_reservation" />
+        <AssociationConnector Association="Model.reservation_status" />
+        <AssociationConnector Association="Model.reservation_user" />
+        <EntityTypeShape EntityType="Model.game" Width="1.5" PointX="5.625" PointY="5.125" />
+        <AssociationConnector Association="Model.game_genre" />
+        <AssociationConnector Association="Model.game_language" />
+        <AssociationConnector Association="Model.game_platform" />
+        <AssociationConnector Association="Model.reservation_detail_game" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

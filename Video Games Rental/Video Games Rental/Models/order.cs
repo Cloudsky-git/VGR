@@ -25,7 +25,7 @@ namespace Video_Games_Rental.Models
         public int user_id { get; set; }
         public int status_id { get; set; }
         public System.DateTime date { get; set; }
-        public decimal cost { get; set; }
+        public decimal price { get; set; }
     
         public virtual order_type order_type { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

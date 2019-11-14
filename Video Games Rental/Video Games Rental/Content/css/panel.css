@@ -1,0 +1,43 @@
+
+.btn-default {
+    color: white;
+    background-color: #368dfe;
+}
+
+a.btn-default{
+   margin-bottom: 5px;
+}
+
+.btn-default:hover {
+    background-color: #10a7fe;
+    color: white;
+}
+
+.form-horizontal {
+    color: #368dfe;
+}
+
+.table {
+    color: #368dfe;
+}
+
+.panel-list {
+    text-transform: uppercase;
+    position: relative;
+    margin-top: auto;
+    width:300px;
+    margin-left:40%;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    font-weight: 700;
+}
+
+.panel-list-item {
+    margin-bottom: 5px;
+    background-color: #368dfe;
+    padding: 2px 5px 2px 5px;
+    font-size: 15px;
+}
+
+.panel-list :hover {
+    background-color: #10a7fe;
+}

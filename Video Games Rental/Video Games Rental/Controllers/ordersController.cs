@@ -50,7 +50,7 @@ namespace Video_Games_Rental.Controllers
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "order_id,order_type_id,user_id,status_id,date,cost")] order order)
+        public ActionResult Create([Bind(Include = "order_id,order_type_id,user_id,status_id,date,price")] order order)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +88,7 @@ namespace Video_Games_Rental.Controllers
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "order_id,order_type_id,user_id,status_id,date,cost")] order order)
+        public ActionResult Edit([Bind(Include = "order_id,order_type_id,user_id,status_id,date,price")] order order)
         {
             if (ModelState.IsValid)
             {
