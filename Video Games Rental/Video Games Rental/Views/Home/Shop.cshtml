@@ -1,0 +1,434 @@
+﻿@{
+    ViewBag.Title = "Shop";
+    Layout = "~/Views/Shared/_SearchLayout.cshtml";
+}
+
+<!-- Header -->
+<header class="masthead">
+    <div class="container">
+        <div class="intro-text">
+            <div class="intro-lead-in">Witamy w świecie gier!</div>
+            <div class="intro-heading text-uppercase">Wymieniaj • Kupuj • Rezerwuj</div>
+            <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#popular">Sprawdź popularne</a>
+        </div>
+    </div>
+</header>
+
+<!-- Preloader Start -->
+<div id="preloader">
+    <div class="news-load"></div>
+</div>
+
+<section class="bg-dark p-4" id="carousel">
+    
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading text-uppercase mb-3 pt-0" id="news">NOWOŚCI</h2>
+                <h6 class="mb-3 mt-1" id="desc">Najnowsze dostępne tytuły.</h6>
+            </div>
+        </div>
+        <div class="row">
+            <div class="owl-carousel owl-theme">
+                <div class="single-slide">
+                    <img src="~/Content/img/slides/Call-of-Duty-Modern-Warfare-2019-1.jpg" class="img-fluid" alt="COD MW 2019" />
+                    <div class="project_title">
+                        <a href="#">
+                            <h5>
+                                Call of Duty: Modern Warfare 2
+                            </h5>
+                            <p id="overlay_text">
+                                FPS video game developed by Infinity Ward and published by Activision.
+                            </p>                            
+                        </a>
+                    </div>
+                </div>
+                <div class="single-slide">
+                    <img src="~/Content/img/slides/death_stranding_full_1573020168356.jpg" class="img-fluid" alt="Death Stranding" />
+                    <div class="project_title">
+                        <a href="#">
+                            <h5>
+                                Death Stranding
+                            </h5>
+                            <p id="overlay_text">
+                                Open world action game developed by Kojima Productions.
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="single-slide">
+                    <img src="~/Content/img/slides/outer_worlds.jpg" class="img-fluid" alt="Outer Worlds" />
+                    <div class="project_title">
+                        <a href="#">
+                            <h5>
+                                The Outer Worlds
+                            </h5>
+                            <p id="overlay_text">
+                                Action role-playing game developed by Obsidian Entertainment and published by Private Division.
+                            </p>                          
+                        </a>
+                    </div>
+                </div>
+                <div class="single-slide">
+                    <img src="~/Content/img/slides/Ghost-Recon-Breakpoint.jpg" class="img-fluid" alt="Ghost Recon Breakpoint" />
+                    <div class="project_title">
+                        <a href="#">
+                            <h5>
+                                Tom Clancy's Ghost Recon Breakpoint
+                            </h5>
+                            <p id="overlay_text">
+                                Online tactical shooter video game developed by Ubisoft Paris and published by Ubisoft.
+                            </p>                           
+                        </a>
+                    </div>
+                </div>
+                <div class="single-slide">
+                    <img src="~/Content/img/slides/need-for-speed-heat.jpg" class="img-fluid" alt="NFS HEAT" />
+                    <div class="project_title">
+                        <a href="#">
+                            <h5>
+                                Need for Speed: Heat
+                            </h5>
+                            <p id="overlay_text">
+                                Racing video game developed by Ghost Games and published by Electronic Arts.
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="single-slide">
+                    <img src="~/Content/img/slides/sekiro.jpg" class="img-fluid" alt="Sekiro" />
+                    <div class="project_title">
+                        <a href="#">
+                            <h5>
+                                Sekiro: Shadows Die Twice
+                            </h5>
+                            <p id="overlay_text">Action-adventure video game developed by FromSoftware and published by Activision.</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="single-slide">
+                    <img src="~/Content/img/slides/borderlands-3.jpg" class="img-fluid" alt="Borderlands 3" />
+                    <div class="project_title">
+                        <a href="#">
+                            <h5>
+                                Borderlands 3
+                            </h5>
+                            <p id="overlay_text">
+                                Action role-playing FPS
+                            </p>                      
+                        </a>
+                    </div>
+                </div>              
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- popular Grid -->
+<section class="bg-light page-section" id="popular">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading text-uppercase">popularne tytuły</h2>
+                <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-12 popular-item">
+                <a class="popular-link" data-toggle="modal" href="#popularModal1">
+                    <div class="popular-hover">
+                        <div class="popular-hover-content">
+                            <i class="fas fa-plus fa-3x"></i>
+                        </div>
+                    </div>
+                    <img class="img-fluid" src="~/Content/img/popular/01-thumbnail.jpg" alt="">
+                </a>
+                <div class="popular-caption">
+                    <a href="#"><h4>Assassin's Creed Odyssey</h4></a>
+                    <p class="text-muted">199,00 zł</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 popular-item">
+                <a class="popular-link" data-toggle="modal" href="#popularModal2">
+                    <div class="popular-hover">
+                        <div class="popular-hover-content">
+                            <i class="fas fa-plus fa-3x"></i>
+                        </div>
+                    </div>
+                    <img class="img-fluid" src="~/Content/img/popular/02-thumbnail.jpg" alt="">
+                </a>
+                <div class="popular-caption">
+                    <a href="#"><h4>Total War: Three Kingdoms Limited Edition</h4></a>
+                    <p class="text-muted">133,99 zł</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 popular-item">
+                <a class="popular-link" data-toggle="modal" href="#popularModal3">
+                    <div class="popular-hover">
+                        <div class="popular-hover-content">
+                            <i class="fas fa-plus fa-3x"></i>
+                        </div>
+                    </div>
+                    <img class="img-fluid" src="~/Content/img/popular/03-thumbnail.jpg" alt="">
+                </a>
+                <div class="popular-caption">
+                    <a href="#"><h4>Wiedźmin 3: Dziki Gon - Edycja Gry Roku</h4></a>
+                    <p class="text-muted">139,00 zł</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 popular-item">
+                <a class="popular-link" data-toggle="modal" href="#popularModal4">
+                    <div class="popular-hover">
+                        <div class="popular-hover-content">
+                            <i class="fas fa-plus fa-3x"></i>
+                        </div>
+                    </div>
+                    <img class="img-fluid" src="~/Content/img/popular/04-thumbnail.jpg" alt="">
+                </a>
+                <div class="popular-caption">
+                    <a href="#"><h4>Cyberpunk 2077 - Premiera 16.04.2020.</h4></a>
+                    <p class="text-muted">199,00 zł</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 popular-item">
+                <a class="popular-link" data-toggle="modal" href="#popularModal5">
+                    <div class="popular-hover">
+                        <div class="popular-hover-content">
+                            <i class="fas fa-plus fa-3x"></i>
+                        </div>
+                    </div>
+                    <img class="img-fluid" src="~/Content/img/popular/05-thumbnail.jpg" alt="">
+                </a>
+                <div class="popular-caption">
+                    <a href="#"><h4>F1 2019 - ANNIVERSARY EDITION</h4></a>
+                    <p class="text-muted">169,00 zł</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 popular-item">
+                <a class="popular-link" data-toggle="modal" href="#popularModal6">
+                    <div class="popular-hover">
+                        <div class="popular-hover-content">
+                            <i class="fas fa-plus fa-3x"></i>
+                        </div>
+                    </div>
+                    <img class="img-fluid" src="~/Content/img/popular/06-thumbnail.jpg" alt="">
+                </a>
+                <div class="popular-caption">
+                    <a href="#"><h4>Wolfenstein Youngblood Deluxe Edition</h4></a>
+                    <p class="text-muted">155,00 zł</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- popular Modals -->
+<!-- Modal 1 -->
+<div class="popular-modal modal fade" id="popularModal1" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl"></div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <div class="modal-body">
+                            <!-- Project Details Go Here -->
+                            <h2 class="text-uppercase">Project Name</h2>
+                            <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                            <img class="img-fluid d-block mx-auto" src="~/Content/img/popular/01-full.jpg" alt="">
+                            <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                            <ul class="list-inline">
+                                <li>Date: January 2017</li>
+                                <li>Client: Threads</li>
+                                <li>Category: Illustration</li>
+                            </ul>
+                            <button class="btn btn-primary" data-dismiss="modal" type="button">
+                                <i class="fas fa-times"></i>
+                                Close Project
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal 2 -->
+<div class="popular-modal modal fade" id="popularModal2" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl"></div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <div class="modal-body">
+                            <!-- Project Details Go Here -->
+                            <h2 class="text-uppercase">Project Name</h2>
+                            <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                            <img class="img-fluid d-block mx-auto" src="~/Content/img/popular/02-full.jpg" alt="">
+                            <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                            <ul class="list-inline">
+                                <li>Date: January 2017</li>
+                                <li>Client: Explore</li>
+                                <li>Category: Graphic Design</li>
+                            </ul>
+                            <button class="btn btn-primary" data-dismiss="modal" type="button">
+                                <i class="fas fa-times"></i>
+                                Close Project
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal 3 -->
+<div class="popular-modal modal fade" id="popularModal3" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl"></div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <div class="modal-body">
+                            <!-- Project Details Go Here -->
+                            <h2 class="text-uppercase">Project Name</h2>
+                            <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                            <img class="img-fluid d-block mx-auto" src="~/Content/img/popular/03-full.jpg" alt="">
+                            <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                            <ul class="list-inline">
+                                <li>Date: January 2017</li>
+                                <li>Client: Finish</li>
+                                <li>Category: Identity</li>
+                            </ul>
+                            <button class="btn btn-primary" data-dismiss="modal" type="button">
+                                <i class="fas fa-times"></i>
+                                Close Project
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal 4 -->
+<div class="popular-modal modal fade" id="popularModal4" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl"></div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <div class="modal-body">
+                            <!-- Project Details Go Here -->
+                            <h2 class="text-uppercase">Project Name</h2>
+                            <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                            <img class="img-fluid d-block mx-auto" src="~/Content/img/popular/04-full.jpg" alt="">
+                            <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                            <ul class="list-inline">
+                                <li>Date: January 2017</li>
+                                <li>Client: Lines</li>
+                                <li>Category: Branding</li>
+                            </ul>
+                            <button class="btn btn-primary" data-dismiss="modal" type="button">
+                                <i class="fas fa-times"></i>
+                                Close Project
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal 5 -->
+<div class="popular-modal modal fade" id="popularModal5" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl"></div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <div class="modal-body">
+                            <!-- Project Details Go Here -->
+                            <h2 class="text-uppercase">Project Name</h2>
+                            <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                            <img class="img-fluid d-block mx-auto" src="~/Content/img/popular/05-full.jpg" alt="">
+                            <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                            <ul class="list-inline">
+                                <li>Date: January 2017</li>
+                                <li>Client: Southwest</li>
+                                <li>Category: Website Design</li>
+                            </ul>
+                            <button class="btn btn-primary" data-dismiss="modal" type="button">
+                                <i class="fas fa-times"></i>
+                                Close Project
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal 6 -->
+<div class="popular-modal modal fade" id="popularModal6" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl"></div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <div class="modal-body">
+                            <!-- Project Details Go Here -->
+                            <h2 class="text-uppercase">Project Name</h2>
+                            <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                            <img class="img-fluid d-block mx-auto" src="~/Content/img/popular/06-full.jpg" alt="">
+                            <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
+                            <ul class="list-inline">
+                                <li>Date: January 2017</li>
+                                <li>Client: Window</li>
+                                <li>Category: Photography</li>
+                            </ul>
+                            <button class="btn btn-primary" data-dismiss="modal" type="button">
+                                <i class="fas fa-times"></i>
+                                Close Project
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

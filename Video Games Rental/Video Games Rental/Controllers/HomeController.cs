@@ -4,12 +4,24 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Video_Games_Rental.Controllers
+namespace video_games_rental.Controllers
 {
     public class HomeController : Controller
     {
         public ActionResult Index()
         {
+            return View();
+        }
+
+        public ActionResult Shop()
+        {
+
+            return View();
+        }
+
+        public ActionResult Reservation()
+        {
+
             return View();
         }
 
@@ -23,6 +35,46 @@ namespace Video_Games_Rental.Controllers
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        public ActionResult PS3()
+        {
+
+            return View();
+        }
+
+        public ActionResult PS4()
+        {
+
+            return View();
+        }
+
+        public ActionResult X360()
+        {
+
+            return View();
+        }
+
+        public ActionResult XO()
+        {
+
+            return View();
+        }
+
+        public ActionResult PC()
+        {
 
             return View();
         }

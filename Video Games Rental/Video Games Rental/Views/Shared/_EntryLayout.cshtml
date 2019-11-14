@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>@ViewBag.Title - Adicole - Wypożyczalnia gier wideo </title>
+
+    @Styles.Render("~/vendor/bootstrap/css/bootstrap.min.css")
+    @Styles.Render("~/Content/css/agency.css")
+    @Styles.Render("~/Content/css/reg.css")
+    @Styles.Render("~/Content/css/style.css")
+    @Styles.Render("~/vendor/fontawesome-free/css/all.min.css")
+    
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+</head>
+<body id="page-top">
+
+    @RenderBody()
+
+    @Scripts.Render("~/vendor/jquery/jquery.min.js")
+
+    @Scripts.Render("~/vendor/bootstrap/js/bootstrap.bundle.min.js")
+
+    <!-- Plugin JavaScript -->
+    @Scripts.Render("~/vendor/jquery-easing/jquery.easing.min.js")
+
+    <!-- Contact form JavaScript -->
+    @Scripts.Render("~/Scripts/js/jqBootstrapValidation.js")
+    @Scripts.Render("~/Scripts/js/contact_me.js")
+
+    <!-- Custom scripts for this template -->
+    @Scripts.Render("~/Scripts/js/agency.js")
+    @Scripts.Render("~/Scripts/js/active.js")
+    @Scripts.Render("~/Scripts/js/owl.carousel.js")
+    @Scripts.Render("~/Scripts/js/owl_basic.js")
+
+    @RenderSection("scripts", required: false)
+    
+</body>
+</html>

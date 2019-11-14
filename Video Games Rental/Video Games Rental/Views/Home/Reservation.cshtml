@@ -1,0 +1,106 @@
+﻿@{
+    ViewBag.Title = "Reservation";
+    Layout = "~/Views/Shared/_BackToMainLayout.cshtml";
+
+}
+
+    <!-- Header -->
+    <header class="masthead">
+        <div class="container">
+            <div class="intro-text">
+                <div class="intro-lead-in">Witamy w świecie gier!</div>
+                <div class="intro-heading text-uppercase">Wymieniaj • Kupuj • Rezerwuj</div>
+                <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#Reservation">Sprawdź dostępność</a>
+            </div>
+        </div>
+    </header>
+
+    <div id="preloader">
+        <div class="news-load"></div>
+    </div>
+
+    <!-- Reservation -->
+    <section class="page-section" id="Reservation">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading text-uppercase">Zarezerwuj tytuł dla siebie</h2>
+                    <h3 class="section-subheading text-muted">Prosimy wypełnić poniższe pola.</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <form id="contactForm" name="sentMessage" novalidate="novalidate">
+                        <div class="row">
+                            <div class="col-md-2">
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <select onchange="changeMe(this)" data-validation="required" class="form-control select">
+                                        <option value="" selected disabled hidden>Gatunek *</option>
+                                        <option class="option" value="Strategie">Strategie</option>
+                                        <option class="option" value="RPG">RPG (Role Playing Game)</option>
+                                        <option class="option" value="FPS">FPS (First Person Shooter)</option>
+                                        <option class="option" value="Wyścigi / Symulatory">Wyścigi / Symulatory</option>
+                                        <option class="option" value="Przygodowe">Przygodowe</option>
+                                        <option class="option" value="Gry akcji">Gry akcji</option>
+                                        <option class="option" value="Gry karciane">Gry karciane</option>
+                                        <option class="option" value="MMO">MMO (Massively Multiplayer Online)</option>
+                                        <option class="option" value="Sportowe">Sportowe</option>
+                                        <option class="option" value="Logiczne">Logiczne</option>
+                                        <option class="option" value="Cyfrowe Gry Planszowe" style="color:black;">Cyfrowe Gry Planszowe</option>
+                                    </select>
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" id="tytul" type="text" placeholder="Tytuł" required="required" data-validation-required-message="Prosimy podać tytuł gry.">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                <div class="form-group">
+                                    <select onchange="changeMe(this)" data-validation="required" class="form-control select">
+                                        <option value="" selected disabled hidden>Wersja językowa</option>
+                                        <option class="option" value="Polski">Polska</option>
+                                        <option class="option" value="Angielski">Angielska</option>
+                                        <option class="option" value="Inny">Inna</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <select onchange="changeMe(this)" data-validation="required" class="form-control select">
+                                        <option value="" selected disabled hidden>Platforma *</option>
+                                        <option class="option" value="PC">PC</option>
+                                        <option class="option" value="Xbox">Xbox</option>
+                                        <option class="option" value="Xbox One">Xbox One</option>
+                                        <option class="option" value="PS3">PS3</option>
+                                        <option class="option" value="PS4">PS4</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <select onchange="changeMe(this)" data-validation="required" class="form-control select">
+                                        <option value="" selected disabled hidden>Stan</option>
+                                        <option class="option" value="Nowy">Nowy</option>
+                                        <option class="option" value="Lekko uzywany">Lekko używany</option>
+                                        <option class="option" value="Uzywany">Używany</option>
+                                    </select>
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                <div class="form-group">
+                                    <input placeholder="Termin *" class="form-control" type="text" onfocusin="(this.type='date')" onfocusout="(this.type='text')" id="date" min='1999-01-01' max='2025-31-12' data-validation-required-message="Prosimy wybrać termin.">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <img class="img-thumbnail" src="~/Content/img/register.jpg" alt="Rezerwacja">
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="col-lg-12 text-center">
+                                <div id="success"></div>
+                                <button id="sendMessageButton" class="btn btn-primary btn-xl text-uppercase mt-3" type="submit">Sprawdź dostępność w wybranym terminie</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Placeholder in select -->
+    <script type="text/javascript">function changeMe(sel) { sel.style.color = "#555555"; }</script>

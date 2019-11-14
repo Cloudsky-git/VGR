@@ -1,0 +1,152 @@
+@import '../../Content/css/owl.carousel.css';
+@import '../../Content/css/owl.theme.default.min.css';
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    position: relative;
+    z-index: auto;
+}
+
+h5 {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    color: #232d37;
+    line-height: 1.25;
+}
+
+p {
+    color: #51545f;
+    font-size: 16px;
+}
+
+img {
+    max-width: 100%;
+}
+
+ul,
+ol {
+    margin: 0;
+    padding: 0;
+}
+
+.heading_text > p {
+    font-size: 16px;
+}
+
+#carousel .img-fluid {
+    max-width: 100%;
+    height: 100%;
+    display: block;
+}
+
+#news {
+    font-weight: 700;
+    font-size: 40px;
+    color: #eee;
+    text-shadow: 0px 4px 3px rgba(0,0,0,0.4), 0px 8px 13px rgba(0,0,0,0.1), 0px 18px 23px rgba(0,0,0,0.1);
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+#desc {
+    font-size: 22px;
+    font-style: italic;
+    text-shadow: 0px 4px 3px rgba(0,0,0,0.4), 0px 8px 13px rgba(0,0,0,0.1), 0px 18px 23px rgba(0,0,0,0.1);
+    opacity: 0.7;
+    font-weight: 400;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+#preloader {
+    overflow: hidden;
+    background-color: #fff;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999999;
+}
+
+.news-load {
+    -webkit-animation: 1500ms linear 0s normal none infinite running news-load;
+    animation: 1500ms linear 0s normal none infinite running news-load;
+    background: transparent none repeat scroll 0 0;
+    border-color: #dddddd #dddddd #368dfe;
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 3px;
+    height: 40px;
+    left: calc(50% - 20px);
+    position: relative;
+    top: calc(50% - 20px);
+    width: 40px;
+    z-index: 9;
+}
+
+@-webkit-keyframes news-load {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes news-load {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+.single-slide {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.single-slide .project_title a > h5 {
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 0;
+}
+
+#overlay_text {
+    font-style: italic;
+    color: #fff;
+    opacity: .7;
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 0;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+.single-slide .project_title {
+    position: absolute;
+    content: "";
+    bottom: -250px;
+    left: 0;
+    z-index: 3;
+    background: #368dfe;
+    padding: 20px;
+    width: 100%;
+    height: auto;
+    -webkit-transition-duration: 750ms;
+    transition-duration: 750ms;
+}
+
+.single-slide:hover .project_title {
+    bottom: 0;
+}

@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+    <div id="preloader">
+        <div class="news-load"></div>
+    </div>
+
+    <!-- Login -->
+    <div class="container-fluid">
+        <div class="row no-gutter">
+            <div class="d-none d-md-flex col-md-4 col-lg-6">
+                <img class="img-fluid mt-2 mb-2 login-img" src="~/Content/img/login/signup.jpg" />
+            </div>
+            <div class="col-md-12 col-xl-6">
+                <div class="clearfix">
+                    <button class="btn btn-primary text-uppercase font-weight-bold mt-3 float-right" type="button">@Html.ActionLink("Strona główna", "Index", "Home", new { area = "" }, new { @class = "btn" })></button>
+                </div>
+                <div class="login d-flex align-items-center py-5">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-9 col-lg-8 mx-auto">
+                                <h3 class="login-heading mb-4">Witamy Ponownie!</h3>
+                                <form>
+                                    <div class="form-group">
+                                        <input type="email" id="inputEmail" class="form-control" placeholder="E-mail" required autofocus>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" id="inputPassword" class="form-control" placeholder="Hasło" required>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mb-3">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                        <label class="custom-control-label" for="customCheck1">Zapamiętaj mnie</label>
+                                    </div>
+                                    <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Zaloguj</button>
+                                    <div class="text-center pt-2">
+                                        <a class="small" href="#">Zapomniałeś hasła?</a>
+                                    </div>
+                                    <div class="text-center mt-1">
+                                        @Html.ActionLink("Nie posiadasz jeszcze konta? Zarejestruj się!", "Register", "Home", new { area = "" }, new { @class = "small" })
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
