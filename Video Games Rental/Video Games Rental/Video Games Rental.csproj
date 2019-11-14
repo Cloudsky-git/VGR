@@ -130,7 +130,15 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\gamesController.cs" />
+    <Compile Include="Controllers\genresController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\languagesController.cs" />
+    <Compile Include="Controllers\ordersController.cs" />
+    <Compile Include="Controllers\order_detailController.cs" />
+    <Compile Include="Controllers\order_typeController.cs" />
+    <Compile Include="Controllers\platformsController.cs" />
+    <Compile Include="Controllers\statusController.cs" />
+    <Compile Include="Controllers\usersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -368,6 +376,46 @@
     <Content Include="Views\games\Details.cshtml" />
     <Content Include="Views\games\Edit.cshtml" />
     <Content Include="Views\games\Index.cshtml" />
+    <Content Include="Views\genres\Create.cshtml" />
+    <Content Include="Views\genres\Delete.cshtml" />
+    <Content Include="Views\genres\Details.cshtml" />
+    <Content Include="Views\genres\Edit.cshtml" />
+    <Content Include="Views\genres\Index.cshtml" />
+    <Content Include="Views\languages\Create.cshtml" />
+    <Content Include="Views\languages\Delete.cshtml" />
+    <Content Include="Views\languages\Details.cshtml" />
+    <Content Include="Views\languages\Edit.cshtml" />
+    <Content Include="Views\languages\Index.cshtml" />
+    <Content Include="Views\orders\Create.cshtml" />
+    <Content Include="Views\orders\Delete.cshtml" />
+    <Content Include="Views\orders\Details.cshtml" />
+    <Content Include="Views\orders\Edit.cshtml" />
+    <Content Include="Views\orders\Index.cshtml" />
+    <Content Include="Views\order_detail\Create.cshtml" />
+    <Content Include="Views\order_detail\Delete.cshtml" />
+    <Content Include="Views\order_detail\Details.cshtml" />
+    <Content Include="Views\order_detail\Edit.cshtml" />
+    <Content Include="Views\order_detail\Index.cshtml" />
+    <Content Include="Views\order_type\Create.cshtml" />
+    <Content Include="Views\order_type\Delete.cshtml" />
+    <Content Include="Views\order_type\Details.cshtml" />
+    <Content Include="Views\order_type\Edit.cshtml" />
+    <Content Include="Views\order_type\Index.cshtml" />
+    <Content Include="Views\platforms\Create.cshtml" />
+    <Content Include="Views\platforms\Delete.cshtml" />
+    <Content Include="Views\platforms\Details.cshtml" />
+    <Content Include="Views\platforms\Edit.cshtml" />
+    <Content Include="Views\platforms\Index.cshtml" />
+    <Content Include="Views\status\Create.cshtml" />
+    <Content Include="Views\status\Delete.cshtml" />
+    <Content Include="Views\status\Details.cshtml" />
+    <Content Include="Views\status\Edit.cshtml" />
+    <Content Include="Views\status\Index.cshtml" />
+    <Content Include="Views\users\Create.cshtml" />
+    <Content Include="Views\users\Delete.cshtml" />
+    <Content Include="Views\users\Details.cshtml" />
+    <Content Include="Views\users\Edit.cshtml" />
+    <Content Include="Views\users\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

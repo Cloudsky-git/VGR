@@ -1,0 +1,59 @@
+﻿@model Video_Games_Rental.Models.order
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_EntryLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>order</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.order_type.type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.order_type.type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.status.status1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status.status1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.user.username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user.username)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.order_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

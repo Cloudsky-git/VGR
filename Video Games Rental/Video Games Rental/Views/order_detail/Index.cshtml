@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Video_Games_Rental.Models.order_detail>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_EntryLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.game.title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.order.order_id)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.amount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.game.title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.order.order_id)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.order_type_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.order_type_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.order_type_id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,27 @@
+﻿@model Video_Games_Rental.Models.language
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_EntryLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>language</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.language1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.language1)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.language_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
