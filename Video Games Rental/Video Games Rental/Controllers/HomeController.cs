@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+
 namespace video_games_rental.Controllers
 {
     public class HomeController : Controller

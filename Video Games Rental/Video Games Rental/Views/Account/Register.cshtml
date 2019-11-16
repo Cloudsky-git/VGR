@@ -1,0 +1,87 @@
+﻿@model Video_Games_Rental.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+<div id="preloader">
+    <div class="news-load"></div>
+</div>
+
+<!-- Register -->
+<div class="container-fluid">
+    <div class="row no-gutter">
+        <div class="d-none d-md-flex col-md-4 col-lg-6">
+            <img class="img-fluid mt-2 mb-2 login-img" src="~/Content/img/login/signup.jpg" alt="">
+        </div>
+        <div class="col-md-12 col-xl-6">
+            <div class="clearfix">
+                <button class="btn btn-primary text-uppercase font-weight-bold mt-3 float-right" type="button">@Html.ActionLink("Strona główna", "Index", "Home", new { area = "" }, new { @class = "btn" })></button>
+            </div>
+            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                <div class="login d-flex align-items-center py-5">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-9 col-lg-8 mx-auto">
+                                @Html.AntiForgeryToken()
+                                <h3 class="login-heading mb-4">Zarejestruj się za darmo!</h3>
+                                @Html.ValidationSummary("", new { @class = "text-danger" })
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Username, new { @class = "col-md-2 control-label" })
+                                    <div class="col-md-10">
+                                        @Html.TextBoxFor(m => m.Username, new { @class = "form-control", placeholder="Imię *" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                                    <div class="col-md-10">
+                                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder="E-mail *" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                                    <div class="col-md-10">
+                                        @Html.PasswordFor(m => m.Password, new { @class = "form-control mb-2", placeholder="Hasło *" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+                                    <div class="col-md-10">
+                                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control mb-2", placeholder="Powtórz Hasło *" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input type="submit" class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-3 mt-5" value="Załóż konto" />
+                                    </div>
+                                </div>
+                                <div class="text-center mt-1">
+                                    @Html.ActionLink("Masz już konto? Zaloguj się!", "Login", "Home", new { area = "" }, new { @class = "small" })
+                                </div>
+
+                                @*<div class="form-group">
+                                        <input type="text" id="inputName" class="form-control" placeholder="Imię *" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="email" id="inputEmail" class="form-control" placeholder="E-mail *" required autofocus>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" id="inputPassword" class="form-control mb-2" placeholder="Hasło *" required>
+                                    </div>
+                                    <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-3 mt-5" type="submit">Załóż konto</button>
+                                    <div class="text-center pt-2">
+                                        <a class="small" href="#">Zapomniałeś hasła?</a>
+                                    </div>
+                                    <div class="text-center mt-1">
+                                        @Html.ActionLink("Masz już konto? Zaloguj się!", "Login", "Home", new { area = "" }, new { @class = "small" })
+                                    </div>*@
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
