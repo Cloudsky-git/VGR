@@ -24,15 +24,14 @@
                 <div class="row">
                     <div class="col-md-9 col-lg-8 mx-auto">
                         <section id="loginForm">
+                            <h3>Witamy Ponownie.</h3>
                             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                             {
                                 @Html.AntiForgeryToken()
-                                <h4>Use a local account to log in.</h4>
                                 <hr />
                                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
                                 <div class="form-group">
-                                    @Html.LabelFor(m => m.Username, new { @class = "col-md-2 control-label" })
                                     <div class="col-md-10">
                                         @Html.TextBoxFor(m => m.Username, new { @class = "form-control", placeholder = "Imię *" })
                                         @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
@@ -40,14 +39,12 @@
                                 </div>
 
                                 <div class="form-group">
-                                    @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
                                     <div class="col-md-10">
                                         @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "E-mail *" })
                                         @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
                                     <div class="col-md-10">
                                         @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Hasło *" })
                                         @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
@@ -62,8 +59,8 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-md-offset-2 col-md-10">
-                                        <input type="submit" value="Zaloguj" class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" />
+                                    <div class="col-md-offset-2 col-md-10">                                       
+                                        <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Zaloguj</button>
                                     </div>
                                 </div>
                                 <div class="text-center mt-1">
