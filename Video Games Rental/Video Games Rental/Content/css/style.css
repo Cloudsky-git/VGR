@@ -150,3 +150,7 @@ ol {
 .single-slide:hover .project_title {
     bottom: 0;
 }
+
+.logged-in{
+    margin-left: 500px;
+}
