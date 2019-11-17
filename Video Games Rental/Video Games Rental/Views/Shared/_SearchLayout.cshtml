@@ -55,10 +55,10 @@
                     <button type="button" id="dropdownMenu1" data-toggle="dropdown" class="btn btn-primary dropdown-toggle mr-auto"> Zaloguj się </button>
                     <ul class="dropdown-menu dropdown-menu-right bg-secondary mb-0">
                         <li class="nav-item">
-                            @Html.ActionLink("Zaloguj", "Login", "Home", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
+                            @Html.ActionLink("Zaloguj", "../Account/Login", "Account", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
                         </li>
                         <li class="nav-item">
-                            @Html.ActionLink("Zarejestruj", "Register", "Home", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
+                            @Html.ActionLink("Zarejestruj", "../Account/Register", "Account", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
                         </li>
                     </ul>
                 </li>

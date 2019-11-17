@@ -1,0 +1,82 @@
+﻿@using Video_Games_Rental.Models
+@model LoginViewModel
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+    <div id="preloader">
+        <div class="news-load"></div>
+    </div>
+
+    <!-- Login -->
+    <div class="container-fluid">
+        <div class="row no-gutter">
+            <div class="d-none d-md-flex col-md-4 col-lg-6">
+                <img class="img-fluid mt-2 mb-2 login-img" src="~/Content/img/login/signup.jpg" />
+            </div>
+            <div class="col-md-12 col-xl-6">
+                <div class="clearfix">
+                    <button class="btn btn-primary text-uppercase font-weight-bold mt-3 float-right" type="button">@Html.ActionLink("Strona główna", "Index", "Home", new { area = "" }, new { @class = "btn" })></button>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-9 col-lg-8 mx-auto">
+                        <section id="loginForm">
+                            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <h4>Use a local account to log in.</h4>
+                                <hr />
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Username, new { @class = "col-md-2 control-label" })
+                                    <div class="col-md-10">
+                                        @Html.TextBoxFor(m => m.Username, new { @class = "form-control", placeholder = "Imię *" })
+                                        @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                                    <div class="col-md-10">
+                                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "E-mail *" })
+                                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                                    <div class="col-md-10">
+                                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Hasło *" })
+                                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <div class="checkbox">
+                                            @Html.CheckBoxFor(m => m.RememberMe)
+                                            @Html.LabelFor(m => m.RememberMe)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input type="submit" value="Zaloguj" class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" />
+                                    </div>
+                                </div>
+                                <div class="text-center mt-1">
+                                    @Html.ActionLink("Nie posiadasz jeszcze konta? Zarejestruj się!", "Register", "Account", new { area = "" }, new { @class = "small" })
+                                </div>
+                                @* Enable this once you have account confirmation enabled for password reset functionality
+            <p>
+            @Html.ActionLink("Forgot your password?", "ForgotPassword")
+            </p>*@
+                            }
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
