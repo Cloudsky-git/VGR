@@ -12,14 +12,12 @@ namespace Video_Games_Rental.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class order_detail
+    public partial class AspNetUserLogin
     {
-        public int order_detail_id { get; set; }
-        public int order_id { get; set; }
-        public int game_id { get; set; }
-        public int amount { get; set; }
+        public string LoginProvider { get; set; }
+        public string ProviderKey { get; set; }
+        public string UserId { get; set; }
     
-        public virtual game game { get; set; }
-        public virtual order order { get; set; }
+        public virtual AspNetUser AspNetUser { get; set; }
     }
 }

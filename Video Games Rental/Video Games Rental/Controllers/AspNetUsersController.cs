@@ -10,107 +10,112 @@ using Video_Games_Rental.Models;
 
 namespace Video_Games_Rental.Controllers
 {
-    public class usersController : Controller
+    public class AspNetUsersController : Controller
     {
         private VGR_DBEntities db = new VGR_DBEntities();
 
-        // GET: users
+        // GET: AspNetUsers
         public ActionResult Index()
         {
-            return View(db.users.ToList());
+            var aspNetUsers = db.AspNetUsers.Include(a => a.user_details);
+            return View(aspNetUsers.ToList());
         }
 
-        // GET: users/Details/5
-        public ActionResult Details(int? id)
+        // GET: AspNetUsers/Details/5
+        public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            user user = db.users.Find(id);
-            if (user == null)
+            AspNetUser aspNetUser = db.AspNetUsers.Find(id);
+            if (aspNetUser == null)
             {
                 return HttpNotFound();
             }
-            return View(user);
+            return View(aspNetUser);
         }
 
-        // GET: users/Create
+        // GET: AspNetUsers/Create
         public ActionResult Create()
         {
+            ViewBag.user_details_id = new SelectList(db.user_details, "user_details_id", "name");
             return View();
         }
 
-        // POST: users/Create
+        // POST: AspNetUsers/Create
         // Aby zapewnić ochronę przed atakami polegającymi na przesyłaniu dodatkowych danych, włącz określone właściwości, z którymi chcesz utworzyć powiązania.
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "user_id,username,password,email")] user user)
+        public ActionResult Create([Bind(Include = "Id,user_details_id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] AspNetUser aspNetUser)
         {
             if (ModelState.IsValid)
             {
-                db.users.Add(user);
+                db.AspNetUsers.Add(aspNetUser);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(user);
+            ViewBag.user_details_id = new SelectList(db.user_details, "user_details_id", "name", aspNetUser.user_details_id);
+            return View(aspNetUser);
         }
 
-        // GET: users/Edit/5
-        public ActionResult Edit(int? id)
+        // GET: AspNetUsers/Edit/5
+        public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            user user = db.users.Find(id);
-            if (user == null)
+            AspNetUser aspNetUser = db.AspNetUsers.Find(id);
+            if (aspNetUser == null)
             {
                 return HttpNotFound();
             }
-            return View(user);
+            ViewBag.user_details_id = new SelectList(db.user_details, "user_details_id", "name", aspNetUser.user_details_id);
+            return View(aspNetUser);
         }
 
-        // POST: users/Edit/5
+        // POST: AspNetUsers/Edit/5
         // Aby zapewnić ochronę przed atakami polegającymi na przesyłaniu dodatkowych danych, włącz określone właściwości, z którymi chcesz utworzyć powiązania.
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "user_id,username,password,email")] user user)
+        public ActionResult Edit([Bind(Include = "Id,user_details_id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] AspNetUser aspNetUser)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(user).State = EntityState.Modified;
+                db.Entry(aspNetUser).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(user);
+            ViewBag.user_details_id = new SelectList(db.user_details, "user_details_id", "name", aspNetUser.user_details_id);
+            return View(aspNetUser);
         }
 
-        // GET: users/Delete/5
-        public ActionResult Delete(int? id)
+        // GET: AspNetUsers/Delete/5
+        public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            user user = db.users.Find(id);
-            if (user == null)
+            AspNetUser aspNetUser = db.AspNetUsers.Find(id);
+            if (aspNetUser == null)
             {
                 return HttpNotFound();
             }
-            return View(user);
+            return View(aspNetUser);
         }
 
-        // POST: users/Delete/5
+        // POST: AspNetUsers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(string id)
         {
-            user user = db.users.Find(id);
-            db.users.Remove(user);
+            AspNetUser aspNetUser = db.AspNetUsers.Find(id);
+            db.AspNetUsers.Remove(aspNetUser);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

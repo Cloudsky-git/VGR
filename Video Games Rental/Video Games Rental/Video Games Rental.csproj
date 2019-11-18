@@ -159,6 +159,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup_Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AspNetUsersController.cs" />
     <Compile Include="Controllers\gamesController.cs" />
     <Compile Include="Controllers\genresController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -168,11 +169,28 @@
     <Compile Include="Controllers\order_typeController.cs" />
     <Compile Include="Controllers\platformsController.cs" />
     <Compile Include="Controllers\statusController.cs" />
-    <Compile Include="Controllers\usersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AspNetRole.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUser.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserClaim.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserLogin.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserRole.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\C__MigrationHistory.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\game.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -216,7 +234,7 @@
     <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\user.cs">
+    <Compile Include="Models\user_details.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -431,11 +449,6 @@
     <Content Include="Views\languages\Details.cshtml" />
     <Content Include="Views\languages\Edit.cshtml" />
     <Content Include="Views\languages\Index.cshtml" />
-    <Content Include="Views\orders\Create.cshtml" />
-    <Content Include="Views\orders\Delete.cshtml" />
-    <Content Include="Views\orders\Details.cshtml" />
-    <Content Include="Views\orders\Edit.cshtml" />
-    <Content Include="Views\orders\Index.cshtml" />
     <Content Include="Views\order_detail\Create.cshtml" />
     <Content Include="Views\order_detail\Delete.cshtml" />
     <Content Include="Views\order_detail\Details.cshtml" />
@@ -456,11 +469,6 @@
     <Content Include="Views\status\Details.cshtml" />
     <Content Include="Views\status\Edit.cshtml" />
     <Content Include="Views\status\Index.cshtml" />
-    <Content Include="Views\users\Create.cshtml" />
-    <Content Include="Views\users\Delete.cshtml" />
-    <Content Include="Views\users\Details.cshtml" />
-    <Content Include="Views\users\Edit.cshtml" />
-    <Content Include="Views\users\Index.cshtml" />
     <Content Include="Views\games\Create.cshtml" />
     <Content Include="Views\games\Delete.cshtml" />
     <Content Include="Views\games\Details.cshtml" />
@@ -478,6 +486,16 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\orders\Create.cshtml" />
+    <Content Include="Views\orders\Delete.cshtml" />
+    <Content Include="Views\orders\Details.cshtml" />
+    <Content Include="Views\orders\Edit.cshtml" />
+    <Content Include="Views\orders\Index.cshtml" />
+    <Content Include="Views\AspNetUsers\Create.cshtml" />
+    <Content Include="Views\AspNetUsers\Delete.cshtml" />
+    <Content Include="Views\AspNetUsers\Details.cshtml" />
+    <Content Include="Views\AspNetUsers\Edit.cshtml" />
+    <Content Include="Views\AspNetUsers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

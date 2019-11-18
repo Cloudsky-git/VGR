@@ -12,14 +12,11 @@ namespace Video_Games_Rental.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class order_detail
+    public partial class C__MigrationHistory
     {
-        public int order_detail_id { get; set; }
-        public int order_id { get; set; }
-        public int game_id { get; set; }
-        public int amount { get; set; }
-    
-        public virtual game game { get; set; }
-        public virtual order order { get; set; }
+        public string MigrationId { get; set; }
+        public string ContextKey { get; set; }
+        public byte[] Model { get; set; }
+        public string ProductVersion { get; set; }
     }
 }
