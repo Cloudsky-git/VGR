@@ -17,7 +17,7 @@ namespace Video_Games_Rental.Controllers
         // GET: orders
         public ActionResult Index()
         {
-            var orders = db.orders.Include(o => o.order_type).Include(o => o.status).Include(o => o.user);
+            var orders = db.orders.Include(o => o.AspNetUser).Include(o => o.AspNetUser1).Include(o => o.order_type).Include(o => o.status);
             return View(orders.ToList());
         }
 
@@ -39,9 +39,10 @@ namespace Video_Games_Rental.Controllers
         // GET: orders/Create
         public ActionResult Create()
         {
+            ViewBag.user_id = new SelectList(db.AspNetUsers, "Id", "Email");
+            ViewBag.user_id = new SelectList(db.AspNetUsers, "Id", "Email");
             ViewBag.order_type_id = new SelectList(db.order_type, "order_type_id", "type");
             ViewBag.status_id = new SelectList(db.status, "status_id", "status1");
-            ViewBag.user_id = new SelectList(db.users, "user_id", "username");
             return View();
         }
 
@@ -59,9 +60,10 @@ namespace Video_Games_Rental.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.user_id = new SelectList(db.AspNetUsers, "Id", "Email", order.user_id);
+            ViewBag.user_id = new SelectList(db.AspNetUsers, "Id", "Email", order.user_id);
             ViewBag.order_type_id = new SelectList(db.order_type, "order_type_id", "type", order.order_type_id);
             ViewBag.status_id = new SelectList(db.status, "status_id", "status1", order.status_id);
-            ViewBag.user_id = new SelectList(db.users, "user_id", "username", order.user_id);
             return View(order);
         }
 
@@ -77,9 +79,10 @@ namespace Video_Games_Rental.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.user_id = new SelectList(db.AspNetUsers, "Id", "Email", order.user_id);
+            ViewBag.user_id = new SelectList(db.AspNetUsers, "Id", "Email", order.user_id);
             ViewBag.order_type_id = new SelectList(db.order_type, "order_type_id", "type", order.order_type_id);
             ViewBag.status_id = new SelectList(db.status, "status_id", "status1", order.status_id);
-            ViewBag.user_id = new SelectList(db.users, "user_id", "username", order.user_id);
             return View(order);
         }
 
@@ -96,9 +99,10 @@ namespace Video_Games_Rental.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.user_id = new SelectList(db.AspNetUsers, "Id", "Email", order.user_id);
+            ViewBag.user_id = new SelectList(db.AspNetUsers, "Id", "Email", order.user_id);
             ViewBag.order_type_id = new SelectList(db.order_type, "order_type_id", "type", order.order_type_id);
             ViewBag.status_id = new SelectList(db.status, "status_id", "status1", order.status_id);
-            ViewBag.user_id = new SelectList(db.users, "user_id", "username", order.user_id);
             return View(order);
         }
 

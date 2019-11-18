@@ -22,15 +22,16 @@ namespace Video_Games_Rental.Models
     
         public int order_id { get; set; }
         public int order_type_id { get; set; }
-        public int user_id { get; set; }
+        public string user_id { get; set; }
         public int status_id { get; set; }
         public System.DateTime date { get; set; }
         public decimal price { get; set; }
     
-        public virtual order_type order_type { get; set; }
+        public virtual AspNetUser AspNetUser { get; set; }
+        public virtual AspNetUser AspNetUser1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<order_detail> order_detail { get; set; }
+        public virtual order_type order_type { get; set; }
         public virtual status status { get; set; }
-        public virtual user user { get; set; }
     }
 }

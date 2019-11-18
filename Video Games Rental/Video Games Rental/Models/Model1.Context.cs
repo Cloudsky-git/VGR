@@ -31,9 +31,15 @@ namespace Video_Games_Rental.Models
         public virtual DbSet<platform> platforms { get; set; }
         public virtual DbSet<status> status { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
-        public virtual DbSet<user> users { get; set; }
         public virtual DbSet<order_detail> order_detail { get; set; }
-        public virtual DbSet<order> orders { get; set; }
         public virtual DbSet<game> games { get; set; }
+        public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
+        public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
+        public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
+        public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
+        public virtual DbSet<AspNetUserRole> AspNetUserRoles { get; set; }
+        public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
+        public virtual DbSet<user_details> user_details { get; set; }
+        public virtual DbSet<order> orders { get; set; }
     }
 }
