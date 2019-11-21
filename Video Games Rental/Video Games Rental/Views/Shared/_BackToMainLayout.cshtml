@@ -67,7 +67,7 @@
                         @*<li class="nav-item logged-in">
                             @Html.ActionLink("Witaj " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { @class = "nav-link js-scroll-trigger", title = "Manage" })
                         </li>*@
-                        <li class="nav-item"><a class="btn btn-primary btn-wyloguj " href="javascript:document.getElementById('logoutForm').submit()">Wyloguj</a></li>
+                        <li class="nav-item"><a class="btn btn-primary btn-wyloguj js-scroll-trigger " href="javascript:document.getElementById('logoutForm').submit()">Wyloguj</a></li>
                     </ul>
                 }
             }

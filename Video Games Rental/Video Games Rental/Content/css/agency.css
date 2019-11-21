@@ -81,10 +81,17 @@ img::-moz-selection {
   font-weight: 700;
 }
 
+@media (min-width: 1200px){
+    .btn-shop {
+        position: relative;
+        width: 300px;
+        left: 40%;
+    }
+}
+
 .btn-shop{
     position: relative;
     width: 300px;
-    left: 40%;
 }
 
 .btn-filtr{
@@ -93,7 +100,7 @@ img::-moz-selection {
     left: 50%;
 }
 
-@media (min-width: 1200px) {
+/*@media (min-width: 1200px) {
     .btn-wyloguj {
         display: block;       
         text-align: center;
@@ -101,10 +108,16 @@ img::-moz-selection {
         padding: 6px 18px 6px 18px !important;
         font-size: 16px !important;
     }
-}
+}*/
 
-btn.wyloguj{
-    width: 200px;
+.btn-wyloguj {
+    position: absolute;
+    left: 0;
+    z-index: 1000;
+    right: 30px;
+    left: auto;
+    top: 30%;
+    min-width: 10rem;
 }
 
 .btn-xl {
@@ -759,4 +772,38 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
 .form-control
 {
     height: 50px;
+}
+
+.slidecontainer {
+    width: 100%;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 10px;
+    border-radius: 5px;
+    background: #ffffff;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 23px;
+    height: 24px;
+    border: 0;
+    cursor: pointer;
+}
+
+.slider-price {
+    color: #fff;
+    text-shadow: 0px 4px 3px rgba(0,0,0,0.4), 0px 8px 13px rgba(0,0,0,0.1), 0px 18px 23px rgba(0,0,0,0.1);
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 }

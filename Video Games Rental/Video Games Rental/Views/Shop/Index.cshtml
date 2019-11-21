@@ -22,23 +22,32 @@
 
     <section class="bg-dark p-3">
         <div class="row p-5">
-            <div class="col-1"></div>
-            <div class="col-4 text-center bg-light shop-filter mr-3 p-2">
+            <div class="col-lg-1"></div>
+            <div class="col-12 col-lg-4  text-center bg-light shop-filter mr-3 p-2">
                 <div class="card">
                     <h3 class="section-heading text-uppercase mb-3 p-3" id="filtr">FILTRUJ WG </h3>
                     <article class="card-group-item">
                         <header class="card-header">
                             <h6 class="title">Cena </h6>
-                        </header>
-                        <div class="filter-content">
-                            <div class="card-body">
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <b>€ 10</b> <input id="ex2" type="text" class="span2" value="" data-slider-min="10" data-slider-max="1000" data-slider-step="5" data-slider-value="[250,450]" /> <b>€ 1000</b>
-                                    </div>
+                        </header>  
+                        <div data-role="main" class="ui-content">
+                            <form method="post" action="/action_page_post.php">
+                                <div class="slidecontainer mt-2">
+                                    <input type="range" min="1" max="300" value="50" class="slider" id="myRange">
+                                    <p class="slider-price">Wartośc: <span id="demo"></span>,00 PLN</p>
                                 </div>
-                            </div> <!-- card-body.// -->
-                        </div>
+
+                                <script>
+                                    var slider = document.getElementById("myRange");
+                                    var output = document.getElementById("demo");
+                                    output.innerHTML = slider.value;
+
+                                    slider.oninput = function () {
+                                        output.innerHTML = this.value;
+                                    }
+                                </script>
+                            </form>
+                        </div>  
                     </article> <!-- card-group-item.// -->
                     <article class="card-group-item">
                         <header class="card-header">
@@ -95,7 +104,7 @@
                 </div> <!-- card.// -->
             </div>
 
-            <div class="col-6 text-center bg-light shop-list">
+            <div class="col-12 col-lg-6 text-center bg-light shop-list">
                 <p>Lista przedmiotow</p>
             </div>
 
