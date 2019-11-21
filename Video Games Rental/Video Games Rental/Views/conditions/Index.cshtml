@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Video_Games_Rental.Models.language>
+﻿@model IEnumerable<Video_Games_Rental.Models.condition>
 
 @{
     ViewBag.Title = "Index";
@@ -13,24 +13,23 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.language1)
+            @Html.DisplayNameFor(model => model.condition1)
         </th>
         <th></th>
     </tr>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.language1)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.language_id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.language_id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.language_id })
-            </td>
-        </tr>
-    }
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.condition1)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.condition_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.condition_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.condition_id })
+        </td>
+    </tr>
+}
 
 </table>
 
@@ -42,10 +41,10 @@
                 @Html.ActionLink("Status", "../status/Index", new { area = "" })
             </li>
             <li class="panel-list-item">
-                @Html.ActionLink("Games", "../games/Index", new { area = "" })
+                @Html.ActionLink("Genres", "../genres/Index", new { area = "" })
             </li>
             <li class="panel-list-item">
-                @Html.ActionLink("Genres", "../genres/Index", new { area = "" })
+                @Html.ActionLink("Games", "../games/Index", new { area = "" })
             </li>
             <li class="panel-list-item">
                 @Html.ActionLink("Platforms", "../platforms/Index", new { area = "" })
@@ -64,9 +63,6 @@
             </li>
             <li class="panel-list-item">
                 @Html.ActionLink("Users", "../AspNetUsers/Index", new { area = "" })
-            </li>
-            <li class="panel-list-item">
-                @Html.ActionLink("Conditions", "../conditions/Index", new { area = "" })
             </li>
         </ul>
 

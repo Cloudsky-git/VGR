@@ -63,11 +63,11 @@
                 {
                     @Html.AntiForgeryToken()
 
-                    <ul class="d-none d-xl-block nav navbar-nav ml-auto">
-                        <li>
-                            @Html.ActionLink("Witaj " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", id = "logged-in" })
-                        </li>
-                        <li><button type="submit" class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold ml-2"><a href="javascript:document.getElementById('logoutForm').submit()">Wyloguj</a></button></li>
+                    <ul class="nav navbar-nav ">
+                        @*<li class="nav-item logged-in">
+                            @Html.ActionLink("Witaj " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { @class = "nav-link js-scroll-trigger", title = "Manage" })
+                        </li>*@
+                        <li class="nav-item"><a class="btn btn-primary btn-wyloguj " href="javascript:document.getElementById('logoutForm').submit()">Wyloguj</a></li>
                     </ul>
                 }
             }

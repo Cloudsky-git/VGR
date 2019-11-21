@@ -24,14 +24,16 @@ namespace Video_Games_Rental.Models
         public int platform_id { get; set; }
         public int language_id { get; set; }
         public int genre_id { get; set; }
+        public int condition_id { get; set; }
         public string title { get; set; }
         public int amount { get; set; }
         public decimal price { get; set; }
     
+        public virtual condition condition { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<order_detail> order_detail { get; set; }
         public virtual genre genre { get; set; }
         public virtual language language { get; set; }
         public virtual platform platform { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<order_detail> order_detail { get; set; }
     }
 }

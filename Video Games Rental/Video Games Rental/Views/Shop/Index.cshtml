@@ -1,0 +1,105 @@
+﻿@{
+    ViewBag.Title = "Shop";
+    Layout = "~/Views/Shared/_SearchLayout.cshtml";
+}
+
+<!-- Header -->
+<header class="masthead">
+    <div class="container">
+        <div class="intro-text">
+            <div class="intro-lead-in">Witamy w świecie gier!</div>
+            <div class="intro-heading text-uppercase">Wymieniaj • Kupuj • Rezerwuj</div>            
+        </div>
+    </div>
+</header>
+
+<!-- Preloader Start -->
+<div id="preloader">
+    <div class="news-load"></div>
+</div>
+
+<main>
+
+    <section class="bg-dark p-3">
+        <div class="row p-5">
+            <div class="col-1"></div>
+            <div class="col-4 text-center bg-light shop-filter mr-3 p-2">
+                <div class="card">
+                    <h3 class="section-heading text-uppercase mb-3 p-3" id="filtr">FILTRUJ WG </h3>
+                    <article class="card-group-item">
+                        <header class="card-header">
+                            <h6 class="title">Cena </h6>
+                        </header>
+                        <div class="filter-content">
+                            <div class="card-body">
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <b>€ 10</b> <input id="ex2" type="text" class="span2" value="" data-slider-min="10" data-slider-max="1000" data-slider-step="5" data-slider-value="[250,450]" /> <b>€ 1000</b>
+                                    </div>
+                                </div>
+                            </div> <!-- card-body.// -->
+                        </div>
+                    </article> <!-- card-group-item.// -->
+                    <article class="card-group-item">
+                        <header class="card-header">
+                            <h6 class="title">Wersja językowa </h6>
+                        </header>
+                        <div class="filter-content">
+                            <div class="card-body">
+                                <div class="custom-control custom-checkbox">
+                                    <span class="float-right badge badge-light round">52</span>
+                                    <input type="checkbox" class="custom-control-input" id="English">
+                                    <label class="custom-control-label" for="English">Angielska</label>
+                                </div> <!-- form-check.// -->
+
+                                <div class="custom-control custom-checkbox">
+                                    <span class="float-right badge badge-light round">132</span>
+                                    <input type="checkbox" class="custom-control-input" id="PolishD">
+                                    <label class="custom-control-label" for="PolishD">Polska (dubbing)</label>
+                                </div> <!-- form-check.// -->
+
+                                <div class="custom-control custom-checkbox">
+                                    <span class="float-right badge badge-light round">17</span>
+                                    <input type="checkbox" class="custom-control-input" id="PolishS">
+                                    <label class="custom-control-label" for="PolishS">Polska (napisy)</label>
+                                </div> <!-- form-check.// -->
+                                
+                            </div>
+                        </div>
+                    </article> <!-- card-group-item.// -->
+
+                    <article class="card-group-item">
+                        <header class="card-header">
+                            <h6 class="title">Stan </h6>
+                        </header>
+                        <div class="filter-content">
+                            <div class="card-body">
+                                <div class="custom-control custom-checkbox">
+                                    <span class="float-right badge badge-light round">52</span>
+                                    <input type="checkbox" class="custom-control-input" id="new">
+                                    <label class="custom-control-label" for="new">Nowa</label>
+                                </div> <!-- form-check.// -->
+
+                                <div class="custom-control custom-checkbox">
+                                    <span class="float-right badge badge-light round">132</span>
+                                    <input type="checkbox" class="custom-control-input" id="used">
+                                    <label class="custom-control-label" for="used">Używana</label>
+                                </div> <!-- form-check.// -->
+                            </div>
+                        </div>
+                    </article> <!-- card-group-item.// -->
+                 
+                    <div class="col-md-offset-2 col-md-10">
+                       <button class="btn btn-lg btn-primary btn-block btn-filtr text-uppercase font-weight-bold" type="submit">Filtruj</button>
+                    </div>                
+                </div> <!-- card.// -->
+            </div>
+
+            <div class="col-6 text-center bg-light shop-list">
+                <p>Lista przedmiotow</p>
+            </div>
+
+        </div>
+    </section>
+
+</main>

@@ -160,6 +160,7 @@
     <Compile Include="App_Start\Startup_Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AspNetUsersController.cs" />
+    <Compile Include="Controllers\conditionsController.cs" />
     <Compile Include="Controllers\gamesController.cs" />
     <Compile Include="Controllers\genresController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -168,6 +169,7 @@
     <Compile Include="Controllers\order_detailController.cs" />
     <Compile Include="Controllers\order_typeController.cs" />
     <Compile Include="Controllers\platformsController.cs" />
+    <Compile Include="Controllers\ShopController.cs" />
     <Compile Include="Controllers\statusController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -186,6 +188,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AspNetUserRole.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\condition.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\C__MigrationHistory.cs">
@@ -469,11 +474,6 @@
     <Content Include="Views\status\Details.cshtml" />
     <Content Include="Views\status\Edit.cshtml" />
     <Content Include="Views\status\Index.cshtml" />
-    <Content Include="Views\games\Create.cshtml" />
-    <Content Include="Views\games\Delete.cshtml" />
-    <Content Include="Views\games\Details.cshtml" />
-    <Content Include="Views\games\Edit.cshtml" />
-    <Content Include="Views\games\Index.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
     <Content Include="Scripts\umd\popper-utils.min.js.map" />
@@ -496,6 +496,17 @@
     <Content Include="Views\AspNetUsers\Details.cshtml" />
     <Content Include="Views\AspNetUsers\Edit.cshtml" />
     <Content Include="Views\AspNetUsers\Index.cshtml" />
+    <Content Include="Views\Shop\Index.cshtml" />
+    <Content Include="Views\games\Create.cshtml" />
+    <Content Include="Views\games\Delete.cshtml" />
+    <Content Include="Views\games\Details.cshtml" />
+    <Content Include="Views\games\Edit.cshtml" />
+    <Content Include="Views\games\Index.cshtml" />
+    <Content Include="Views\conditions\Create.cshtml" />
+    <Content Include="Views\conditions\Delete.cshtml" />
+    <Content Include="Views\conditions\Details.cshtml" />
+    <Content Include="Views\conditions\Edit.cshtml" />
+    <Content Include="Views\conditions\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -7,6 +7,11 @@ p {
   line-height: 1.75;
 }
 
+@media (min-width: 1200px) {
+    .logged-in {
+        margin-left: 75px;
+    }
+}
 a {
   color: #368dfe;
 }
@@ -76,13 +81,30 @@ img::-moz-selection {
   font-weight: 700;
 }
 
-.btn-wyloguj {
-    position: absolute;
-    text-align: center;
+.btn-shop{
+    position: relative;
+    width: 300px;
+    left: 40%;
+}
+
+.btn-filtr{
+    position: relative;
     width: auto;
-    right: 30px;
-    padding: 6px 18px 6px 18px !important;
-    font-size: 16px !important;
+    left: 50%;
+}
+
+@media (min-width: 1200px) {
+    .btn-wyloguj {
+        display: block;       
+        text-align: center;
+        width: auto;
+        padding: 6px 18px 6px 18px !important;
+        font-size: 16px !important;
+    }
+}
+
+btn.wyloguj{
+    width: 200px;
 }
 
 .btn-xl {

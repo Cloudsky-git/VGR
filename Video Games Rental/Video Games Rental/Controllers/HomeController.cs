@@ -24,7 +24,7 @@ namespace video_games_rental.Controllers
         {
 
             return View();
-        }
+        }      
 
         public ActionResult About()
         {

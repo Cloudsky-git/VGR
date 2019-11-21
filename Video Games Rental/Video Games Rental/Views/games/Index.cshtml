@@ -22,6 +22,9 @@
             @Html.DisplayNameFor(model => model.price)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.condition.condition1)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.genre.genre1)
         </th>
         <th>
@@ -43,6 +46,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.condition.condition1)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.genre.genre1)

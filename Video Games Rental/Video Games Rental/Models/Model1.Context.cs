@@ -32,7 +32,6 @@ namespace Video_Games_Rental.Models
         public virtual DbSet<status> status { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<order_detail> order_detail { get; set; }
-        public virtual DbSet<game> games { get; set; }
         public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
         public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
         public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
@@ -41,5 +40,7 @@ namespace Video_Games_Rental.Models
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<user_details> user_details { get; set; }
         public virtual DbSet<order> orders { get; set; }
+        public virtual DbSet<condition> conditions { get; set; }
+        public virtual DbSet<game> games { get; set; }
     }
 }

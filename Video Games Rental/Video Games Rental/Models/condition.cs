@@ -12,14 +12,18 @@ namespace Video_Games_Rental.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class order_detail
+    public partial class condition
     {
-        public int order_detail_id { get; set; }
-        public int order_id { get; set; }
-        public int game_id { get; set; }
-        public int amount { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public condition()
+        {
+            this.games = new HashSet<game>();
+        }
     
-        public virtual order order { get; set; }
-        public virtual game game { get; set; }
+        public int condition_id { get; set; }
+        public string condition1 { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<game> games { get; set; }
     }
 }

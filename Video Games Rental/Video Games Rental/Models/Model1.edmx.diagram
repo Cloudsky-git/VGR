@@ -12,11 +12,6 @@
         <EntityTypeShape EntityType="Model.status" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.sysdiagram" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.order_detail" Width="1.5" PointX="5.5" PointY="2" />
-        <EntityTypeShape EntityType="Model.game" Width="1.5" PointX="5.625" PointY="5.125" />
-        <AssociationConnector Association="Model.game_genre" />
-        <AssociationConnector Association="Model.game_language" />
-        <AssociationConnector Association="Model.game_platform" />
-        <AssociationConnector Association="Model.reservation_detail_game" />
         <EntityTypeShape EntityType="Model.C__MigrationHistory" Width="1.5" PointX="18.375" PointY="1.25" />
         <EntityTypeShape EntityType="Model.AspNetRole" Width="1.5" PointX="18.375" PointY="4.25" />
         <EntityTypeShape EntityType="Model.AspNetUserClaim" Width="1.5" PointX="5" PointY="10.75" />
@@ -34,6 +29,13 @@
         <AssociationConnector Association="Model.FK_order_detail_order" />
         <AssociationConnector Association="Model.FK_order_order_type" />
         <AssociationConnector Association="Model.FK_order_status" />
+        <EntityTypeShape EntityType="Model.condition" Width="1.5" PointX="9.875" PointY="1" />
+        <EntityTypeShape EntityType="Model.game" Width="1.5" PointX="12.125" PointY="4.375" />
+        <AssociationConnector Association="Model.FK_game_condition" />
+        <AssociationConnector Association="Model.FK_order_detail_game1" />
+        <AssociationConnector Association="Model.game_genre" />
+        <AssociationConnector Association="Model.game_language" />
+        <AssociationConnector Association="Model.game_platform" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

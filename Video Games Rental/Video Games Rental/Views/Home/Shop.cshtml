@@ -8,8 +8,8 @@
     <div class="container">
         <div class="intro-text">
             <div class="intro-lead-in">Witamy w świecie gier!</div>
-            <div class="intro-heading text-uppercase">Wymieniaj • Kupuj • Rezerwuj</div>
-            <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#popular">Sprawdź popularne</a>
+            <div class="intro-heading text-uppercase">Wymieniaj • Kupuj • Rezerwuj</div>           
+            @Html.ActionLink("Przejdź do sklepu", "../Shop", "Shop", new { area = "" }, new { @class = "nav-link btn btn-shop btn-primary btn-xl text-uppercase js-scroll-trigger" })
         </div>
     </div>
 </header>

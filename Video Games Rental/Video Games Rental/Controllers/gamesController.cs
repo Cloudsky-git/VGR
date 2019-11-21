@@ -17,7 +17,7 @@ namespace Video_Games_Rental.Controllers
         // GET: games
         public ActionResult Index()
         {
-            var games = db.games.Include(g => g.genre).Include(g => g.language).Include(g => g.platform);
+            var games = db.games.Include(g => g.condition).Include(g => g.genre).Include(g => g.language).Include(g => g.platform);
             return View(games.ToList());
         }
 
@@ -39,6 +39,7 @@ namespace Video_Games_Rental.Controllers
         // GET: games/Create
         public ActionResult Create()
         {
+            ViewBag.condition_id = new SelectList(db.conditions, "condition_id", "condition1");
             ViewBag.genre_id = new SelectList(db.genres, "genre_id", "genre1");
             ViewBag.language_id = new SelectList(db.languages, "language_id", "language1");
             ViewBag.platform_id = new SelectList(db.platforms, "platform_id", "platform1");
@@ -50,7 +51,7 @@ namespace Video_Games_Rental.Controllers
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "game_id,platform_id,language_id,genre_id,title,amount,price")] game game)
+        public ActionResult Create([Bind(Include = "game_id,platform_id,language_id,genre_id,condition_id,title,amount,price")] game game)
         {
             if (ModelState.IsValid)
             {
@@ -59,6 +60,7 @@ namespace Video_Games_Rental.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.condition_id = new SelectList(db.conditions, "condition_id", "condition1", game.condition_id);
             ViewBag.genre_id = new SelectList(db.genres, "genre_id", "genre1", game.genre_id);
             ViewBag.language_id = new SelectList(db.languages, "language_id", "language1", game.language_id);
             ViewBag.platform_id = new SelectList(db.platforms, "platform_id", "platform1", game.platform_id);
@@ -77,6 +79,7 @@ namespace Video_Games_Rental.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.condition_id = new SelectList(db.conditions, "condition_id", "condition1", game.condition_id);
             ViewBag.genre_id = new SelectList(db.genres, "genre_id", "genre1", game.genre_id);
             ViewBag.language_id = new SelectList(db.languages, "language_id", "language1", game.language_id);
             ViewBag.platform_id = new SelectList(db.platforms, "platform_id", "platform1", game.platform_id);
@@ -88,7 +91,7 @@ namespace Video_Games_Rental.Controllers
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "game_id,platform_id,language_id,genre_id,title,amount,price")] game game)
+        public ActionResult Edit([Bind(Include = "game_id,platform_id,language_id,genre_id,condition_id,title,amount,price")] game game)
         {
             if (ModelState.IsValid)
             {
@@ -96,6 +99,7 @@ namespace Video_Games_Rental.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.condition_id = new SelectList(db.conditions, "condition_id", "condition1", game.condition_id);
             ViewBag.genre_id = new SelectList(db.genres, "genre_id", "genre1", game.genre_id);
             ViewBag.language_id = new SelectList(db.languages, "language_id", "language1", game.language_id);
             ViewBag.platform_id = new SelectList(db.platforms, "platform_id", "platform1", game.platform_id);

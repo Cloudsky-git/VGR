@@ -1,0 +1,27 @@
+﻿@model Video_Games_Rental.Models.condition
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_EntryLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>condition</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.condition1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.condition1)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.condition_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

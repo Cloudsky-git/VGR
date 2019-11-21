@@ -1,4 +1,6 @@
-﻿@{
+﻿@using Microsoft.AspNet.Identity;
+
+@{
     Layout = "~/Views/Shared/_EntryLayout.cshtml";
 }
 
@@ -16,7 +18,7 @@
             <i class="fas fa-bars"></i>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav text-uppercase ml-5">               
+            <ul class="navbar-nav text-uppercase ml-5">
                 <li class="nav-item">
                     @Html.ActionLink("Sklep", "Shop", "Home", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
                 </li>
@@ -34,7 +36,7 @@
                 <li class="nav-item dropdown" id="menu-item-platform">
                     <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button">XBOX</a>
                     <div class="dropdown-menu">
-                        @Html.ActionLink("Xbox 360", "X360", "Home", new { area = "" }, new { @class = "dropdown-item small disabled", style = "color: #212529"})
+                        @Html.ActionLink("Xbox 360", "X360", "Home", new { area = "" }, new { @class = "dropdown-item small disabled", style = "color: #212529" })
                         <div class="dropdown-divider"></div>
                         @Html.ActionLink("Xbox One", "X0", "Home", new { area = "" }, new { @class = "dropdown-item small disabled", style = "color: #212529" })
                     </div>
@@ -45,31 +47,66 @@
                 <li class="nav-item">
                     @Html.ActionLink("Kontakt", "Contact", "Home", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
                 </li>
-            </ul>
-            <form class="form-inline ml-xl-auto">
-                <input class="form-control ml-5 ml-xl-auto" style="width:130px" type="search" placeholder="Wyszukaj">
-                <button class="btn btn-primary ml-1 ml-xl-1 mr-3" type="submit">Znajdź</button>
-            </form>
-            <ul class="d-none d-xl-block nav navbar-nav ml-0">
-                <li class="dropdown order-1">
-                    <button type="button" id="dropdownMenu1" data-toggle="dropdown" class="btn btn-primary dropdown-toggle mr-auto"> Zaloguj się </button>
-                    <ul class="dropdown-menu dropdown-menu-right bg-secondary mb-0">
-                        <li class="nav-item">
-                            @Html.ActionLink("Zaloguj", "../Account/Login", "Account", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
-                        </li>
-                        <li class="nav-item">
-                            @Html.ActionLink("Zarejestruj", "../Account/Register", "Account", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
-                        </li>
-                    </ul>
+                <li class="nav-item" id="login-menu">
+                    @Html.ActionLink("Zaloguj", "../Account/Login", "Account", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
+                </li>
+                <li class="nav-item" id="login-menu">
+                    @Html.ActionLink("Zarejestruj", "../Account/Register", "Account", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
                 </li>
             </ul>
+
+            @if (Request.IsAuthenticated)
+            {
+
+                using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <ul class="nav navbar-nav ml-5">
+                        @*<li class="nav-item logged-in">
+                            @Html.ActionLink("Witaj " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { @class = "nav-link js-scroll-trigger", title = "Manage" })
+                        </li>*@
+                        <li class="nav-item">
+                            <input class="form-control search" type="search" placeholder="Wyszukaj">
+                        </li>
+                        <li>
+                            <button class="btn btn-primary mt-1 mt-xl-auto ml-xl-1" type="submit">Znajdź</button>
+                        </li>                                             
+                        <li class="nav-item"><a class="btn btn-primary btn-wyloguj ml-xl-5" href="javascript:document.getElementById('logoutForm').submit()">Wyloguj</a></li>
+                    </ul>                  
+                }
+            }
+            else
+            {
+                 <ul class="nav navbar-nav ml-5">
+                     <li class="nav-item">
+                         <input class="form-control search" type="search" placeholder="Wyszukaj">
+                     </li>
+                     <li>
+                         <button class="btn btn-primary mt-1 mt-xl-auto ml-xl-1" type="submit">Znajdź</button>
+                     </li>
+                 </ul>
+
+
+                <ul class="d-none d-xl-block nav navbar-nav ml-auto">
+                    <li class="dropdown order-1">
+                        <button type="button" id="dropdownMenu1" data-toggle="dropdown" class="btn btn-primary dropdown-toggle mr-auto"> Zaloguj się </button>
+                        <ul class="dropdown-menu dropdown-menu-right bg-secondary mb-0">                        
+                            <li class="nav-item">
+                                @Html.ActionLink("Zaloguj", "../Account/Login", "Account", new { area = "" }, new { @class = "nav-link js-scroll-trigger after-login" })
+                            </li>
+                            <li class="nav-item">
+                                @Html.ActionLink("Zarejestruj", "../Account/Register", "Account", new { area = "" }, new { @class = "nav-link js-scroll-trigger after-login" })
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            }
         </div>
     </div>
 </nav>
 
-
 @RenderBody()
-
 
 <!-- Footer -->
 <footer class="footer">
