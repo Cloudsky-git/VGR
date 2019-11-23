@@ -188,8 +188,10 @@ ol {
     width: 100%;
 }
 
-.shop-filter{
-    max-height: 670px;
+@media(min-width: 1200px) {
+    .shop-filter {
+        max-height: 670px;
+    }
 }
 
 .slider {
@@ -280,7 +282,7 @@ ol {
 .game-image img {
     width: 250px;
     height: 375px;
-    opacity: 0.7;
+    opacity: 0.8;
 }
 
 .game-image img:hover{

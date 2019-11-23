@@ -22,8 +22,8 @@
 
     <section class="bg-dark p-3">
         <div class="row p-5">
-            <div class="col-lg-1"></div>
-            <div class="col-12 col-lg-4  text-center bg-light shop-filter mr-3 p-2">
+            <div class=""></div>
+            <div class="col-lg-3 col-xl-3 col-12 text-center bg-light shop-filter mr-3 p-2">
                 <div class="card bg-light">
                     <h3 class="section-heading text-uppercase mb-3 p-3" id="filtr">FILTRUJ WG </h3>
                     <article class="card-group-item">
@@ -64,13 +64,13 @@
                                 <div class="custom-control custom-checkbox">
                                     <span class="float-right badge badge-light round">132</span>
                                     <input type="checkbox" class="custom-control-input" id="PolishD">
-                                    <label class="custom-control-label" for="PolishD">Polska (dubbing)</label>
+                                    <label class="custom-control-label" for="PolishD">Polska(dub)</label>
                                 </div> <!-- form-check.// -->
 
                                 <div class="custom-control custom-checkbox">
                                     <span class="float-right badge badge-light round">17</span>
                                     <input type="checkbox" class="custom-control-input" id="PolishS">
-                                    <label class="custom-control-label" for="PolishS">Polska (napisy)</label>
+                                    <label class="custom-control-label" for="PolishS">Polska(N)</label>
                                 </div> <!-- form-check.// -->
                                 
                             </div>
@@ -98,14 +98,14 @@
                         </div>
                     </article> <!-- card-group-item.// -->
                  
-                    <div class="col-md-offset-2 col-md-10">
+                    <div class="">
                        <button class="btn btn-lg btn-primary btn-block btn-filtr text-uppercase font-weight-bold" type="submit">Filtruj</button>
                     </div>                
                 </div> <!-- card.// -->
             </div>
 
-            <div class="col-12 col-lg-6 text-center bg-light">
-                @Html.Action("GameListPartial", "Shop")               
+            <div class=" col-lg-8 col-xl-8 col-12 text-center bg-light">
+                    @Html.Action("GameListPartial", "Shop")
             </div>
 
         </div>
