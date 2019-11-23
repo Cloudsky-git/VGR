@@ -152,7 +152,7 @@ ol {
 }
 
 .card-group-item{
-    color: #fff;
+    color: #ccc;
     padding: 10px 0 10px 0px;
 }
 
@@ -166,7 +166,7 @@ ol {
 
 .card-header {
     background-color: #0079f2;
-    color: #d1dae3;
+    color: #fff;
     text-shadow: 0px 4px 3px rgba(0,0,0,0.4), 0px 8px 13px rgba(0,0,0,0.1), 0px 18px 23px rgba(0,0,0,0.1);
     font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 }
@@ -181,7 +181,6 @@ ol {
 }
 
 .card {
-    background-color: #81868a;
     padding: 10px;
 }
 
@@ -189,12 +188,16 @@ ol {
     width: 100%;
 }
 
+.shop-filter{
+    max-height: 670px;
+}
+
 .slider {
     -webkit-appearance: none;
     width: 100%;
     height: 10px;
     border-radius: 5px;
-    background: #ffffff;
+    background: #bbb;
     outline: none;
     opacity: 0.7;
     -webkit-transition: .2s;
@@ -214,7 +217,7 @@ ol {
     }
 
 .slider-price {
-    color: #fff;
+    color: #111;
     text-shadow: 0px 4px 3px rgba(0,0,0,0.4), 0px 8px 13px rgba(0,0,0,0.1), 0px 18px 23px rgba(0,0,0,0.1);
     font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 }
@@ -224,3 +227,67 @@ ol {
    width: 150px;
 }
 
+.game-details {   
+    text-align: left;
+    padding: 3px;
+    font-size: 14px;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+.game-details .game-title a {
+    color: #333!important;
+}
+
+.game-title {
+    width: auto;
+}
+
+.game-title:hover {
+     color: #333;
+     text-shadow: 0px 5px 4px rgba(0,0,0,0.4), 0px 6px 10px rgba(0,0,0,0.1), 0px 18px 23px rgba(0,0,0,0.1);
+}
+
+.game-genre {
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #222;
+    font-size: 11px;
+    color: #2582fa;
+    text-shadow: 0px 5px 4px rgba(0,0,0,0.4), 0px 6px 10px rgba(0,0,0,0.1), 0px 18px 23px rgba(0,0,0,0.1);
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+.game-condition {
+    text-align: center;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #333;
+    font-size: 16px;
+    text-shadow: 0px 5px 4px rgba(0,0,0,0.4), 0px 6px 10px rgba(0,0,0,0.1), 0px 18px 23px rgba(0,0,0,0.1);
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+.game-price {
+    font-weight: 700;
+    color: #333;
+}
+
+.game-list ul li a{
+    text-decoration: none;
+    line-height: 25px;
+}
+
+.game-image img {
+    width: 250px;
+    height: 375px;
+    opacity: 0.7;
+}
+
+.game-image img:hover{
+    opacity: 1;
+}
+
+.game-list {
+    float: left;
+    width: auto;   
+}

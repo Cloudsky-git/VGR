@@ -51,7 +51,7 @@ namespace Video_Games_Rental.Controllers
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "game_id,platform_id,language_id,genre_id,condition_id,title,amount,price")] game game)
+        public ActionResult Create([Bind(Include = "game_id,platform_id,language_id,genre_id,condition_id,title,amount,price,image")] game game)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +91,7 @@ namespace Video_Games_Rental.Controllers
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "game_id,platform_id,language_id,genre_id,condition_id,title,amount,price")] game game)
+        public ActionResult Edit([Bind(Include = "game_id,platform_id,language_id,genre_id,condition_id,title,amount,price,image")] game game)
         {
             if (ModelState.IsValid)
             {
@@ -140,5 +140,6 @@ namespace Video_Games_Rental.Controllers
             }
             base.Dispose(disposing);
         }
+      
     }
 }

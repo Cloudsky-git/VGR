@@ -30,7 +30,7 @@
         <AssociationConnector Association="Model.FK_order_order_type" />
         <AssociationConnector Association="Model.FK_order_status" />
         <EntityTypeShape EntityType="Model.condition" Width="1.5" PointX="9.875" PointY="1" />
-        <EntityTypeShape EntityType="Model.game" Width="1.5" PointX="12.125" PointY="4.375" />
+        <EntityTypeShape EntityType="Model.game" Width="1.5" PointX="13.125" PointY="4.75" />
         <AssociationConnector Association="Model.FK_game_condition" />
         <AssociationConnector Association="Model.FK_order_detail_game1" />
         <AssociationConnector Association="Model.game_genre" />

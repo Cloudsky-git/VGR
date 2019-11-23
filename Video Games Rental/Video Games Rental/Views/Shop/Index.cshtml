@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Shop";
+    ViewBag.Title = "Lista Produktów";
     Layout = "~/Views/Shared/_SearchLayout.cshtml";
 }
 
@@ -24,7 +24,7 @@
         <div class="row p-5">
             <div class="col-lg-1"></div>
             <div class="col-12 col-lg-4  text-center bg-light shop-filter mr-3 p-2">
-                <div class="card">
+                <div class="card bg-light">
                     <h3 class="section-heading text-uppercase mb-3 p-3" id="filtr">FILTRUJ WG </h3>
                     <article class="card-group-item">
                         <header class="card-header">
@@ -34,7 +34,7 @@
                             <form method="post" action="/action_page_post.php">
                                 <div class="slidecontainer mt-2">
                                     <input type="range" min="1" max="300" value="50" class="slider" id="myRange">
-                                    <p class="slider-price">Wartośc: <span id="demo"></span>,00 PLN</p>
+                                    <p class="slider-price">Wartość max <span id="demo"></span>,00 zł</p>
                                 </div>
 
                                 <script>
@@ -104,8 +104,8 @@
                 </div> <!-- card.// -->
             </div>
 
-            <div class="col-12 col-lg-6 text-center bg-light shop-list">
-                <p>Lista przedmiotow</p>
+            <div class="col-12 col-lg-6 text-center bg-light">
+                @Html.Action("GameListPartial", "Shop")               
             </div>
 
         </div>
