@@ -89,7 +89,13 @@ img::-moz-selection {
     }
 }
 
-.btn-shop{
+.btn-pages{
+    text-align:center;
+
+}
+    
+
+.btn-shop {
     position: relative;
     width: 300px;
 }

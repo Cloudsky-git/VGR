@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Video_Games_Rental.Models;
+using PagedList;
 
 namespace Video_Games_Rental.Controllers
 {
@@ -16,9 +17,11 @@ namespace Video_Games_Rental.Controllers
             return View();
         }
 
-        public PartialViewResult GameListPartial()
-        {
-            var gameList = db.games.OrderByDescending(x => x.game_id).ToList();           
+        public PartialViewResult GameListPartial(int? page)
+        {           
+            var pageNumber = page ?? 1;
+            var pageSize = 9;
+            var gameList = db.games.OrderByDescending(x => x.game_id).ToPagedList(pageNumber, pageSize);
             return PartialView(gameList);                    
         }
     }
