@@ -24,5 +24,21 @@ namespace Video_Games_Rental.Controllers
             var gameList = db.games.OrderByDescending(x => x.game_id).ToPagedList(pageNumber, pageSize);
             return PartialView(gameList);                    
         }
+
+        public ActionResult Details(int? id)
+        {
+            if(id == null)
+            {
+                return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
+            }
+
+            game product = db.games.Find(id);
+            if(product == null)
+            {
+                return HttpNotFound();
+            }
+            return View(product);
+        }
+
     }
 }
