@@ -11,7 +11,7 @@
         <div class="intro-text">
             <div class="intro-lead-in">Witamy w świecie gier!</div>
             <div class="intro-heading text-uppercase">Wymieniaj • Kupuj • Rezerwuj</div>
-            @Html.ActionLink("Przejdź do sklepu", "../Shop", "Shop", new { area = "" }, new { @class = "btn btn-primary btn-xl text-uppercase js-scroll-trigger" })
+            @Html.ActionLink("Wróć do sklepu", "../Shop", "Shop", new { area = "" }, new { @class = "btn btn-primary btn-xl text-uppercase js-scroll-trigger" })
         </div>
     </div>
 </header>
@@ -50,7 +50,8 @@
                     <p class="product-description">Mortal Kombat 11 is a fighting game developed by NetherRealm Studios and published by Warner Bros. Interactive Entertainment. Running on a heavily modified version of Unreal Engine 3, it is the eleventh main installment in the Mortal Kombat series and a sequel to 2015's Mortal Kombat X.</p>
                     <h4 class="price">aktualna cena: <span>@(String.Format("{0:N0}", @Model.price))</span><span class="zl">zł</span></h4>                    
                     <div class="action mt-3">
-                        <button class="add-to-cart btn btn-default" type="button">Dodaj do koszyka</button>
+                        @Html.ActionLink("Dodaj do koszyka", "OrderNow", "ShoppingCart", new { id = Model.game_id  }, new { @class = "btn add-to-cart btn-default" })
+                        @*<button class="add-to-cart btn btn-default" type="button">Dodaj do koszyka</button>*@
                         <button class="rental btn btn-default" type="button">Rezerwuj</button>
                         <button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
                     </div>

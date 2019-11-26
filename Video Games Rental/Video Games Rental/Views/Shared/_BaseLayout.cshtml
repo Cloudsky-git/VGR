@@ -49,9 +49,33 @@
                     </li>
                     <li class="nav-item">
                         @Html.ActionLink("Kontakt", "Contact", "Home", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
+                    </li>                   
+                    <li class="nav-item" id="login-menu">
+                        @Html.ActionLink("Koszyk", "../ShoppingCart/Index", "ShoppingCart", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
+                    </li>
+                    <li class="nav-item" id="login-menu">
+                        @Html.ActionLink("Ulubione", "../ShoppingCart/Index", "ShoppingCart", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
+                    </li>
+                    <li class="nav-item" id="login-menu">
+                        @Html.ActionLink("Konto", "../ShoppingCart/Index", "ShoppingCart", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
                     </li>
                     <li class="nav-item" id="login-menu">
                         @Html.ActionLink("Wyloguj", "Index", "Home", new { @class = "nav-link js-scroll-trigger", href = "javascript:document.getElementById('logoutForm').submit()" })
+                    </li>
+                    <li class="nav-item">
+                        <a href="@Url.Action("../ShoppingCart/Index", "ShoppingCart")">
+                            <i class="fa fa-shopping-cart navbar-icon mr-1"></i>
+                        </a>
+                    </li> 
+                    <li class="nav-item">
+                        <a href="@Url.Action("../ShoppingCart/Index", "ShoppingCart")">
+                            <i class="fa fa-heart navbar-icon-heart"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="@Url.Action("../ShoppingCart/Index", "ShoppingCart")">
+                           <i class="fa fa-user navbar-icon-user"></i>
+                        </a>
                     </li>
                 </ul>
 
@@ -97,12 +121,33 @@
                     </li>
                     <li class="nav-item">
                         @Html.ActionLink("Kontakt", "Contact", "Home", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
-                    </li>
+                    </li>                    
                     <li class="nav-item" id="login-menu">
                         @Html.ActionLink("Zaloguj", "../Account/Login", "Account", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
                     </li>
                     <li class="nav-item" id="login-menu">
                         @Html.ActionLink("Zarejestruj", "../Account/Register", "Account", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
+                    </li>
+                    <li class="nav-item" id="login-menu">
+                        @Html.ActionLink("Koszyk", "../ShoppingCart/Index", "ShoppingCart", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
+                    </li>
+                    <li class="nav-item">
+                        <a href="@Url.Action("../ShoppingCart/Index", "ShoppingCart", null)">
+                            <span title="Koszyk">
+                                <i class="fa fa-shopping-cart navbar-icon"></i>                              
+                            </span>                    
+                        </a>
+                        
+                    </li>
+                    <li class="nav-item">
+                        <a href="@Url.Action("../ShoppingCart/Index", "ShoppingCart", null)">
+                            <span title="Ulubione"><i class="fa fa-heart navbar-icon-heart"></i></span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="@Url.Action("../ShoppingCart/Index", "ShoppingCart", null)">
+                           <span title="Twoje konto"><i class="fa fa-user navbar-icon-user"></i></span>
+                        </a>
                     </li>
                 </ul>
 

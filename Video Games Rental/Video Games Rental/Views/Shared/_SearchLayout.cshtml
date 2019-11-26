@@ -52,8 +52,32 @@
                         @Html.ActionLink("Kontakt", "Contact", "Home", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
                     </li>
                     <li class="nav-item" id="login-menu">
-                        @Html.ActionLink("Wyloguj", "Shop", "Home", new { @class = "nav-link js-scroll-trigger", href="javascript:document.getElementById('logoutForm').submit()" })
-                    </li>  
+                        @Html.ActionLink("Koszyk", "../ShoppingCart/Index", "ShoppingCart", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
+                    </li>
+                    <li class="nav-item" id="login-menu">
+                        @Html.ActionLink("Ulubione", "../ShoppingCart/Index", "ShoppingCart", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
+                    </li>
+                    <li class="nav-item" id="login-menu">
+                        @Html.ActionLink("Konto", "../ShoppingCart/Index", "ShoppingCart", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
+                    </li>
+                    <li class="nav-item" id="login-menu">
+                        @Html.ActionLink("Wyloguj", "Index", "Home", new { @class = "nav-link js-scroll-trigger", href = "javascript:document.getElementById('logoutForm').submit()" })
+                    </li>
+                    <li class="nav-item">
+                        <a href="@Url.Action("../ShoppingCart/Index", "ShoppingCart")">
+                           <i class="fa fa-shopping-cart navbar-icon"></i>
+                        </a>
+                    </li> 
+                    <li class="nav-item">
+                        <a href="@Url.Action("../ShoppingCart/Index", "ShoppingCart")">
+                            <i class="fa fa-heart navbar-icon-heart"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="@Url.Action("../ShoppingCart/Index", "ShoppingCart")">
+                           <i class="fa fa-user navbar-icon-user"></i>
+                        </a>
+                    </li> 
                 </ul>
 
                 using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
@@ -111,6 +135,24 @@
                     <li class="nav-item" id="login-menu">
                         @Html.ActionLink("Zarejestruj", "../Account/Register", "Account", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
                     </li>
+                    <li class="nav-item" id="login-menu">
+                        @Html.ActionLink("Koszyk", "../ShoppingCart/Index", "ShoppingCart", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
+                    </li>
+                    <li class="nav-item">
+                        <a href="@Url.Action("../ShoppingCart/Index", "ShoppingCart",new { area = "" }, null)">
+                            <span title="Koszyk"><i class="fa fa-shopping-cart navbar-icon"></i></span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="@Url.Action("../ShoppingCart/Index", "ShoppingCart",new { area = "" }, null)">
+                            <span title="Ulubione"><i class="fa fa-heart navbar-icon-heart"></i></span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="@Url.Action("../ShoppingCart/Index", "ShoppingCart",new { area = "" }, null)">
+                           <span title="Twoje konto"><i class="fa fa-user navbar-icon-user"></i></span>
+                        </a>
+                    </li>
                 </ul>
 
                 <ul class="nav navbar-nav ml-5">
@@ -118,7 +160,7 @@
                         <input class="form-control search" type="search" placeholder="Wyszukaj">
                     </li>
                     <li>
-                        <button class="btn btn-primary mt-1 mt-xl-auto ml-xl-1" type="submit">Znajdź</button>
+                        <button class="btn btn-search btn-primary mt-1 mt-xl-auto ml-xl-1" type="submit">Znajdź</button>
                     </li>
                 </ul>
 

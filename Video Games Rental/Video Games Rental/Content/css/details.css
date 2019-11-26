@@ -64,12 +64,34 @@
         animation-duration: .3s;
     }
 
-.details-card {
+.details-card, .cart-card {
     margin-top: 30px;
     background: #eee;
     padding: 3em;
     line-height: 1.5em;
 }
+
+.cart-card {
+    color: #333;
+    background-color: #eee;
+}
+
+.shoppingcart-list-item{
+    width: 100px;
+}
+.shoppingcart-list-item:first-child {
+    width: 330px;
+}
+
+.cart-card ul{
+    display: inline-flex;
+    list-style: none;
+}
+
+.cart-card ul li{
+    margin-left: 15px;
+}
+
 
 @media screen and (min-width: 997px) {
     .wrapper {
@@ -102,15 +124,20 @@
     font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 }
 
-.product-title, .price {
-
+.product-title {
     color: #666;
     text-transform: uppercase;
     font-weight: 700;
     text-shadow: 0px 5px 4px rgba(0,0,0,0.4), 0px 6px 10px rgba(0,0,0,0.1), 0px 18px 23px rgba(0,0,0,0.1);
     font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 }
-
+    
+    .price {
+        color: #666;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    }
     .price span {
         text-shadow: none;
         font-size: 35px;
@@ -123,7 +150,7 @@
         color: #1b7bf7;
     }
 
-.product-title, .product-description, .price,{
+.product-title, .product-description, .price{
     margin-bottom: 15px;
 }
 
@@ -141,10 +168,17 @@
     margin-top: 5px;
 }
 
+.btn-continue-shopping {
+    font-weight: 700;
+    -webkit-transition: background .3s ease;
+    transition: background .3s ease;
+    margin-top: 5px;
+}
+
 .undo {
     position: absolute;
     bottom: 0;
-    right : 0;
+    right: 0;
     border: none;
     -webkit-transition: background .3s ease;
     transition: background .3s ease;
