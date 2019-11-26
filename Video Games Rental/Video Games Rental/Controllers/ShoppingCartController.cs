@@ -43,7 +43,7 @@ namespace Video_Games_Rental.Controllers
                     lsCart[check].Quantity++;
                 Session[strCart] = lsCart;
             }
-            return View("Index");
+            return RedirectToAction("Index");
 
         }
 

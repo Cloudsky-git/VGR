@@ -297,7 +297,11 @@ ol {
 
 .game-list {
     float: left;
-    width: auto;   
+    width: auto;  
+}
+
+.game-list:first-child{
+    margin-left: 55px;
 }
 
 body .page-count {

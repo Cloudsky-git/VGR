@@ -20,90 +20,77 @@
     <div class="news-load"></div>
 </div>
 
-<h2>KOSZYK</h2>
-
-@*<table border="1">
-    <tr>
-        <th>Nazwa</th>
-        <th>Cena</th>
-        <th>Ilość</th>
-        <th>Cena razem</th>
-    </tr>
-
-    @foreach (var cart in (List<Cart>)Session["Cart"])
-    {
-        <tr>
-            <td>@cart.Product.title</td>
-            <td>@cart.Product.price</td>
-            <td>@cart.Quantity</td>
-            <td>@(String.Format("{0:N0}", cart.Product.price * cart.Quantity))</td>
-            <td>
-                @Html.ActionLink("Delete", "Delete", "ShoppingCart", new { id = cart.Product.game_id }, new { onclick = "return confirm ('Na pewno chcesz usunąć ten produkt?');" })
-            </td>
-        </tr>
-    }
-
-        <tr>
-            <td colspan="3">Suma</td>
-            <td>
-                @{ 
-                    List<Cart> temp = (List<Cart>)Session["Cart"];
-                    var total = string.Format("{0:N0}", temp.Sum(x=>x.Quantity * x.Product.price));
-                }
-
-                @total zł
-            </td>
-        </tr>
-</table>*@
-
 <div class="container">
     <div class="cart-card">
         <div class="container-fliud">
-            <div class="row">
-                <div class="col-6">
-                    <h3>KOSZYK</h3>
-                </div>
-            </div>
-            <div class="dropdown-divider"></div>
-            <div class="row">
-                <ul class="shoppingcart-list">
-                    <li class="shoppingcart-list-item">Nazwa</li>
-                    <li class="shoppingcart-list-item">Cena</li>
-                    <li class="shoppingcart-list-item">Ilosc</li>
-                    <li class="shoppingcart-list-item">Cena razem</li>
-                </ul>
-            </div>
-            <div class="dropdown-divider"></div>
-            <div class="row">
-                @foreach (var cart in (List<Cart>)Session["Cart"])
-                {
-                    <ul class="shoppingcart-list">
-                        <li class="shoppingcart-list-item">@cart.Product.title</li>
-                        <li class="shoppingcart-list-item">@cart.Product.price zł</li>
-                        <li class="shoppingcart-list-item">@cart.Quantity</li>
-                        <li class="shoppingcart-list-item">@(String.Format("{0:N0}", cart.Product.price * cart.Quantity)) zł</li>
-                        <li class="shoppingcart-list-item">@Html.ActionLink("Delete", "Delete", "ShoppingCart", new { id = cart.Product.game_id }, new { onclick = "return confirm ('Na pewno chcesz usunąć ten produkt?');" })</li>
-                        @*<li class="shoppingcart-list-item">
-                            <a href="@Url.Action("Delete", "ShoppingCart", new { id = cart.Product.game_id }, new { onclick = "return confirm ('Na pewno chcesz usunąć ten produkt?');" })">
-                                <i class="fa fa-heart"></i>
-                            </a>
-                        </li>*@
-                    </ul>
-                }
-                </div>
-            <div class="row">
-                <ul>
-                    <li>
-                        @{
-                            List<Cart> temp = (List<Cart>)Session["Cart"];
-                            var total = string.Format("{0:N0}", temp.Sum(x => x.Quantity * x.Product.price));
-                        }
+            @{
+                if (Session["Cart"] != null)
+                {                        
+                    <div class="table-responsive">
+                        <table class="table cart-table">
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="border-0 bg-light">
+                                        <div class="p-2 px-3 text-uppercase">Produkt</div>
+                                    </th>
+                                    <th scope="col" class="border-0 bg-light">
+                                        <div class="py-2 text-uppercase">Cena</div>
+                                    </th>
+                                    <th scope="col" class="border-0 bg-light">
+                                        <div class="py-2 text-uppercase">Ilość</div>
+                                    </th>
+                                    <th scope="col" class="border-0 bg-light">
+                                        <div class="py-2 text-uppercase">Cena razem</div>
+                                    </th>
+                                    <th scope="col" class="border-0 bg-light">
+                                        <div class="py-2 text-uppercase">Usuń</div>
+                                    </th>
+                                </tr>
+                            </thead>
+                             @foreach (var cart in (List<Cart>)Session["Cart"])
+                             {
+                            <tbody>
+                                <tr>
+                                    <th scope="row" class="border-0">
+                                        <div class="p-2">
+                                            <a href="@Url.Action("Details", "Shop", new { id = cart.Product.game_id }, null)"><img width="70" class="img-fluid rounded shadow-sm img-thumbnail" src="@Url.Content("~/Content/img/games/" + cart.Product.image)" /></a> 
+                                            <div class="ml-3 d-inline-block align-middle">
+                                                <h5 class="mb-0"> <a href="#" class="text-dark d-inline-block align-middle">@cart.Product.title</a></h5><span class="text-muted font-weight-normal font-italic d-block">@cart.Product.genre.genre1 [@cart.Product.language.language1]</span>
+                                            </div>
+                                        </div>
+                                    </th>
+                                    <td class="border-0 align-middle"><strong>@cart.Product.price zł</strong></td>
+                                    <td class="border-0 align-middle"><strong>@cart.Quantity</strong></td>
+                                    <td class="border-0 align-middle"><strong>@(String.Format("{0:N0}", cart.Product.price * cart.Quantity)) zł</strong></td>
+                                    <td class="border-0 align-middle"><a href="@Url.Action("Delete", "ShoppingCart", new { id = cart.Product.game_id })"
+                                                                          onclick = "return confirm ('Na pewno chcesz usunąć ten produkt?');"><i class="fa fa-trash delete-icon"></i></a></td>
+                                </tr>                                
+                            </tbody>
+                             }
+                            <tr class="price-total">
+                                    <th class="border-0 align-middle text-uppercase">Suma</th>
+                                    <th class="border-0 align-middle"></th>
+                                    <th class="border-0 align-middle"></th>
+                                    <th class="border-0 align-middle">
+                                        @{
+                                            List<Cart> temp = (List<Cart>)Session["Cart"];
+                                            var total = string.Format("{0:N0}", temp.Sum(x => x.Quantity * x.Product.price));
+                                        }
 
-                        @total zł
-                    </li>
-                </ul>
-            </div>
-            @Html.ActionLink("Kontynuuj zakupy", "../Shop", "Shop", new { @class = "btn btn-continue-shopping btn-default mt-2" })
-        </div>
+                                        @total zł
+                                    </th>
+                            </tr>
+                        </table>
+                    </div>
+                }                                   
+                else
+                {
+                    <h3>Twój koszyk jest pusty!</h3>
+                }
+                @Html.ActionLink("Kontynuuj zakupy", "../Shop", "Shop", new { @class = "btn btn-continue-shopping btn-default mt-2" })
+                @Html.ActionLink("Przejdź dalej", "../Shop", "Shop", new { @class = "btn checkout btn-default mt-2" })
+            }
+
+        </div>       
     </div>
 </div>

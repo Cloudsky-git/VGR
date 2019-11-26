@@ -79,6 +79,13 @@
 .shoppingcart-list-item{
     width: 100px;
 }
+
+.shoppingcart-list-item img {
+    width: 90px;
+    height: 135px;
+}
+
+
 .shoppingcart-list-item:first-child {
     width: 330px;
 }
@@ -165,7 +172,6 @@
     font-weight: 700;
     -webkit-transition: background .3s ease;
     transition: background .3s ease;
-    margin-top: 5px;
 }
 
 .btn-continue-shopping {
@@ -173,6 +179,10 @@
     -webkit-transition: background .3s ease;
     transition: background .3s ease;
     margin-top: 5px;
+}
+
+.checkout{
+    float: right;
 }
 
 .undo {
@@ -183,6 +193,10 @@
     -webkit-transition: background .3s ease;
     transition: background .3s ease;
     float: right;
+}
+
+.delete-icon{
+    color: #333!important;
 }
 
 .tooltip-inner {
@@ -215,4 +229,16 @@
         -webkit-transform: scale(1);
         transform: scale(1);
     }
+}
+
+.cart-table{
+    color: #333!important;
+}
+
+.price-total {
+    color: #368dfe;
+}
+
+thead {
+    color: #368dfe;
 }
