@@ -255,6 +255,10 @@ ol {
      text-shadow: 0px 5px 4px rgba(0,0,0,0.4), 0px 6px 10px rgba(0,0,0,0.1), 0px 18px 23px rgba(0,0,0,0.1);
 }
 
+.game-title a{
+    color: #333!important;
+}
+
 .game-genre {
     font-weight: 700;
     text-transform: uppercase;
