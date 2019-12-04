@@ -36,10 +36,6 @@ namespace Video_Games_Rental.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Username")]
-        public string Username { get; set; }
-
-        [Required]
         [Display(Name = "Email")]
         [EmailAddress]
         public string Email { get; set; }
