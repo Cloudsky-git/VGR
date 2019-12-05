@@ -1,0 +1,59 @@
+﻿@model Video_Games_Rental.Models.user_details
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_EntryLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>user_details</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.surname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.surname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.address_line1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.address_line1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.address_line2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.address_line2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.postal_code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.postal_code)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.user_details_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

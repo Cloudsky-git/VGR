@@ -68,5 +68,47 @@ namespace Video_Games_Rental.Controllers
             lsCart.RemoveAt(check);
             return View("Index");
         }
+
+        public ActionResult CheckOut(FormCollection frc)
+        {           
+            return View("CheckOut");
+        }
+
+        public ActionResult ProcessOrder(FormCollection frc)
+        {
+            //List<Cart> lsCart = (List<Cart>)Session[strCart];
+            //user_details user = new user_details()
+            //{
+            //    name = frc["cusName"],
+            //    surname = frc["cusSurname"],
+            //    address_line1 = frc["cusAddress1"],
+            //    address_line2 = frc["cusAddress2"],
+            //    postal_code = frc["cusPostal"],
+
+            //};
+
+            //db.user_details.Add(user);
+            //db.SaveChanges();
+
+            //AspNetUser userADD = new AspNetUser()
+            //{             
+            //    Email = frc["cusMail"],
+            //    PhoneNumber = frc["cusPhone"],
+            //};
+
+            //db.AspNetUsers.Add(userADD);
+            //db.SaveChanges();
+
+
+            //foreach (Cart cart in lsCart)
+            //{
+            //    order order = new order()
+            //    {
+
+            //    };
+            //}
+
+            return View("OrderSuccess");
+        }
     }
 }

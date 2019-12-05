@@ -178,6 +178,7 @@
     <Compile Include="Controllers\ShopController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Controllers\statusController.cs" />
+    <Compile Include="Controllers\user_detailsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -553,6 +554,13 @@
     <Content Include="Views\Shop\GameListPartial.cshtml" />
     <Content Include="Views\Shop\Details.cshtml" />
     <Content Include="Views\ShoppingCart\Index.cshtml" />
+    <Content Include="Views\ShoppingCart\CheckOut.cshtml" />
+    <Content Include="Views\ShoppingCart\OrderSuccess.cshtml" />
+    <Content Include="Views\user_details\Create.cshtml" />
+    <Content Include="Views\user_details\Delete.cshtml" />
+    <Content Include="Views\user_details\Details.cshtml" />
+    <Content Include="Views\user_details\Edit.cshtml" />
+    <Content Include="Views\user_details\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

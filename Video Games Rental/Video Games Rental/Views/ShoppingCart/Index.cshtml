@@ -27,6 +27,7 @@
                 if (Session["Cart"] != null)
                 {                        
                     <div class="table-responsive">
+                        <h3 class="text-center text-uppercase mb-4 cart-title">Twój Koszyk</h3>
                         <table class="table cart-table">
                             <thead>
                                 <tr>
@@ -61,7 +62,7 @@
                                     </th>
                                     <td class="border-0 align-middle"><strong>@cart.Product.price zł</strong></td>
                                     <td class="border-0 align-middle"><strong>@cart.Quantity</strong></td>
-                                    <td class="border-0 align-middle"><strong>@(String.Format("{0:N0}", cart.Product.price * cart.Quantity)) zł</strong></td>
+                                    <td class="border-0 align-middle"><strong>@(String.Format("{0:F2}", cart.Product.price * cart.Quantity)) zł</strong></td>
                                     <td class="border-0 align-middle"><a href="@Url.Action("Delete", "ShoppingCart", new { id = cart.Product.game_id })"
                                                                           onclick = "return confirm ('Na pewno chcesz usunąć ten produkt?');"><i class="fa fa-trash delete-icon"></i></a></td>
                                 </tr>                                
@@ -74,7 +75,7 @@
                                     <th class="border-0 align-middle">
                                         @{
                                             List<Cart> temp = (List<Cart>)Session["Cart"];
-                                            var total = string.Format("{0:N0}", temp.Sum(x => x.Quantity * x.Product.price));
+                                            var total = string.Format("{0:F2}", temp.Sum(x => x.Quantity * x.Product.price));
                                         }
 
                                         @total zł
@@ -88,7 +89,7 @@
                     <h3>Twój koszyk jest pusty!</h3>
                 }
                 @Html.ActionLink("Kontynuuj zakupy", "../Shop", "Shop", new { @class = "btn btn-continue-shopping btn-default mt-2" })
-                @Html.ActionLink("Przejdź dalej", "../Shop", "Shop", new { @class = "btn checkout btn-default mt-2" })
+                @Html.ActionLink("Przejdź do kasy", "CheckOut", "ShoppingCart", new { @class = "btn checkout btn-default mt-2" })
             }
 
         </div>       

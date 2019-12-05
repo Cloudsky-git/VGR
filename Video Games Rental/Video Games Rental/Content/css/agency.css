@@ -119,12 +119,11 @@ img::-moz-selection {
 @media (min-width: 1200px) {
     .btn-wyloguj {
         position: absolute;
-        left: 0;
         z-index: 1000;
         right: 30px;
         left: auto;
         top: 30%;
-        min-width: 10rem;
+        min-width: 8rem;
     }
 }
 
