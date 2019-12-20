@@ -20,12 +20,10 @@ namespace Video_Games_Rental.Models
             this.AspNetUserClaims = new HashSet<AspNetUserClaim>();
             this.AspNetUserLogins = new HashSet<AspNetUserLogin>();
             this.AspNetUserRoles = new HashSet<AspNetUserRole>();
-            this.orders = new HashSet<order>();
-            this.orders1 = new HashSet<order>();
+            this.customers = new HashSet<customer>();
         }
     
         public string Id { get; set; }
-        public Nullable<int> user_details_id { get; set; }
         public string Email { get; set; }
         public bool EmailConfirmed { get; set; }
         public string PasswordHash { get; set; }
@@ -44,10 +42,7 @@ namespace Video_Games_Rental.Models
         public virtual ICollection<AspNetUserLogin> AspNetUserLogins { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AspNetUserRole> AspNetUserRoles { get; set; }
-        public virtual user_details user_details { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<order> orders { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<order> orders1 { get; set; }
+        public virtual ICollection<customer> customers { get; set; }
     }
 }

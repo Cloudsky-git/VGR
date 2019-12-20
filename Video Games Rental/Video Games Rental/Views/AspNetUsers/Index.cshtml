@@ -45,9 +45,6 @@
         <th>
             @Html.DisplayNameFor(model => model.UserName)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.user_details.name)
-        </th>
         <th></th>
     </tr>
 
@@ -87,9 +84,6 @@
             @Html.DisplayFor(modelItem => item.UserName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.user_details.name)
-        </td>
-        <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
             @Html.ActionLink("Details", "Details", new { id=item.Id }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.Id })
@@ -98,40 +92,3 @@
 }
 
 </table>
-
-
-<section>
-    <div class="panel-menu text-center">
-
-        <ul class="panel-list list-unstyled">
-            <li class="panel-list-item">
-                @Html.ActionLink("Status", "../status/Index", new { area = "" })
-            </li>
-            <li class="panel-list-item">
-                @Html.ActionLink("Genres", "../genres/Index", new { area = "" })
-            </li>
-            <li class="panel-list-item">
-                @Html.ActionLink("Platforms", "../platforms/Index", new { area = "" })
-            </li>
-            <li class="panel-list-item">
-                @Html.ActionLink("Languages", "../languages/Index", new { area = "" })
-            </li>
-            <li class="panel-list-item">
-                @Html.ActionLink("Orders", "../orders/Index", new { area = "" })
-            </li>
-            <li class="panel-list-item">
-                @Html.ActionLink("Order details", "../order_detail/Index", new { area = "" })
-            </li>
-            <li class="panel-list-item">
-                @Html.ActionLink("Order types", "../order_type/Index", new { area = "" })
-            </li>
-            <li class="panel-list-item">
-                @Html.ActionLink("Games", "../games/Index", new { area = "" })
-            </li>
-            <li class="panel-list-item">
-                @Html.ActionLink("Conditions", "../conditions/Index", new { area = "" })
-            </li>
-        </ul>
-
-    </div>
-</section>

@@ -37,10 +37,10 @@ namespace Video_Games_Rental.Models
         public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUserRole> AspNetUserRoles { get; set; }
-        public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
-        public virtual DbSet<user_details> user_details { get; set; }
-        public virtual DbSet<order> orders { get; set; }
         public virtual DbSet<condition> conditions { get; set; }
         public virtual DbSet<game> games { get; set; }
+        public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
+        public virtual DbSet<customer> customers { get; set; }
+        public virtual DbSet<order> orders { get; set; }
     }
 }

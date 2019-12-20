@@ -12,22 +12,26 @@ namespace Video_Games_Rental.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class user_details
+    public partial class customer
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public user_details()
+        public customer()
         {
-            this.AspNetUsers = new HashSet<AspNetUser>();
+            this.orders = new HashSet<order>();
         }
     
-        public int user_details_id { get; set; }
+        public int customer_id { get; set; }
+        public string AspNetUsers_id { get; set; }
         public string name { get; set; }
         public string surname { get; set; }
         public string address_line1 { get; set; }
         public string address_line2 { get; set; }
         public string postal_code { get; set; }
+        public string Email { get; set; }
+        public string PhoneNumber { get; set; }
     
+        public virtual AspNetUser AspNetUser { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AspNetUser> AspNetUsers { get; set; }
+        public virtual ICollection<order> orders { get; set; }
     }
 }

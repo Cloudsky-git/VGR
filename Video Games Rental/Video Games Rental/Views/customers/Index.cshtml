@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Video_Games_Rental.Models.user_details>
+﻿@model IEnumerable<Video_Games_Rental.Models.customer>
 
 @{
     ViewBag.Title = "Index";
@@ -27,6 +27,15 @@
         <th>
             @Html.DisplayNameFor(model => model.postal_code)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AspNetUser.Email)
+        </th>
         <th></th>
     </tr>
 
@@ -48,9 +57,18 @@
             @Html.DisplayFor(modelItem => item.postal_code)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.user_details_id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.user_details_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.user_details_id })
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhoneNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AspNetUser.Email)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.customer_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.customer_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.customer_id })
         </td>
     </tr>
 }

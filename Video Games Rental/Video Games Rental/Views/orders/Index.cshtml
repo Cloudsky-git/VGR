@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_SearchLayout.cshtml";
+    Layout = "~/Views/Shared/_EntryLayout.cshtml";
 }
 
 <h2>Index</h2>
@@ -19,10 +19,7 @@
             @Html.DisplayNameFor(model => model.price)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.AspNetUser.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AspNetUser1.Email)
+            @Html.DisplayNameFor(model => model.customer.AspNetUsers_id)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.order_type.type)
@@ -42,10 +39,7 @@
             @Html.DisplayFor(modelItem => item.price)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.AspNetUser.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AspNetUser1.Email)
+            @Html.DisplayFor(modelItem => item.customer.AspNetUsers_id)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.order_type.type)
@@ -62,39 +56,3 @@
 }
 
 </table>
-
-<section>
-    <div class="panel-menu text-center">
-
-        <ul class="panel-list list-unstyled">
-            <li class="panel-list-item">
-                @Html.ActionLink("Status", "../status/Index", new { area = "" })
-            </li>
-            <li class="panel-list-item">
-                @Html.ActionLink("Games", "../games/Index", new { area = "" })
-            </li>
-            <li class="panel-list-item">
-                @Html.ActionLink("Genres", "../genres/Index", new { area = "" })
-            </li>
-            <li class="panel-list-item">
-                @Html.ActionLink("Platforms", "../platforms/Index", new { area = "" })
-            </li>
-            <li class="panel-list-item">
-                @Html.ActionLink("Languages", "../languages/Index", new { area = "" })
-            </li>
-            <li class="panel-list-item">
-                @Html.ActionLink("Order details", "../order_detail/Index", new { area = "" })
-            </li>
-            <li class="panel-list-item">
-                @Html.ActionLink("Order types", "../order_type/Index", new { area = "" })
-            </li>
-            <li class="panel-list-item">
-                @Html.ActionLink("Users", "../AspNetUsers/Index", new { area = "" })
-            </li>
-            <li class="panel-list-item">
-                @Html.ActionLink("Conditions", "../conditions/Index", new { area = "" })
-            </li>
-        </ul>
-
-    </div>
-</section>

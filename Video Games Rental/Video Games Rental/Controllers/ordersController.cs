@@ -17,7 +17,7 @@ namespace Video_Games_Rental.Controllers
         // GET: orders
         public ActionResult Index()
         {
-            var orders = db.orders.Include(o => o.AspNetUser).Include(o => o.AspNetUser1).Include(o => o.order_type).Include(o => o.status);
+            var orders = db.orders.Include(o => o.customer).Include(o => o.order_type).Include(o => o.status);
             return View(orders.ToList());
         }
 
@@ -39,8 +39,7 @@ namespace Video_Games_Rental.Controllers
         // GET: orders/Create
         public ActionResult Create()
         {
-            ViewBag.user_id = new SelectList(db.AspNetUsers, "Id", "Email");
-            ViewBag.user_id = new SelectList(db.AspNetUsers, "Id", "Email");
+            ViewBag.customer_id = new SelectList(db.customers, "customer_id", "AspNetUsers_id");
             ViewBag.order_type_id = new SelectList(db.order_type, "order_type_id", "type");
             ViewBag.status_id = new SelectList(db.status, "status_id", "status1");
             return View();
@@ -51,7 +50,7 @@ namespace Video_Games_Rental.Controllers
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "order_id,order_type_id,user_id,status_id,date,price")] order order)
+        public ActionResult Create([Bind(Include = "order_id,customer_id,order_type_id,status_id,date,price")] order order)
         {
             if (ModelState.IsValid)
             {
@@ -60,8 +59,7 @@ namespace Video_Games_Rental.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.user_id = new SelectList(db.AspNetUsers, "Id", "Email", order.user_id);
-            ViewBag.user_id = new SelectList(db.AspNetUsers, "Id", "Email", order.user_id);
+            ViewBag.customer_id = new SelectList(db.customers, "customer_id", "AspNetUsers_id", order.customer_id);
             ViewBag.order_type_id = new SelectList(db.order_type, "order_type_id", "type", order.order_type_id);
             ViewBag.status_id = new SelectList(db.status, "status_id", "status1", order.status_id);
             return View(order);
@@ -79,8 +77,7 @@ namespace Video_Games_Rental.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.user_id = new SelectList(db.AspNetUsers, "Id", "Email", order.user_id);
-            ViewBag.user_id = new SelectList(db.AspNetUsers, "Id", "Email", order.user_id);
+            ViewBag.customer_id = new SelectList(db.customers, "customer_id", "AspNetUsers_id", order.customer_id);
             ViewBag.order_type_id = new SelectList(db.order_type, "order_type_id", "type", order.order_type_id);
             ViewBag.status_id = new SelectList(db.status, "status_id", "status1", order.status_id);
             return View(order);
@@ -91,7 +88,7 @@ namespace Video_Games_Rental.Controllers
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "order_id,order_type_id,user_id,status_id,date,price")] order order)
+        public ActionResult Edit([Bind(Include = "order_id,customer_id,order_type_id,status_id,date,price")] order order)
         {
             if (ModelState.IsValid)
             {
@@ -99,8 +96,7 @@ namespace Video_Games_Rental.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.user_id = new SelectList(db.AspNetUsers, "Id", "Email", order.user_id);
-            ViewBag.user_id = new SelectList(db.AspNetUsers, "Id", "Email", order.user_id);
+            ViewBag.customer_id = new SelectList(db.customers, "customer_id", "AspNetUsers_id", order.customer_id);
             ViewBag.order_type_id = new SelectList(db.order_type, "order_type_id", "type", order.order_type_id);
             ViewBag.status_id = new SelectList(db.status, "status_id", "status1", order.status_id);
             return View(order);

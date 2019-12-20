@@ -17,8 +17,7 @@ namespace Video_Games_Rental.Controllers
         // GET: AspNetUsers
         public ActionResult Index()
         {
-            var aspNetUsers = db.AspNetUsers.Include(a => a.user_details);
-            return View(aspNetUsers.ToList());
+            return View(db.AspNetUsers.ToList());
         }
 
         // GET: AspNetUsers/Details/5
@@ -39,7 +38,6 @@ namespace Video_Games_Rental.Controllers
         // GET: AspNetUsers/Create
         public ActionResult Create()
         {
-            ViewBag.user_details_id = new SelectList(db.user_details, "user_details_id", "name");
             return View();
         }
 
@@ -48,7 +46,7 @@ namespace Video_Games_Rental.Controllers
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,user_details_id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] AspNetUser aspNetUser)
+        public ActionResult Create([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] AspNetUser aspNetUser)
         {
             if (ModelState.IsValid)
             {
@@ -57,7 +55,6 @@ namespace Video_Games_Rental.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.user_details_id = new SelectList(db.user_details, "user_details_id", "name", aspNetUser.user_details_id);
             return View(aspNetUser);
         }
 
@@ -73,7 +70,6 @@ namespace Video_Games_Rental.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.user_details_id = new SelectList(db.user_details, "user_details_id", "name", aspNetUser.user_details_id);
             return View(aspNetUser);
         }
 
@@ -82,7 +78,7 @@ namespace Video_Games_Rental.Controllers
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,user_details_id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] AspNetUser aspNetUser)
+        public ActionResult Edit([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] AspNetUser aspNetUser)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +86,6 @@ namespace Video_Games_Rental.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.user_details_id = new SelectList(db.user_details, "user_details_id", "name", aspNetUser.user_details_id);
             return View(aspNetUser);
         }
 

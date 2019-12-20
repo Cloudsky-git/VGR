@@ -76,38 +76,37 @@ namespace Video_Games_Rental.Controllers
 
         public ActionResult ProcessOrder(FormCollection frc)
         {
-            //List<Cart> lsCart = (List<Cart>)Session[strCart];
-            //user_details user = new user_details()
-            //{
-            //    name = frc["cusName"],
-            //    surname = frc["cusSurname"],
-            //    address_line1 = frc["cusAddress1"],
-            //    address_line2 = frc["cusAddress2"],
-            //    postal_code = frc["cusPostal"],
+            List<Cart> lsCart = (List<Cart>)Session[strCart];
+            customer customer = new customer()
+            {
+                name = frc["cusName"],
+                surname = frc["cusSurname"],
+                Email = frc["cusMail"],
+                PhoneNumber = frc["cusPhone"],
+                address_line1 = frc["cusAddress1"],
+                address_line2 = frc["cusAddress2"],
+                postal_code = frc["cusPostal"]   
+            };
 
-            //};
-
-            //db.user_details.Add(user);
-            //db.SaveChanges();
-
-            //AspNetUser userADD = new AspNetUser()
-            //{             
-            //    Email = frc["cusMail"],
-            //    PhoneNumber = frc["cusPhone"],
-            //};
-
-            //db.AspNetUsers.Add(userADD);
-            //db.SaveChanges();
-
-
-            //foreach (Cart cart in lsCart)
-            //{
-            //    order order = new order()
-            //    {
-
-            //    };
-            //}
-
+            db.customers.Add(customer);
+            db.SaveChanges();
+            List<customer> lsCust = db.customers.ToList();
+            int idCust = lsCust.Last().customer_id;
+            
+            foreach (Cart cart in lsCart)
+            {
+                order order = new order()
+                {
+                    customer_id = idCust,
+                    price = cart.Product.price,
+                    date = DateTime.Now,
+                    order_type_id = 3,
+                    status_id = 2
+                };
+                db.orders.Add(order);
+                db.SaveChanges();
+            }
+            Session.Remove(strCart);
             return View("OrderSuccess");
         }
     }
