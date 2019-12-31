@@ -561,6 +561,9 @@
     <Content Include="Views\orders\Details.cshtml" />
     <Content Include="Views\orders\Edit.cshtml" />
     <Content Include="Views\orders\Index.cshtml" />
+    <Content Include="Views\Shop\PlatformListPartial.cshtml" />
+    <Content Include="Views\Shop\LanguageListPartial.cshtml" />
+    <Content Include="Views\Shop\ConditionListPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

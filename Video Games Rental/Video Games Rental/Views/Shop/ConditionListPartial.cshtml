@@ -1,0 +1,14 @@
+﻿@using Video_Games_Rental.Models
+@model List<condition>
+
+<ul class="f-list">
+    @{
+        foreach (var item in Model)
+        {           
+            <li>
+                @Html.ActionLink(item.condition1, "Index", "Shop", new { page = 1, language = item.condition_id }, null)
+            </li>
+        }
+    }
+</ul>
+

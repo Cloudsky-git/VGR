@@ -255,3 +255,7 @@
 thead {
     color: #368dfe;
 }
+
+.card-group-item a{
+    color: #333!important;
+}

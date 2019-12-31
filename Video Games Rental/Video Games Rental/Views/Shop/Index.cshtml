@@ -1,4 +1,5 @@
-﻿@{
+﻿@using Video_Games_Rental.Models;
+@{
     ViewBag.Title = "Lista Produktów";
     Layout = "~/Views/Shared/_SearchLayout.cshtml";
 }
@@ -8,7 +9,7 @@
     <div class="container">
         <div class="intro-text">
             <div class="intro-lead-in">Witamy w świecie gier!</div>
-            <div class="intro-heading text-uppercase">Wymieniaj • Kupuj • Rezerwuj</div>            
+            <div class="intro-heading text-uppercase">Wymieniaj • Kupuj • Rezerwuj</div>
         </div>
     </div>
 </header>
@@ -28,84 +29,35 @@
                     <h3 class="section-heading text-uppercase mb-3 p-3" id="filtr">FILTRUJ WG </h3>
                     <article class="card-group-item">
                         <header class="card-header">
-                            <h6 class="title">Cena </h6>
-                        </header>  
-                        <div data-role="main" class="ui-content">
-                            <form method="post" action="/action_page_post.php">
-                                <div class="slidecontainer mt-2">
-                                    <input type="range" min="1" max="300" value="50" class="slider" id="myRange">
-                                    <p class="slider-price">Wartość max <span id="demo"></span>,00 zł</p>
-                                </div>
-
-                                <script>
-                                    var slider = document.getElementById("myRange");
-                                    var output = document.getElementById("demo");
-                                    output.innerHTML = slider.value;
-
-                                    slider.oninput = function () {
-                                        output.innerHTML = this.value;
-                                    }
-                                </script>
-                            </form>
-                        </div>  
+                            <h6 class="title">Platforma </h6>
+                        </header>
+                        <ul class="f-list">                          
+                            @Html.Action("PlatformListPartial", "Shop")
+                        </ul>
                     </article> <!-- card-group-item.// -->
+
                     <article class="card-group-item">
                         <header class="card-header">
                             <h6 class="title">Wersja językowa </h6>
                         </header>
-                        <div class="filter-content">
-                            <div class="card-body">
-                                <div class="custom-control custom-checkbox">
-                                    <span class="float-right badge badge-light round">52</span>
-                                    <input type="checkbox" class="custom-control-input" id="English">
-                                    <label class="custom-control-label" for="English">Angielska</label>
-                                </div> <!-- form-check.// -->
-
-                                <div class="custom-control custom-checkbox">
-                                    <span class="float-right badge badge-light round">132</span>
-                                    <input type="checkbox" class="custom-control-input" id="PolishD">
-                                    <label class="custom-control-label" for="PolishD">Polska(dub)</label>
-                                </div> <!-- form-check.// -->
-
-                                <div class="custom-control custom-checkbox">
-                                    <span class="float-right badge badge-light round">17</span>
-                                    <input type="checkbox" class="custom-control-input" id="PolishS">
-                                    <label class="custom-control-label" for="PolishS">Polska(N)</label>
-                                </div> <!-- form-check.// -->
-                                
-                            </div>
-                        </div>
+                        <ul class="f-list">
+                            @Html.Action("LanguageListPartial", "Shop")
+                        </ul>
                     </article> <!-- card-group-item.// -->
 
                     <article class="card-group-item">
                         <header class="card-header">
                             <h6 class="title">Stan </h6>
                         </header>
-                        <div class="filter-content">
-                            <div class="card-body">
-                                <div class="custom-control custom-checkbox">
-                                    <span class="float-right badge badge-light round">52</span>
-                                    <input type="checkbox" class="custom-control-input" id="new">
-                                    <label class="custom-control-label" for="new">Nowa</label>
-                                </div> <!-- form-check.// -->
-
-                                <div class="custom-control custom-checkbox">
-                                    <span class="float-right badge badge-light round">132</span>
-                                    <input type="checkbox" class="custom-control-input" id="used">
-                                    <label class="custom-control-label" for="used">Używana</label>
-                                </div> <!-- form-check.// -->
-                            </div>
-                        </div>
-                    </article> <!-- card-group-item.// -->
-                 
-                    <div class="">
-                       <button class="btn btn-lg btn-primary btn-block btn-filtr text-uppercase font-weight-bold" type="submit">Filtruj</button>
-                    </div>                
+                        <ul class="f-list">
+                            @Html.Action("ConditionListPartial", "Shop")
+                        </ul>
+                    </article> <!-- card-group-item.// -->                  
                 </div> <!-- card.// -->
             </div>
 
             <div class=" col-lg-8 col-xl-8 col-12 text-center bg-light">
-                    @Html.Action("GameListPartial", "Shop")
+                @Html.Action("GameListPartial", "Shop")
             </div>
 
         </div>

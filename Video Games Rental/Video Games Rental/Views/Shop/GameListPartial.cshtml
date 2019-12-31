@@ -21,8 +21,7 @@
                         @item.genre.genre1
                     </div>
                     <div class="game-title">
-                        @Html.ActionLink(@item.title, "Details", "Shop", new { id = item.game_id }, null)
-                        @*<a href="Product/Index.cshtml">@item.title [@item.language.language1]</a>*@
+                        @Html.ActionLink(@item.title, "Details", "Shop", new { id = item.game_id }, null) @item.language.language1 @item.platform.platform1
                     </div>
                     <div class="game-price mb-1">
                         Cena: @item.price zł
@@ -37,5 +36,5 @@
 
     <div class="page-count">Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount</div>
     <div class="pagination">
-        @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page, @class = "btn-pages" }))
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page, platform = ViewBag.platform, language = ViewBag.language, condition = ViewBag.condition, @class = "btn-pages" }))
     </div>

@@ -153,7 +153,7 @@ ol {
 
 .card-group-item{
     color: #ccc;
-    padding: 10px 0 10px 0px;
+    padding: 10px 0px 10px 0px;
 }
 
 .card-body {
@@ -165,6 +165,7 @@ ol {
 }
 
 .card-header {
+    padding-top: 15px;
     background-color: #0079f2;
     color: #fff;
     text-shadow: 0px 4px 3px rgba(0,0,0,0.4), 0px 8px 13px rgba(0,0,0,0.1), 0px 18px 23px rgba(0,0,0,0.1);
@@ -246,17 +247,13 @@ ol {
     color: #333!important;
 }
 
-.game-title {
-    width: auto;
+.game-title{
+    color: #333!important;
 }
 
 .game-title:hover {
-     color: #333;
-     text-shadow: 0px 5px 4px rgba(0,0,0,0.4), 0px 6px 10px rgba(0,0,0,0.1), 0px 18px 23px rgba(0,0,0,0.1);
-}
-
-.game-title a{
-    color: #333!important;
+    color: #333;
+    text-shadow: 0px 5px 4px rgba(0,0,0,0.4), 0px 6px 10px rgba(0,0,0,0.1), 0px 18px 23px rgba(0,0,0,0.1);
 }
 
 .game-genre {
@@ -302,6 +299,11 @@ ol {
 .game-list {
     float: left;
     width: auto;  
+}
+
+.f-list{
+    margin-top: 10px;
+    list-style-type: none;
 }
 
 .game-list:first-child{
