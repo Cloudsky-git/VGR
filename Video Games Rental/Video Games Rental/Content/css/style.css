@@ -306,7 +306,16 @@ ol {
     list-style-type: none;
 }
 
-.game-list:first-child{
+.platform-list-menu a{
+    color: #333!important;
+}
+
+.platform-list-menu{
+    margin-top: 0px;
+    padding-top: 0px;
+}
+
+.game-list:first-child {
     margin-left: 55px;
 }
 

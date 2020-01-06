@@ -1,4 +1,6 @@
 ﻿@using Microsoft.AspNet.Identity;
+@using Video_Games_Rental.Models;
+@model List<platform>
 
 @{
     Layout = "~/Views/Shared/_EntryLayout.cshtml";
@@ -27,22 +29,32 @@
                     </li>
                     <li class="nav-item dropdown" id="menu-item-platform">
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button">Play Station</a>
-                        <div class="dropdown-menu">
-                            @Html.ActionLink("PS 3", "PS3", "Home", new { area = "" }, new { @class = "dropdown-item small disabled", style = "color: #212529" })
+                        <div class="dropdown-menu platform-list-menu">
+                            <div class="dropdown-item small pt-2">
+                                @Html.ActionLink("PS 3", "Index", "Shop", new { page = 1, platform = 2 }, null)
+                            </div>
                             <div class="dropdown-divider"></div>
-                            @Html.ActionLink("PS 4", "PS4", "Home", new { area = "" }, new { @class = "dropdown-item small disabled", style = "color: #212529" })
+                            <div class="dropdown-item small">
+                                @Html.ActionLink("PS 4", "Index", "Shop", new { page = 1, platform = 1 }, null)
+                            </div>
                         </div>
                     </li>
                     <li class="nav-item dropdown" id="menu-item-platform">
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button">XBOX</a>
-                        <div class="dropdown-menu">
-                            @Html.ActionLink("Xbox 360", "X360", "Home", new { area = "" }, new { @class = "dropdown-item small disabled", style = "color: #212529" })
+                        <div class="dropdown-menu platform-list-menu">
+                            <div class="dropdown-item small pt-2">
+                                @Html.ActionLink("XBOX 360", "Index", "Shop", new { page = 1, platform = 4 }, null)
+                            </div>
                             <div class="dropdown-divider"></div>
-                            @Html.ActionLink("Xbox One", "X0", "Home", new { area = "" }, new { @class = "dropdown-item small disabled", style = "color: #212529" })
+                            <div class="dropdown-item small">
+                                @Html.ActionLink("XBOX ONE", "Index", "Shop", new { page = 1, platform = 5 }, null)
+                            </div>
                         </div>
                     </li>
                     <li class="nav-item">
-                        @Html.ActionLink("PC", "PC", "Home", new { area = "" }, new { @class = "nav-link js-scroll-trigger disabled" })
+                        <div class="nav-link js-scroll-trigger">
+                            @Html.ActionLink("PC", "Index", "Shop", new { page = 1, platform = 3 }, null)
+                        </div>
                     </li>
                     <li class="nav-item">
                         @Html.ActionLink("O nas", "About", "Home", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
@@ -64,9 +76,9 @@
                     </li>
                     <li class="nav-item">
                         <a href="@Url.Action("../ShoppingCart/Index", "ShoppingCart")">
-                           <i class="fa fa-shopping-cart navbar-icon"></i>
+                            <i class="fa fa-shopping-cart navbar-icon"></i>
                         </a>
-                    </li> 
+                    </li>
                     <li class="nav-item">
                         <a href="@Url.Action("../ShoppingCart/Index", "ShoppingCart")">
                             <i class="fa fa-heart navbar-icon-heart"></i>
@@ -74,7 +86,7 @@
                     </li>
                     <li class="nav-item">
                         <a href="@Url.Action("../ShoppingCart/Index", "ShoppingCart")">
-                           <i class="fa fa-user navbar-icon-user"></i>
+                            <i class="fa fa-user navbar-icon-user"></i>
                         </a>
                     </li>
                 </ul>
@@ -85,8 +97,8 @@
 
                     <ul class="nav navbar-nav ml-5">
                         @*<li class="nav-item logged-in">
-                        @Html.ActionLink("Witaj " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { @class = "nav-link js-scroll-trigger", title = "Manage" })
-                    </li>*@
+                                @Html.ActionLink("Witaj " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { @class = "nav-link js-scroll-trigger", title = "Manage" })
+                            </li>*@
                         <li class="nav-item  d-none d-xl-block"><a class="btn btn-primary btn-wyloguj js-scroll-trigger after-login" href="javascript:document.getElementById('logoutForm').submit()">Wyloguj</a></li>
                     </ul>
                 }
@@ -99,22 +111,32 @@
                     </li>
                     <li class="nav-item dropdown" id="menu-item-platform">
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button">Play Station</a>
-                        <div class="dropdown-menu">
-                            @Html.ActionLink("PS 3", "PS3", "Home", new { area = "" }, new { @class = "dropdown-item small disabled", style = "color: #212529" })
+                        <div class="dropdown-menu platform-list-menu">
+                            <div class="dropdown-item small pt-2">
+                                @Html.ActionLink("PS 3", "Index", "Shop", new { page = 1, platform = 2 }, null)
+                            </div>
                             <div class="dropdown-divider"></div>
-                            @Html.ActionLink("PS 4", "PS4", "Home", new { area = "" }, new { @class = "dropdown-item small disabled", style = "color: #212529" })
+                            <div class="dropdown-item small">
+                                @Html.ActionLink("PS 4", "Index", "Shop", new { page = 1, platform = 1 }, null)
+                            </div>
                         </div>
                     </li>
                     <li class="nav-item dropdown" id="menu-item-platform">
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button">XBOX</a>
-                        <div class="dropdown-menu">
-                            @Html.ActionLink("Xbox 360", "X360", "Home", new { area = "" }, new { @class = "dropdown-item small disabled", style = "color: #212529" })
+                        <div class="dropdown-menu platform-list-menu">
+                            <div class="dropdown-item small pt-2">
+                                @Html.ActionLink("XBOX 360", "Index", "Shop", new { page = 1, platform = 4 }, null)
+                            </div>
                             <div class="dropdown-divider"></div>
-                            @Html.ActionLink("Xbox One", "X0", "Home", new { area = "" }, new { @class = "dropdown-item small disabled", style = "color: #212529" })
+                            <div class="dropdown-item small">
+                                @Html.ActionLink("XBOX ONE", "Index", "Shop", new { page = 1, platform = 5 }, null)
+                            </div>
                         </div>
                     </li>
                     <li class="nav-item">
-                        @Html.ActionLink("PC", "PC", "Home", new { area = "" }, new { @class = "nav-link js-scroll-trigger disabled" })
+                        <div class="nav-link js-scroll-trigger">
+                            @Html.ActionLink("PC", "Index", "Shop", new { page = 1, platform = 3 }, null)
+                        </div>
                     </li>
                     <li class="nav-item">
                         @Html.ActionLink("O nas", "About", "Home", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
@@ -137,14 +159,14 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="@Url.Action("../ShoppingCart/Index", "ShoppingCart")">
-                            <span title="Ulubione"><i class="fa fa-heart navbar-icon-heart"></i></span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="@Url.Action("../ShoppingCart/Index", "ShoppingCart")">
-                           <span title="Twoje konto"><i class="fa fa-user navbar-icon-user"></i></span>
-                        </a>
+                            <a href="@Url.Action("../Account/Login", "Account")">
+                                <span title="Ulubione"><i class="fa fa-heart navbar-icon-heart"></i></span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("../Account/Login", "Account")">
+                                <span title="Twoje konto"><i class="fa fa-user navbar-icon-user"></i></span>
+                            </a>
                     </li>
                 </ul>
 
