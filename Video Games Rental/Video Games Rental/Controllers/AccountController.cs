@@ -1,18 +1,19 @@
 ﻿using Video_Games_Rental.Models;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using Video_Games_Rental.App_Start;
 using Microsoft.Owin.Security;
 using Microsoft.AspNet.Identity.Owin;
 using System.Web;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace ASPNetIdentity.Controllers
 {
     public class AccountController : Controller
     {
-        //
+        private VGR_DBEntities db = new VGR_DBEntities();
         // GET: /Account/Register
         [AllowAnonymous]
         public ActionResult Register()
@@ -147,6 +148,40 @@ namespace ASPNetIdentity.Controllers
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             return RedirectToAction("Index", "Home");
+        }              
+
+        public ActionResult Account_details(FormCollection frc)
+        {
+            return View("Account_details");
         }
+
+        public ActionResult UserDetails(FormCollection frc)
+        {          
+            customer user1 = new customer()
+            {
+                name = frc["userName"],
+                surname = frc["userSurname"],
+                Email = frc["userMail"],
+                PhoneNumber = frc["userPhone"],
+                address_line1 = frc["userAddress1"],
+                address_line2 = frc["userAddress2"],
+                postal_code = frc["userPostal"]
+            };
+
+            AspNetUser user = new AspNetUser()
+            {
+                UserName = frc["Username"],
+                Email = frc["userMail"],
+                PhoneNumber = frc["userPhone"]
+            };
+
+            db.customers.Add(user1);
+            db.AspNetUsers.Add(user);
+            db.SaveChanges();  
+
+            return View("Account");
+        }
+
+
     }
 }
