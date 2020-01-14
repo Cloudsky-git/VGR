@@ -1,4 +1,7 @@
 ﻿@using Video_Games_Rental.Models;
+@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<customer>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_SearchLayout.cshtml";
@@ -22,109 +25,207 @@
 
 <div class="container">
     <div class="cart-card">
-        <div class="container-fliud">          
-
-            @using (Html.BeginForm("UserDetails", "Account", FormMethod.Post, new { id = "user-form" }))
+        <div class="container-fluid">
+        @{ 
+            if (Request.IsAuthenticated)
             {
+                foreach (var item in Model)
+                {
+                    <table class="table cart-table w-50 mt-3">
+                        <tr class="title-row">
+                            <td class="border-0 bg-secondary text-center">
+                                <div class="py-1 text-uppercase">Dane użytkownika</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td scope="col" class="border-0 bg-light">
+                                <div class="py-1">Nazwa używtkownika</div>
+                            </td>
+                            <td class="border-0 bg-light text-center">
+                                <div class="py-1">
+                                    @item.AspNetUser.UserName
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td scope="col" class="border-0 bg-light">
+                                <div class="py-1">Imię</div>
+                            </td>
+                            <td class="border-0 bg-light text-center">
+                                <div class="py-1">
+                                    @item.name
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td scope="col" class="border-0 bg-light">
+                                <div class="py-1">Nazwisko </div>
+                            </td>
+                            <td class="border-0 bg-light text-center">
+                                <div class="py-1">
+                                    @item.surname
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td scope="col" class="border-0 bg-light">
+                                <div class="py-1">E-mail</div>
+                            </td>
+                            <td class="border-0 bg-light text-center">
+                                <div class="py-1 ">
+                                    @item.Email
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td scope="col" class="border-0 bg-light">
+                                <div class="py-1">Nr Tel.</div>
+                            </td>
+                            <td class="border-0 bg-light text-center">
+                                <div class="py-1">
+                                    @item.PhoneNumber
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td scope="col" class="border-0 bg-light">
+                                <div class="py-1">Adres</div>
+                            </td>
+                            <td class="border-0 bg-light text-center">
+                                <div class="py-1">
+                                    @item.address_line1
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td scope="col" class="border-0 bg-light">
+                                <div class="py-1">Miejscowość</div>
+                            </td>
+                            <td class="border-0 bg-light text-center">
+                                <div class="py-1">
+                                    @item.address_line2
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td scope="col" class="border-0 bg-light">
+                                <div class="py-1">Kod Pocztowy</div>
+                            </td>
+                            <td class="border-0 bg-light text-center">
+                                <div class="py-1">
+                                    @item.postal_code
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                }
+            }
 
-                <table class="table cart-table w-50 mt-3">
-                    <tr class="title-row">
-                        <td class="border-0 bg-secondary text-center">
-                            <div class="py-1 text-uppercase">Dane użytkownika</div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td scope="col" class="border-0 bg-light">
-                            <div class="py-1">Nazwa używtkownika</div>
-                        </td>
-                        <td class="border-0 bg-light text-center">
-                            <div class="py-1">
-                                <input type="text" name="Username" />
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td scope="col" class="border-0 bg-light">
-                            <div class="py-1">Imię</div>
-                        </td>
-                        <td class="border-0 bg-light text-center">
-                            <div class="py-1">
-                                <input type="text" name="cusName" />
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td scope="col" class="border-0 bg-light">
-                            <div class="py-1">Nazwisko </div>
-                        </td>
-                        <td class="border-0 bg-light text-center">
-                            <div class="py-1">
-                                <input type="text" name="userSurname" />
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td scope="col" class="border-0 bg-light">
-                            <div class="py-1">E-mail</div>
-                        </td>
-                        <td class="border-0 bg-light text-center">
-                            <div class="py-1 ">
-                                <input type="text" name="userMail" />
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td scope="col" class="border-0 bg-light">
-                            <div class="py-1">Nr Tel.</div>
-                        </td>
-                        <td class="border-0 bg-light text-center">
-                            <div class="py-1">
-                                <input type="text" name="userPhone" />
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td scope="col" class="border-0 bg-light">
-                            <div class="py-1">Adres</div>
-                        </td>
-                        <td class="border-0 bg-light text-center">
-                            <div class="py-1">
-                                <input type="text" name="userAddress1" placeholder="Adres - 1. wiersz" />
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td scope="col" class="border-0 bg-light">
-                            <div class="py-1">Miejscowość</div>
-                        </td>
-                        <td class="border-0 bg-light text-center">
-                            <div class="py-1">
-                                <input type="text" name="userAddress2" />
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td scope="col" class="border-0 bg-light">
-                            <div class="py-1">Kod Pocztowy</div>
-                        </td>
-                        <td class="border-0 bg-light text-center">
-                            <div class="py-1">
-                                <input type="text" name="userPostal" />
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="3">
-                            <div class="py-1">
-                                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Zastosuj</button>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
+            else
+            {
+                using (Html.BeginForm("UserDetails", "Account", FormMethod.Post, new { id = "user-form" }))
+                {
+
+                    <table class="table cart-table w-50 mt-3">
+                        <tr class="title-row">
+                            <td class="border-0 bg-secondary text-center">
+                                <div class="py-1 text-uppercase">Dane użytkownika</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td scope="col" class="border-0 bg-light">
+                                <div class="py-1">Nazwa używtkownika</div>
+                            </td>
+                            <td class="border-0 bg-light text-center">
+                                <div class="py-1">
+                                    <input type="text" name="Username" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td scope="col" class="border-0 bg-light">
+                                <div class="py-1">Imię</div>
+                            </td>
+                            <td class="border-0 bg-light text-center">
+                                <div class="py-1">
+                                    <input type="text" name="cusName" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td scope="col" class="border-0 bg-light">
+                                <div class="py-1">Nazwisko </div>
+                            </td>
+                            <td class="border-0 bg-light text-center">
+                                <div class="py-1">
+                                    <input type="text" name="userSurname" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td scope="col" class="border-0 bg-light">
+                                <div class="py-1">E-mail</div>
+                            </td>
+                            <td class="border-0 bg-light text-center">
+                                <div class="py-1 ">
+                                    <input type="text" name="userMail" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td scope="col" class="border-0 bg-light">
+                                <div class="py-1">Nr Tel.</div>
+                            </td>
+                            <td class="border-0 bg-light text-center">
+                                <div class="py-1">
+                                    <input type="text" name="userPhone" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td scope="col" class="border-0 bg-light">
+                                <div class="py-1">Adres</div>
+                            </td>
+                            <td class="border-0 bg-light text-center">
+                                <div class="py-1">
+                                    <input type="text" name="userAddress1" placeholder="Adres - 1. wiersz" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td scope="col" class="border-0 bg-light">
+                                <div class="py-1">Miejscowość</div>
+                            </td>
+                            <td class="border-0 bg-light text-center">
+                                <div class="py-1">
+                                    <input type="text" name="userAddress2" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td scope="col" class="border-0 bg-light">
+                                <div class="py-1">Kod Pocztowy</div>
+                            </td>
+                            <td class="border-0 bg-light text-center">
+                                <div class="py-1">
+                                    <input type="text" name="userPostal" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                <div class="py-1">
+                                    <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Zastosuj</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                }
+            }
             }
 
             <script type="text/javascript">
-                $("#customer-form").validate({
+                $("#user-form").validate({
                     rules: {
                         cusName: {
                             required: true

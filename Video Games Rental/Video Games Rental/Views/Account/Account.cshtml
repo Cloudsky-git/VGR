@@ -1,6 +1,6 @@
 ﻿@using Video_Games_Rental.Models;
 @{
-    ViewBag.Title = "OrderSuccess";
+    ViewBag.Title = "Account";
     Layout = "~/Views/Shared/_SearchLayout.cshtml";
 }
 
@@ -22,101 +22,101 @@
 
 <div class="container">
     <div class="cart-card">
-        <div class="container-fliud">
+        <div class="container-fluid">
 
 
             <h2>@Html.ActionLink("Home", "../Home/Index", "Home", new { @class = "backtohome" })</h2>
 
             @{
                 foreach (var item in Model)
-                {
-                <table class="table cart-table w-50 mt-3">
-                    <tr class="title-row">
-                        <td class="border-0 bg-secondary text-center">
-                            <div class="py-1 text-uppercase">Dane użytkownika</div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td scope="col" class="border-0 bg-light">
-                            <div class="py-1">Nazwa używtkownika</div>
-                        </td>
-                        <td class="border-0 bg-light text-center">
-                            <div class="py-1">
-                                @Model.AspNetUsers.UserName
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td scope="col" class="border-0 bg-light">
-                            <div class="py-1">Imię</div>
-                        </td>
-                        <td class="border-0 bg-light text-center">
-                            <div class="py-1">
-                                @item.Name
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td scope="col" class="border-0 bg-light">
-                            <div class="py-1">Nazwisko </div>
-                        </td>
-                        <td class="border-0 bg-light text-center">
-                            <div class="py-1">
-                                @item.Surname
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td scope="col" class="border-0 bg-light">
-                            <div class="py-1">E-mail</div>
-                        </td>
-                        <td class="border-0 bg-light text-center">
-                            <div class="py-1 ">
-                                @Model.Email
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td scope="col" class="border-0 bg-light">
-                            <div class="py-1">Nr Tel.</div>
-                        </td>
-                        <td class="border-0 bg-light text-center">
-                            <div class="py-1">
-                                @Model.PhoneNumber
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td scope="col" class="border-0 bg-light">
-                            <div class="py-1">Adres</div>
-                        </td>
-                        <td class="border-0 bg-light text-center">
-                            <div class="py-1">
+                    {
+                        <table class="table cart-table w-50 mt-3">
+                            <tr class="title-row">
+                                <td class="border-0 bg-secondary text-center">
+                                    <div class="py-1 text-uppercase">Dane użytkownika</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td scope="col" class="border-0 bg-light">
+                                    <div class="py-1">Nazwa używtkownika</div>
+                                </td>
+                                <td class="border-0 bg-light text-center">
+                                    <div class="py-1">
+                                        @Model.AspNetUsers.UserName
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td scope="col" class="border-0 bg-light">
+                                    <div class="py-1">Imię</div>
+                                </td>
+                                <td class="border-0 bg-light text-center">
+                                    <div class="py-1">
+                                        @item.Name
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td scope="col" class="border-0 bg-light">
+                                    <div class="py-1">Nazwisko </div>
+                                </td>
+                                <td class="border-0 bg-light text-center">
+                                    <div class="py-1">
+                                        @item.Surname
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td scope="col" class="border-0 bg-light">
+                                    <div class="py-1">E-mail</div>
+                                </td>
+                                <td class="border-0 bg-light text-center">
+                                    <div class="py-1 ">
+                                        @Model.Email
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td scope="col" class="border-0 bg-light">
+                                    <div class="py-1">Nr Tel.</div>
+                                </td>
+                                <td class="border-0 bg-light text-center">
+                                    <div class="py-1">
+                                        @Model.PhoneNumber
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td scope="col" class="border-0 bg-light">
+                                    <div class="py-1">Adres</div>
+                                </td>
+                                <td class="border-0 bg-light text-center">
+                                    <div class="py-1">
 
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td scope="col" class="border-0 bg-light">
-                            <div class="py-1">Miejscowość</div>
-                        </td>
-                        <td class="border-0 bg-light text-center">
-                            <div class="py-1">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td scope="col" class="border-0 bg-light">
+                                    <div class="py-1">Miejscowość</div>
+                                </td>
+                                <td class="border-0 bg-light text-center">
+                                    <div class="py-1">
 
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td scope="col" class="border-0 bg-light">
-                            <div class="py-1">Kod Pocztowy</div>
-                        </td>
-                        <td class="border-0 bg-light text-center">
-                            <div class="py-1">
-                                @item.postal_code
-                            </div>
-                        </td>
-                    </tr>
-                </table>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td scope="col" class="border-0 bg-light">
+                                    <div class="py-1">Kod Pocztowy</div>
+                                </td>
+                                <td class="border-0 bg-light text-center">
+                                    <div class="py-1">
+                                        @item.postal_code
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
                     }
                 }
         </div>
