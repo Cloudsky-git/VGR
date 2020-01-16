@@ -2,6 +2,7 @@
 @using PagedList;
 @using PagedList.Mvc;
 @model PagedList.IPagedList<customer>
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_SearchLayout.cshtml";
@@ -146,132 +147,112 @@
                             </td>
                         </tr>
                     </table>
-                            }
-                        }
+                }
+            }
 
-                    @using (Html.BeginForm("Account_info", "Account", FormMethod.Post, new { id = "user-form" }))
-                    {
+            @using (Html.BeginForm("Account_info", "Account", FormMethod.Post, new { id = "user-form" }))
+            {
 
-                    <table class="table cart-table w-50 mt-3">
-                        <tr class="title-row">
-                            <td class="border-0 bg-secondary text-center">
-                                <div class="py-1 text-uppercase">Dane użytkownika</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td scope="col" class="border-0 bg-light">
-                                <div class="py-1">Nazwa używtkownika</div>
-                            </td>
-                            <td class="border-0 bg-light text-center">
-                                <div class="py-1">
-                                    <input type="text" name="Username" />
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td scope="col" class="border-0 bg-light">
-                                <div class="py-1">Imię</div>
-                            </td>
-                            <td class="border-0 bg-light text-center">
-                                <div class="py-1">
-                                    <input type="text" name="userName" />
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td scope="col" class="border-0 bg-light">
-                                <div class="py-1">Nazwisko </div>
-                            </td>
-                            <td class="border-0 bg-light text-center">
-                                <div class="py-1">
-                                    <input type="text" name="userSurname" />
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td scope="col" class="border-0 bg-light">
-                                <div class="py-1">E-mail</div>
-                            </td>
-                            <td class="border-0 bg-light text-center">
-                                <div class="py-1 ">
-                                    <input type="text" name="userMail" />
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td scope="col" class="border-0 bg-light">
-                                <div class="py-1">Nr Tel.</div>
-                            </td>
-                            <td class="border-0 bg-light text-center">
-                                <div class="py-1">
-                                    <input type="text" name="userPhone" />
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td scope="col" class="border-0 bg-light">
-                                <div class="py-1">Adres</div>
-                            </td>
-                            <td class="border-0 bg-light text-center">
-                                <div class="py-1">
-                                    <input type="text" name="userAddress1" placeholder="Adres - 1. wiersz" />
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td scope="col" class="border-0 bg-light">
-                                <div class="py-1">Miejscowość</div>
-                            </td>
-                            <td class="border-0 bg-light text-center">
-                                <div class="py-1">
-                                    <input type="text" name="userAddress2" />
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td scope="col" class="border-0 bg-light">
-                                <div class="py-1">Kod Pocztowy</div>
-                            </td>
-                            <td class="border-0 bg-light text-center">
-                                <div class="py-1">
-                                    <input type="text" name="userPostal" />
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="3">
-                                <div class="py-1">
-                                    <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Zastosuj</button>
-                                </div>
-                            </td>
-                        </tr>
-                    </table>
+                <table class="table cart-table w-50 mt-3">
+                    <tr class="title-row">
+                        <td class="border-0 bg-secondary text-center">
+                            <div class="py-1 text-uppercase">Dane użytkownika</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td scope="col" class="border-0 bg-light">
+                            <div class="py-1">Imię</div>
+                        </td>
+                        <td class="border-0 bg-light text-center">
+                            <div class="py-1">
+                                <input type="text" name="userName" />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td scope="col" class="border-0 bg-light">
+                            <div class="py-1">Nazwisko </div>
+                        </td>
+                        <td class="border-0 bg-light text-center">
+                            <div class="py-1">
+                                <input type="text" name="userSurname" />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td scope="col" class="border-0 bg-light">
+                            <div class="py-1">Nr Tel.</div>
+                        </td>
+                        <td class="border-0 bg-light text-center">
+                            <div class="py-1">
+                                <input type="text" name="userPhone" />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td scope="col" class="border-0 bg-light">
+                            <div class="py-1">Adres</div>
+                        </td>
+                        <td class="border-0 bg-light text-center">
+                            <div class="py-1">
+                                <input type="text" name="userAddress1" placeholder="Adres - 1. wiersz" />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td scope="col" class="border-0 bg-light">
+                            <div class="py-1">Miejscowość</div>
+                        </td>
+                        <td class="border-0 bg-light text-center">
+                            <div class="py-1">
+                                <input type="text" name="userAddress2" />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td scope="col" class="border-0 bg-light">
+                            <div class="py-1">Kod Pocztowy</div>
+                        </td>
+                        <td class="border-0 bg-light text-center">
+                            <div class="py-1">
+                                <input type="text" name="userPostal" />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <div class="py-1">
+                                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Zastosuj</button>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            }
+
+            <script type="text/javascript">
+                $("#user-form").validate({
+                    rules: {
+                        userName: {
+                            required: true
+                        },
+                        userSurname: {
+                            required: true
+                        },
+                        userMail: {
+                            required: true
+                        },
+                        userAddress1: {
+                            required: true
+                        },
+                        userAddress2: {
+                            required: true
+                        },
+                        userPostal: {
+                            required: true
+                        },
                     }
-            
-                    <script type="text/javascript">
-                        $("#user-form").validate({
-                            rules: {
-                                userName: {
-                                    required: true
-                                },
-                                userSurname: {
-                                    required: true
-                                },
-                                userMail: {
-                                    required: true
-                                },
-                                userAddress1: {
-                                    required: true
-                                },
-                                userAddress2: {
-                                    required: true
-                                },
-                                userPostal: {
-                                    required: true
-                                },
-                            }
-                        });
-                    </script>
+                });
+            </script>
         </div>
     </div>
 </div>
