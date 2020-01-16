@@ -26,9 +26,7 @@
 <div class="container">
     <div class="cart-card">
         <div class="container-fluid">
-        @{ 
-            if (Request.IsAuthenticated)
-            {
+            @{
                 foreach (var item in Model)
                 {
                     <table class="table cart-table w-50 mt-3">
@@ -53,7 +51,10 @@
                             </td>
                             <td class="border-0 bg-light text-center">
                                 <div class="py-1">
-                                    @item.name
+                                    @if (@item.name == null)
+                                    {
+                                        Console.Write("brak");
+                                    }
                                 </div>
                             </td>
                         </tr>
@@ -63,7 +64,10 @@
                             </td>
                             <td class="border-0 bg-light text-center">
                                 <div class="py-1">
-                                    @item.surname
+                                    @if (@item.surname == null)
+                                    {
+                                        Console.Write("brak");
+                                    }
                                 </div>
                             </td>
                         </tr>
@@ -73,7 +77,7 @@
                             </td>
                             <td class="border-0 bg-light text-center">
                                 <div class="py-1 ">
-                                    @item.Email
+                                    @item.AspNetUser.Email
                                 </div>
                             </td>
                         </tr>
@@ -83,7 +87,10 @@
                             </td>
                             <td class="border-0 bg-light text-center">
                                 <div class="py-1">
-                                    @item.PhoneNumber
+                                    @if (@item.AspNetUser.PhoneNumber == null)
+                                    {
+                                        Console.Write("brak");
+                                    }
                                 </div>
                             </td>
                         </tr>
@@ -93,7 +100,10 @@
                             </td>
                             <td class="border-0 bg-light text-center">
                                 <div class="py-1">
-                                    @item.address_line1
+                                    @if (@item.address_line1 == null)
+                                    {
+                                        Console.Write("brak");
+                                    }
                                 </div>
                             </td>
                         </tr>
@@ -103,7 +113,10 @@
                             </td>
                             <td class="border-0 bg-light text-center">
                                 <div class="py-1">
-                                    @item.address_line2
+                                    @if (@item.address_line2 == null)
+                                    {
+                                        Console.Write("brak");
+                                    }
                                 </div>
                             </td>
                         </tr>
@@ -113,18 +126,31 @@
                             </td>
                             <td class="border-0 bg-light text-center">
                                 <div class="py-1">
-                                    @item.postal_code
+                                    @if (@item.postal_code == null)
+                                    {
+                                        Console.Write("brak");
+                                    }
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                <div class="py-1">
+                                    <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Zastosuj</button>
+                                </div>
+                            </td>
+                            <td colspan="3">
+                                <div class="py-1">
+                                    @Html.ActionLink("Przejdź do konta", "User_details", "Account", new { area = "" }, new { @class = "btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" })
                                 </div>
                             </td>
                         </tr>
                     </table>
-                }
-            }
+                            }
+                        }
 
-            else
-            {
-                using (Html.BeginForm("UserDetails", "Account", FormMethod.Post, new { id = "user-form" }))
-                {
+                    @using (Html.BeginForm("Account_info", "Account", FormMethod.Post, new { id = "user-form" }))
+                    {
 
                     <table class="table cart-table w-50 mt-3">
                         <tr class="title-row">
@@ -148,7 +174,7 @@
                             </td>
                             <td class="border-0 bg-light text-center">
                                 <div class="py-1">
-                                    <input type="text" name="cusName" />
+                                    <input type="text" name="userName" />
                                 </div>
                             </td>
                         </tr>
@@ -220,35 +246,32 @@
                             </td>
                         </tr>
                     </table>
-                }
-            }
-            }
-
-            <script type="text/javascript">
-                $("#user-form").validate({
-                    rules: {
-                        cusName: {
-                            required: true
-                        },
-                        cusSurname: {
-                            required: true
-                        },
-                        cusMail: {
-                            required: true
-                        },
-                        cusAddress1: {
-                            required: true
-                        },
-                        cusAddress2: {
-                            required: true
-                        },
-                        cusPostal: {
-                            required: true
-                        },
                     }
-                });
-            </script>
-
+            
+                    <script type="text/javascript">
+                        $("#user-form").validate({
+                            rules: {
+                                userName: {
+                                    required: true
+                                },
+                                userSurname: {
+                                    required: true
+                                },
+                                userMail: {
+                                    required: true
+                                },
+                                userAddress1: {
+                                    required: true
+                                },
+                                userAddress2: {
+                                    required: true
+                                },
+                                userPostal: {
+                                    required: true
+                                },
+                            }
+                        });
+                    </script>
         </div>
     </div>
 </div>

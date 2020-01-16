@@ -86,7 +86,7 @@
             }
 
             @using (Html.BeginForm("ProcessOrder", "ShoppingCart", FormMethod.Post, new { id = "customer-form" }))
-        {
+            {
 
         <table class="table cart-table w-50 mt-3">
             <tr class="title-row">
@@ -172,7 +172,7 @@
                 </td>
             </tr>
         </table>
-    }
+            }
 
             <script type="text/javascript">
                 $("#customer-form").validate({
@@ -198,7 +198,7 @@
                     }
                 });
             </script>
-
+   
         </div>
     </div>
 </div>

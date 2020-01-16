@@ -150,14 +150,15 @@ namespace ASPNetIdentity.Controllers
             return RedirectToAction("Index", "Home");
         }              
 
-        public ActionResult Account_details(FormCollection frc)
+        public ActionResult Account_Details(FormCollection frc)
         {
-            return View("Account_details");
+            return View();
         }
 
-        public ActionResult UserDetails(FormCollection frc)
+        public ActionResult Account_info(FormCollection frc)
         {          
-            customer user1 = new customer()
+           
+            customer customer = new customer()
             {
                 name = frc["userName"],
                 surname = frc["userSurname"],
@@ -168,20 +169,10 @@ namespace ASPNetIdentity.Controllers
                 postal_code = frc["userPostal"]
             };
 
-            AspNetUser user = new AspNetUser()
-            {
-                UserName = frc["Username"],
-                Email = frc["userMail"],
-                PhoneNumber = frc["userPhone"]
-            };
+            db.customers.Add(customer);
+            db.SaveChanges();
 
-            db.customers.Add(user1);
-            db.AspNetUsers.Add(user);
-            db.SaveChanges();  
-
-            return View("Account");
+            return View("User_details");
         }
-
-
     }
 }
