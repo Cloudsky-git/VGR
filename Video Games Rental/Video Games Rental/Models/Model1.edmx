@@ -82,7 +82,7 @@
           <Property Name="name" Type="nvarchar" MaxLength="30" />
           <Property Name="surname" Type="nvarchar" MaxLength="30" />
           <Property Name="address-line1" Type="nvarchar" MaxLength="64" />
-          <Property Name="address-line2" Type="nvarchar" MaxLength="10" />
+          <Property Name="address-line2" Type="nvarchar" MaxLength="64" />
           <Property Name="postal code" Type="nvarchar" MaxLength="10" />
           <Property Name="Email" Type="nvarchar" MaxLength="128" />
           <Property Name="PhoneNumber" Type="nvarchar" MaxLength="64" />
@@ -501,16 +501,7 @@
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
             <End Role="AspNetUserRole" EntitySet="AspNetUserRoles" />
           </AssociationSet>
-          <EntitySet Name="customers" EntityType="Model.customer" />
-          <AssociationSet Name="FK_customer_AspNetUsers" Association="Model.FK_customer_AspNetUsers">
-            <End Role="AspNetUser" EntitySet="AspNetUsers" />
-            <End Role="customer" EntitySet="customers" />
-          </AssociationSet>
           <EntitySet Name="orders" EntityType="Model.order" />
-          <AssociationSet Name="FK_order_customer" Association="Model.FK_order_customer">
-            <End Role="customer" EntitySet="customers" />
-            <End Role="order" EntitySet="orders" />
-          </AssociationSet>
           <AssociationSet Name="FK_order_detail_order" Association="Model.FK_order_detail_order">
             <End Role="order" EntitySet="orders" />
             <End Role="order_detail" EntitySet="order_detail" />
@@ -521,6 +512,15 @@
           </AssociationSet>
           <AssociationSet Name="FK_order_status" Association="Model.FK_order_status">
             <End Role="status" EntitySet="status" />
+            <End Role="order" EntitySet="orders" />
+          </AssociationSet>
+          <EntitySet Name="customers" EntityType="Model.customer" />
+          <AssociationSet Name="FK_customer_AspNetUsers" Association="Model.FK_customer_AspNetUsers">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="customer" EntitySet="customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_order_customer" Association="Model.FK_order_customer">
+            <End Role="customer" EntitySet="customers" />
             <End Role="order" EntitySet="orders" />
           </AssociationSet>
           </EntityContainer>
@@ -732,34 +732,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="customer">
-          <Key>
-            <PropertyRef Name="customer_id" />
-          </Key>
-          <Property Name="customer_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="AspNetUsers_id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="surname" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="address_line1" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Name="address_line2" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="postal_code" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="PhoneNumber" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AspNetUser" Relationship="Model.FK_customer_AspNetUsers" FromRole="customer" ToRole="AspNetUser" />
-          <NavigationProperty Name="orders" Relationship="Model.FK_order_customer" FromRole="customer" ToRole="order" />
-        </EntityType>
-        <Association Name="FK_customer_AspNetUsers">
-          <End Type="Model.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
-          <End Type="Model.customer" Role="customer" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUser">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="customer">
-              <PropertyRef Name="AspNetUsers_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="order">
           <Key>
             <PropertyRef Name="order_id" />
@@ -770,23 +742,11 @@
           <Property Name="status_id" Type="Int32" Nullable="false" />
           <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="price" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
-          <NavigationProperty Name="customer" Relationship="Model.FK_order_customer" FromRole="order" ToRole="customer" />
           <NavigationProperty Name="order_detail" Relationship="Model.FK_order_detail_order" FromRole="order" ToRole="order_detail" />
           <NavigationProperty Name="order_type" Relationship="Model.FK_order_order_type" FromRole="order" ToRole="order_type" />
           <NavigationProperty Name="status" Relationship="Model.FK_order_status" FromRole="order" ToRole="status" />
+          <NavigationProperty Name="customer" Relationship="Model.FK_order_customer" FromRole="order" ToRole="customer" />
         </EntityType>
-        <Association Name="FK_order_customer">
-          <End Type="Model.customer" Role="customer" Multiplicity="1" />
-          <End Type="Model.order" Role="order" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="customer">
-              <PropertyRef Name="customer_id" />
-            </Principal>
-            <Dependent Role="order">
-              <PropertyRef Name="customer_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_order_detail_order">
           <End Type="Model.order" Role="order" Multiplicity="1" />
           <End Type="Model.order_detail" Role="order_detail" Multiplicity="*" />
@@ -820,6 +780,46 @@
             </Principal>
             <Dependent Role="order">
               <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="customer_id" />
+          </Key>
+          <Property Name="customer_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AspNetUsers_id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="surname" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="address_line1" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="address_line2" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="postal_code" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="Model.FK_customer_AspNetUsers" FromRole="customer" ToRole="AspNetUser" />
+          <NavigationProperty Name="orders" Relationship="Model.FK_order_customer" FromRole="customer" ToRole="order" />
+        </EntityType>
+        <Association Name="FK_customer_AspNetUsers">
+          <End Type="Model.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
+          <End Type="Model.customer" Role="customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="customer">
+              <PropertyRef Name="AspNetUsers_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_order_customer">
+          <End Type="Model.customer" Role="customer" Multiplicity="1" />
+          <End Type="Model.order" Role="order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="customer_id" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="customer_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -976,6 +976,18 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="orders">
+            <EntityTypeMapping TypeName="Model.order">
+              <MappingFragment StoreEntitySet="order">
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="status_id" ColumnName="status_id" />
+                <ScalarProperty Name="order_type_id" ColumnName="order_type_id" />
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="customers">
             <EntityTypeMapping TypeName="Model.customer">
               <MappingFragment StoreEntitySet="customer">
@@ -988,18 +1000,6 @@
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="AspNetUsers_id" ColumnName="AspNetUsers_id" />
                 <ScalarProperty Name="customer_id" ColumnName="customer_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="orders">
-            <EntityTypeMapping TypeName="Model.order">
-              <MappingFragment StoreEntitySet="order">
-                <ScalarProperty Name="price" ColumnName="price" />
-                <ScalarProperty Name="date" ColumnName="date" />
-                <ScalarProperty Name="status_id" ColumnName="status_id" />
-                <ScalarProperty Name="order_type_id" ColumnName="order_type_id" />
-                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
-                <ScalarProperty Name="order_id" ColumnName="order_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -7,46 +7,11 @@ using System.Web;
 namespace Video_Games_Rental.Models
 {
     public class AccountViewModels
-    {
-        [Required]
-        [Display(Name = "Username")]
-        public string Username { get; set; }
-
-        [Required]
-        [Display(Name = "Name")]
-        public string Name { get; set; }
-
-        [Required]
-        [Display(Name = "Surname")]
-        public string Surname { get; set; }       
-
-        [Required]
-        [EmailAddress]
-        [Display(Name = "Email")]
-        public string Email { get; set; }
-
-        [Required]
-        [Display(Name = "PhoneNumber")]
-        public string PhoneNumber { get; set; }
-
-        [Required]
-        [Display(Name = "address_line1")]
-        public string Address_line1 { get; set; }
-
-        [Required]
-        [Display(Name = "address_line2")]
-        public string Address_line2 { get; set; }
-
-        [Required]
-        [Display(Name = "postal_code")]
-        public string Postal_code { get; set; }
+    {      
     }
 
     public class RegisterViewModel
     {
-        [Required]
-        [Display(Name = "Username")]
-        public string Username { get; set; }
 
         [Required]
         [EmailAddress]

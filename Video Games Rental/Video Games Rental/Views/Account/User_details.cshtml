@@ -1,7 +1,7 @@
 ﻿@using Video_Games_Rental.Models;
 @using PagedList;
 @using PagedList.Mvc;
-@model PagedList.IPagedList<customer>
+@model Video_Games_Rental.Models.customer
 @{
     ViewBag.Title = "Account_info";
     Layout = "~/Views/Shared/_SearchLayout.cshtml";
@@ -27,101 +27,105 @@
     <div class="cart-card">
         <div class="container-fluid">
 
-
-            <h2>@Html.ActionLink("Home", "../Home/Index", "Home", new { @class = "backtohome" })</h2>
-
             @{
-                foreach (var item in Model)
+                using (Html.BeginForm())
                 {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     <table class="table cart-table w-50 mt-3">
                         <tr class="title-row">
                             <td class="border-0 bg-secondary text-center">
                                 <div class="py-1 text-uppercase">Dane użytkownika</div>
                             </td>
-                        </tr>
+                        </tr>                     
                         <tr>
                             <td scope="col" class="border-0 bg-light">
-                                <div class="py-1">Nazwa używtkownika</div>
+                                <div class="py-1">
+                                    Imie
+                                </div>
                             </td>
                             <td class="border-0 bg-light text-center">
                                 <div class="py-1">
-                                    @item.AspNetUser.UserName
+                                    @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })                                    
                                 </div>
                             </td>
                         </tr>
                         <tr>
                             <td scope="col" class="border-0 bg-light">
-                                <div class="py-1">Imię</div>
+                                <div class="py-1">
+                                    Nazwisko
+                                </div>
                             </td>
                             <td class="border-0 bg-light text-center">
                                 <div class="py-1">
-                                    @item.name
+                                    @Html.EditorFor(model => model.surname, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.surname, "", new { @class = "text-danger" })
                                 </div>
                             </td>
                         </tr>
                         <tr>
                             <td scope="col" class="border-0 bg-light">
-                                <div class="py-1">Nazwisko </div>
+                                <div class="py-1">
+                                    Nr Tel.
+                                </div>
                             </td>
                             <td class="border-0 bg-light text-center">
                                 <div class="py-1">
-                                    @item.surname
+                                    @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
                                 </div>
                             </td>
                         </tr>
                         <tr>
                             <td scope="col" class="border-0 bg-light">
-                                <div class="py-1">E-mail</div>
-                            </td>
-                            <td class="border-0 bg-light text-center">
-                                <div class="py-1 ">
-                                    @item.AspNetUser.Email
+                                <div class="py-1">
+                                    Adres
                                 </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td scope="col" class="border-0 bg-light">
-                                <div class="py-1">Nr Tel.</div>
                             </td>
                             <td class="border-0 bg-light text-center">
                                 <div class="py-1">
-                                    @item.AspNetUser.PhoneNumber
+                                    @Html.EditorFor(model => model.address_line1, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.address_line1, "", new { @class = "text-danger" })
                                 </div>
                             </td>
                         </tr>
                         <tr>
                             <td scope="col" class="border-0 bg-light">
-                                <div class="py-1">Adres</div>
+                                <div class="py-1">
+                                    Miejscowość
+                                </div>
                             </td>
                             <td class="border-0 bg-light text-center">
                                 <div class="py-1">
-                                    @item.address_line1
+                                    @Html.EditorFor(model => model.address_line2, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.address_line2, "", new { @class = "text-danger" })
                                 </div>
                             </td>
                         </tr>
                         <tr>
                             <td scope="col" class="border-0 bg-light">
-                                <div class="py-1">Miejscowość</div>
+                                <div class="py-1">
+                                    Kod Pocztowy
+                                </div>
                             </td>
                             <td class="border-0 bg-light text-center">
                                 <div class="py-1">
-                                    @item.address_line2
+                                    @Html.EditorFor(model => model.postal_code, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.postal_code, "", new { @class = "text-danger" })
                                 </div>
                             </td>
                         </tr>
                         <tr>
-                            <td scope="col" class="border-0 bg-light">
-                                <div class="py-1">Kod Pocztowy</div>
-                            </td>
-                            <td class="border-0 bg-light text-center">
+                            <td colspan="3">
                                 <div class="py-1">
-                                    @item.postal_code
+                                    <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" value="User_details">Zastosuj</button>
                                 </div>
                             </td>
-                        </tr>                       
+                        </tr>
                     </table>
                 }
-            }
+            }          
 
         </div>
     </div>

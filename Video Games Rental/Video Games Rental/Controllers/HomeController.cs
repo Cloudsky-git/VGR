@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Video_Games_Rental.Models;
 
 
 namespace video_games_rental.Controllers
 {
     public class HomeController : Controller
     {
+        private VGR_DBEntities db = new VGR_DBEntities();
         public ActionResult Index()
         {
             return View();
@@ -20,7 +22,7 @@ namespace video_games_rental.Controllers
             return View();
         }
 
-        public ActionResult Reservation()
+        public ActionResult AddProduct()
         {
 
             return View();
@@ -78,6 +80,24 @@ namespace video_games_rental.Controllers
         {
 
             return View();
-        }
+        } 
+
+        //public ActionResult GameRegister(FormCollection frc)
+        //{
+        //    game game = new game()
+        //    {
+        //        title = frc["gameTitle"],
+        //        genre_id = frc[""],
+        //        language = frc["gameLanguage"],
+        //        platform = frc["gamePlatform"],
+        //        condition = frc["gameCondition"],
+        //        price = frc["gamePrice"],               
+        //    };
+
+        //    db.games.Add(game);
+        //    db.SaveChanges();
+
+        //    return View("RegisterSuccess");
+        //}
     }
 }

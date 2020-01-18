@@ -69,7 +69,7 @@ namespace Video_Games_Rental.Controllers
             return View("Index");
         }
 
-        public ActionResult CheckOut(FormCollection frc)
+        public ActionResult CheckOut()
         {           
             return View("CheckOut");
         }
@@ -77,6 +77,7 @@ namespace Video_Games_Rental.Controllers
         public ActionResult ProcessOrder(FormCollection frc)
         {
             List<Cart> lsCart = (List<Cart>)Session[strCart];
+            List<Cart> temp = (List<Cart>)Session["Cart"];
             customer customer = new customer()
             {
                 name = frc["cusName"],
@@ -96,9 +97,11 @@ namespace Video_Games_Rental.Controllers
             foreach (Cart cart in lsCart)
             {
                 order order = new order()
-                {
-                    customer_id = idCust,
-                    price = cart.Product.price,
+                {                   
+                    customer_id = idCust, 
+                    price = temp.Sum(price => cart.Quantity * cart.Product.price),
+                    //price = cart.Product.price*cart.Quantity,
+                    //= string.Format("{0:F2}", temp.Sum(x => x.Quantity * x.Product.price));
                     date = DateTime.Now,
                     order_type_id = 3,
                     status_id = 2
@@ -108,6 +111,7 @@ namespace Video_Games_Rental.Controllers
             }
             Session.Remove(strCart);
             return View("OrderSuccess");
+            
         }
     }
 }

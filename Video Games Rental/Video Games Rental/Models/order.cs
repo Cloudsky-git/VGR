@@ -27,10 +27,10 @@ namespace Video_Games_Rental.Models
         public System.DateTime date { get; set; }
         public decimal price { get; set; }
     
-        public virtual customer customer { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<order_detail> order_detail { get; set; }
         public virtual order_type order_type { get; set; }
         public virtual status status { get; set; }
+        public virtual customer customer { get; set; }
     }
 }

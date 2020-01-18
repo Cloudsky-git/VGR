@@ -28,13 +28,13 @@
         <AssociationConnector Association="Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="Model.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" />
-        <EntityTypeShape EntityType="Model.customer" Width="1.5" PointX="6.875" PointY="2.625" />
-        <AssociationConnector Association="Model.FK_customer_AspNetUsers" />
         <EntityTypeShape EntityType="Model.order" Width="1.5" PointX="2.625" PointY="0.5" />
-        <AssociationConnector Association="Model.FK_order_customer" />
         <AssociationConnector Association="Model.FK_order_detail_order" />
         <AssociationConnector Association="Model.FK_order_order_type" />
         <AssociationConnector Association="Model.FK_order_status" />
+        <EntityTypeShape EntityType="Model.customer" Width="1.5" PointX="7.125" PointY="2.375" />
+        <AssociationConnector Association="Model.FK_customer_AspNetUsers" />
+        <AssociationConnector Association="Model.FK_order_customer" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

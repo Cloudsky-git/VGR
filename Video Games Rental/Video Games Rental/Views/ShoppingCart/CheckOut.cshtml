@@ -24,154 +24,222 @@
     <div class="cart-card">
         <div class="container-fluid">
             @{
-                if (Session["Cart"] != null)
+                if (Request.IsAuthenticated)
                 {
-                    <div class="table-responsive">
-                        <h3 class="text-center text-uppercase mb-4 cart-title">Twoje zamówienie</h3>
-                        <table class="table cart-table">
-                            <thead>
-                                <tr>
-                                    <th scope="col" class="border-0 bg-light">
-                                        <div class="p-2 px-3 text-uppercase">Produkt</div>
-                                    </th>
-                                    <th scope="col" class="border-0 bg-light">
-                                        <div class="py-2 text-uppercase">Cena</div>
-                                    </th>
-                                    <th scope="col" class="border-0 bg-light">
-                                        <div class="py-2 text-uppercase">Ilość</div>
-                                    </th>
-                                    <th scope="col" class="border-0 bg-light">
-                                        <div class="py-2 text-uppercase">Cena razem</div>
+                    if (Session["Cart"] != null)
+                    {
+                        <div class="table-responsive">
+                            <h3 class="text-center text-uppercase mb-4 cart-title">Twoje zamówienie</h3>
+                            <table class="table cart-table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" class="border-0 bg-light">
+                                            <div class="p-2 px-3 text-uppercase">Produkt</div>
+                                        </th>
+                                        <th scope="col" class="border-0 bg-light">
+                                            <div class="py-2 text-uppercase">Cena</div>
+                                        </th>
+                                        <th scope="col" class="border-0 bg-light">
+                                            <div class="py-2 text-uppercase">Ilość</div>
+                                        </th>
+                                        <th scope="col" class="border-0 bg-light">
+                                            <div class="py-2 text-uppercase">Cena razem</div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                @foreach (var cart in (List<Cart>)Session["Cart"])
+                                {
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row" class="border-0">
+                                                <div class="p-2">
+                                                    <a href="@Url.Action("Details", "Shop", new { id = cart.Product.game_id }, null)"><img width="70" class="img-fluid rounded shadow-sm img-thumbnail" src="@Url.Content("~/Content/img/games/" + cart.Product.image)" /></a>
+                                                    <div class="ml-3 d-inline-block align-middle">
+                                                        <h5 class="mb-0 game-title"> @Html.ActionLink(@cart.Product.title, "Details", "Shop", new { id = cart.Product.game_id }, null)</h5><span class="text-muted font-weight-normal font-italic d-block">@cart.Product.genre.genre1 [@cart.Product.language.language1]</span>
+                                                    </div>
+                                                </div>
+                                            </th>
+                                            <td class="border-0 align-middle"><strong>@cart.Product.price zł</strong></td>
+                                            <td class="border-0 align-middle"><strong>@cart.Quantity</strong></td>
+                                            <td class="border-0 align-middle"><strong>@(String.Format("{0:F2}", cart.Product.price * cart.Quantity)) zł</strong></td>
+                                        </tr>
+                                    </tbody>
+                                }
+                                <tr class="price-total">
+                                    <th class="border-0 align-middle text-uppercase">Suma</th>
+                                    <th class="border-0 align-middle"></th>
+                                    <th class="border-0 align-middle"></th>
+                                    <th class="border-0 align-middle">
+                                        @{
+                                            List<Cart> temp = (List<Cart>)Session["Cart"];
+                                            var total = string.Format("{0:F2}", temp.Sum(x => x.Quantity * x.Product.price));
+                                        }
+
+                                        @total zł
                                     </th>
                                 </tr>
-                            </thead>
-                            @foreach (var cart in (List<Cart>)Session["Cart"])
-                            {
-                                <tbody>
-                                    <tr>
-                                        <th scope="row" class="border-0">
-                                            <div class="p-2">
-                                                <a href="@Url.Action("Details", "Shop", new { id = cart.Product.game_id }, null)"><img width="70" class="img-fluid rounded shadow-sm img-thumbnail" src="@Url.Content("~/Content/img/games/" + cart.Product.image)" /></a>
-                                                <div class="ml-3 d-inline-block align-middle">
-                                                    <h5 class="mb-0 game-title"> @Html.ActionLink(@cart.Product.title, "Details", "Shop", new { id = cart.Product.game_id }, null)</h5><span class="text-muted font-weight-normal font-italic d-block">@cart.Product.genre.genre1 [@cart.Product.language.language1]</span>
-                                                </div>
-                                            </div>
-                                        </th>
-                                        <td class="border-0 align-middle"><strong>@cart.Product.price zł</strong></td>
-                                        <td class="border-0 align-middle"><strong>@cart.Quantity</strong></td>
-                                        <td class="border-0 align-middle"><strong>@(String.Format("{0:F2}", cart.Product.price * cart.Quantity)) zł</strong></td>
-                                    </tr>
-                                </tbody>
-                            }
-                            <tr class="price-total">
-                                <th class="border-0 align-middle text-uppercase">Suma</th>
-                                <th class="border-0 align-middle"></th>
-                                <th class="border-0 align-middle"></th>
-                                <th class="border-0 align-middle">
-                                    @{
-                                        List<Cart> temp = (List<Cart>)Session["Cart"];
-                                        var total = string.Format("{0:F2}", temp.Sum(x => x.Quantity * x.Product.price));
-                                    }
+                            </table>
+                        </div>
+                    }
+                    else
+                    {
+                        <h3>Twój koszyk jest pusty!</h3>
+                    }
 
-                                    @total zł
-                                </th>
-                            </tr>
-                        </table>
-                    </div>
+                    @Html.ActionLink("Zamów", "ProcessOrder", "ShoppingCart", new { area = "" }, new { @class = "btn btn-primary btn-xl text-uppercase js-scroll-trigger" })
                 }
                 else
                 {
-                    <h3>Twój koszyk jest pusty!</h3>
+
+                    if (Session["Cart"] != null)
+                    {
+                        <div class="table-responsive">
+                            <h3 class="text-center text-uppercase mb-4 cart-title">Twoje zamówienie</h3>
+                            <table class="table cart-table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" class="border-0 bg-light">
+                                            <div class="p-2 px-3 text-uppercase">Produkt</div>
+                                        </th>
+                                        <th scope="col" class="border-0 bg-light">
+                                            <div class="py-2 text-uppercase">Cena</div>
+                                        </th>
+                                        <th scope="col" class="border-0 bg-light">
+                                            <div class="py-2 text-uppercase">Ilość</div>
+                                        </th>
+                                        <th scope="col" class="border-0 bg-light">
+                                            <div class="py-2 text-uppercase">Cena razem</div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                @foreach (var cart in (List<Cart>)Session["Cart"])
+                                {
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row" class="border-0">
+                                                <div class="p-2">
+                                                    <a href="@Url.Action("Details", "Shop", new { id = cart.Product.game_id }, null)"><img width="70" class="img-fluid rounded shadow-sm img-thumbnail" src="@Url.Content("~/Content/img/games/" + cart.Product.image)" /></a>
+                                                    <div class="ml-3 d-inline-block align-middle">
+                                                        <h5 class="mb-0 game-title"> @Html.ActionLink(@cart.Product.title, "Details", "Shop", new { id = cart.Product.game_id }, null)</h5><span class="text-muted font-weight-normal font-italic d-block">@cart.Product.genre.genre1 [@cart.Product.language.language1]</span>
+                                                    </div>
+                                                </div>
+                                            </th>
+                                            <td class="border-0 align-middle"><strong>@cart.Product.price zł</strong></td>
+                                            <td class="border-0 align-middle"><strong>@cart.Quantity</strong></td>
+                                            <td class="border-0 align-middle"><strong>@(String.Format("{0:F2}", cart.Product.price * cart.Quantity)) zł</strong></td>
+                                        </tr>
+                                    </tbody>
+                                }
+                                <tr class="price-total">
+                                    <th class="border-0 align-middle text-uppercase">Suma</th>
+                                    <th class="border-0 align-middle"></th>
+                                    <th class="border-0 align-middle"></th>
+                                    <th class="border-0 align-middle">
+                                        @{
+                                            List<Cart> temp = (List<Cart>)Session["Cart"];
+                                            var total = string.Format("{0:F2}", temp.Sum(x => x.Quantity * x.Product.price));
+                                        }
+
+                                        @total zł
+                                    </th>
+                                </tr>
+                            </table>
+                        </div>
+                    }
+                    else
+                    {
+                        <h3>Twój koszyk jest pusty!</h3>
+                    }
+
+                    using (Html.BeginForm("ProcessOrder", "ShoppingCart", FormMethod.Post, new { id = "customer-form" }))
+                    {
+
+                        <table class="table cart-table w-50 mt-3">
+                            <tr class="title-row">
+                                <td class="border-0 bg-secondary text-center">
+                                    <div class="py-1 text-uppercase">Dane zamawiającego</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td scope="col" class="border-0 bg-light">
+                                    <div class="py-1">Imię</div>
+                                </td>
+                                <td class="border-0 bg-light text-center">
+                                    <div class="py-1">
+                                        <input type="text" name="cusName" />
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td scope="col" class="border-0 bg-light">
+                                    <div class="py-1">Nazwisko </div>
+                                </td>
+                                <td class="border-0 bg-light text-center">
+                                    <div class="py-1">
+                                        <input type="text" name="cusSurname" />
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td scope="col" class="border-0 bg-light">
+                                    <div class="py-1">E-mail</div>
+                                </td>
+                                <td class="border-0 bg-light text-center">
+                                    <div class="py-1 ">
+                                        <input type="text" name="cusMail" />
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td scope="col" class="border-0 bg-light">
+                                    <div class="py-1">Nr Tel.</div>
+                                </td>
+                                <td class="border-0 bg-light text-center">
+                                    <div class="py-1">
+                                        <input type="text" name="cusPhone" />
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td scope="col" class="border-0 bg-light">
+                                    <div class="py-1">Adres</div>
+                                </td>
+                                <td class="border-0 bg-light text-center">
+                                    <div class="py-1">
+                                        <input type="text" name="cusAddress1" placeholder="Adres - 1. wiersz" />
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td scope="col" class="border-0 bg-light">
+                                    <div class="py-1">Miejscowość</div>
+                                </td>
+                                <td class="border-0 bg-light text-center">
+                                    <div class="py-1">
+                                        <input type="text" name="cusAddress2" />
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td scope="col" class="border-0 bg-light">
+                                    <div class="py-1">Kod Pocztowy</div>
+                                </td>
+                                <td class="border-0 bg-light text-center">
+                                    <div class="py-1">
+                                        <input type="text" name="cusPostal" />
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">
+                                    <div class="py-1">
+                                        <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Zamów</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    }
                 }
-            }
-
-            @using (Html.BeginForm("ProcessOrder", "ShoppingCart", FormMethod.Post, new { id = "customer-form" }))
-            {
-
-        <table class="table cart-table w-50 mt-3">
-            <tr class="title-row">
-                <td class="border-0 bg-secondary text-center">
-                    <div class="py-1 text-uppercase">Dane zamawiającego</div>
-                </td>
-            </tr>
-            <tr>
-                <td scope="col" class="border-0 bg-light">
-                    <div class="py-1">Imię</div>
-                </td>
-                <td class="border-0 bg-light text-center">
-                    <div class="py-1">
-                        <input type="text" name="cusName" />
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td scope="col" class="border-0 bg-light">
-                    <div class="py-1">Nazwisko </div>
-                </td>
-                <td class="border-0 bg-light text-center">
-                    <div class="py-1">
-                        <input type="text" name="cusSurname" />
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td scope="col" class="border-0 bg-light">
-                    <div class="py-1">E-mail</div>
-                </td>
-                <td class="border-0 bg-light text-center">
-                    <div class="py-1 ">
-                        <input type="text" name="cusMail" />
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td scope="col" class="border-0 bg-light">
-                    <div class="py-1">Nr Tel.</div>
-                </td>
-                <td class="border-0 bg-light text-center">
-                    <div class="py-1">
-                        <input type="text" name="cusPhone" />
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td scope="col" class="border-0 bg-light">
-                    <div class="py-1">Adres</div>
-                </td>
-                <td class="border-0 bg-light text-center">
-                    <div class="py-1">
-                        <input type="text" name="cusAddress1" placeholder="Adres - 1. wiersz" />
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td scope="col" class="border-0 bg-light">
-                    <div class="py-1">Miejscowość</div>
-                </td>
-                <td class="border-0 bg-light text-center">
-                    <div class="py-1">
-                        <input type="text" name="cusAddress2" />
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td scope="col" class="border-0 bg-light">
-                    <div class="py-1">Kod Pocztowy</div>
-                </td>
-                <td class="border-0 bg-light text-center">
-                    <div class="py-1">
-                        <input type="text" name="cusPostal" />
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="3">
-                    <div class="py-1">
-                        <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Zamów</button>
-                    </div>
-                </td>
-            </tr>
-        </table>
             }
 
             <script type="text/javascript">
@@ -189,16 +257,16 @@
                         cusAddress1: {
                             required: true
                         },
-                         cusAddress2: {
+                        cusAddress2: {
                             required: true
                         },
-                         cusPostal: {
+                        cusPostal: {
                             required: true
                         },
                     }
                 });
             </script>
-   
+
         </div>
     </div>
 </div>

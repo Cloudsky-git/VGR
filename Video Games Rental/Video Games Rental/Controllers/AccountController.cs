@@ -148,31 +148,50 @@ namespace ASPNetIdentity.Controllers
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             return RedirectToAction("Index", "Home");
-        }              
+        }
 
-        public ActionResult Account_Details(FormCollection frc)
+        public ActionResult Account_Details()
         {
             return View();
         }
 
-        public ActionResult Account_info(FormCollection frc)
-        {          
-           
-            customer customer = new customer()
-            {
-                name = frc["userName"],
-                surname = frc["userSurname"],
-                Email = frc["userMail"],
-                PhoneNumber = frc["userPhone"],
-                address_line1 = frc["userAddress1"],
-                address_line2 = frc["userAddress2"],
-                postal_code = frc["userPostal"]
-            };
-
-            db.customers.Add(customer);
-            db.SaveChanges();
-
-            return View("User_details");
+        public ActionResult User_details()
+        {
+            ViewBag.AspNetUsers_id = new SelectList(db.AspNetUsers, "Id", "Email");
+            return View();
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult User_details([Bind(Include = "customer_id,AspNetUsers_id,name,surname,address_line1,address_line2,postal_code,Email,PhoneNumber")] customer customer)
+        {
+            if (ModelState.IsValid)
+            {
+
+                customer.AspNetUsers_id = User.Identity.GetUserId();
+                customer.Email = User.Identity.Name;            
+                db.customers.Add(customer);
+                db.SaveChanges();                
+                return RedirectToAction("Account_details");
+            }
+            
+
+            ViewBag.AspNetUsers_id = new SelectList(db.AspNetUsers, "Id", "Email", customer.AspNetUsers_id);
+            return View(customer);
+        }            
+
+        public PartialViewResult AspNetUsersList()
+        {
+            List<customer> custList = db.customers.Where(x => x.Email == User.Identity.Name).ToList();
+            if (custList.Count() > 0)
+            {
+                customer cust = custList.First();
+                return PartialView(cust);
+            }
+            else
+            {
+                return PartialView();
+            }
+        }   
     }
 }
