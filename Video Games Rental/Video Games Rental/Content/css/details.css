@@ -231,6 +231,13 @@
     }
 }
 
+.order-table{
+    position: relative;
+    left: 25%;
+    color: whitesmoke!important;
+    background-color: grey;
+}
+
 .cart-table{
     color: #333!important;
 }

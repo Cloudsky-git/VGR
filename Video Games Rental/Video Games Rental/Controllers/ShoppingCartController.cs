@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Video_Games_Rental.Models;
+using Microsoft.AspNet.Identity;
+
 
 namespace Video_Games_Rental.Controllers
 {
@@ -89,19 +91,21 @@ namespace Video_Games_Rental.Controllers
                 postal_code = frc["cusPostal"]   
             };
 
-            db.customers.Add(customer);
-            db.SaveChanges();
-            List<customer> lsCust = db.customers.ToList();
-            int idCust = lsCust.Last().customer_id;
-            
-            foreach (Cart cart in lsCart)
+            string aspnetuserID = User.Identity.GetUserId();
+            List<customer> custList = db.customers.Where(x => x.AspNetUsers_id == aspnetuserID).ToList();
+            if (custList.Count() > 0)
             {
-                order order = new order()
+                int cust = custList.First().customer_id;
+                decimal total=0;
+
+                foreach (Cart cart in lsCart)
                 {                   
-                    customer_id = idCust, 
-                    price = temp.Sum(price => cart.Quantity * cart.Product.price),
-                    //price = cart.Product.price*cart.Quantity,
-                    //= string.Format("{0:F2}", temp.Sum(x => x.Quantity * x.Product.price));
+                    total +=  cart.Quantity * cart.Product.price;
+                }
+                order order = new order()
+                {
+                    customer_id = cust,
+                    price = total,
                     date = DateTime.Now,
                     order_type_id = 3,
                     status_id = 2
@@ -109,6 +113,42 @@ namespace Video_Games_Rental.Controllers
                 db.orders.Add(order);
                 db.SaveChanges();
             }
+            else
+            {           
+                db.customers.Add(customer);
+                db.SaveChanges();
+                List<customer> lsCust = db.customers.ToList();
+                int idCust = lsCust.Last().customer_id;
+                foreach (Cart cart in lsCart)
+                {
+                    order order = new order()
+                    {
+                        customer_id = idCust,
+                        price = temp.Sum(price => cart.Quantity * cart.Product.price),                       
+                        date = DateTime.Now,
+                        order_type_id = 3,
+                        status_id = 2
+                    };
+                    db.orders.Add(order);
+                    db.SaveChanges();
+                }
+            }     
+
+            List<order> lsOrder = db.orders.ToList();
+            int idOrder = lsOrder.Last().order_id;
+ 
+            foreach (Cart cart in lsCart)
+            {
+                order_detail order_detail = new order_detail()
+                {
+                    order_id = idOrder,
+                    game_id = cart.Product.game_id,
+                    amount = cart.Quantity
+                };
+                db.order_detail.Add(order_detail);
+                db.SaveChanges();
+            }
+
             Session.Remove(strCart);
             return View("OrderSuccess");
             

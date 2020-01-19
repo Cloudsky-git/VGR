@@ -167,8 +167,7 @@ namespace ASPNetIdentity.Controllers
         {
             if (ModelState.IsValid)
             {
-
-                customer.AspNetUsers_id = User.Identity.GetUserId();
+                customer.AspNetUsers_id = User.Identity.GetUserId();               
                 customer.Email = User.Identity.Name;            
                 db.customers.Add(customer);
                 db.SaveChanges();                

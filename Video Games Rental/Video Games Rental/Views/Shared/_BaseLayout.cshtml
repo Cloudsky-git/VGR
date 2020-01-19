@@ -62,6 +62,9 @@
                     <li class="nav-item">
                         @Html.ActionLink("Kontakt", "Contact", "Home", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
                     </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Zamówienia", "../orders/OrderList", "orders", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
+                    </li>
                     <li class="nav-item" id="login-menu">
                         @Html.ActionLink("Koszyk", "../ShoppingCart/Index", "ShoppingCart", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
                     </li>

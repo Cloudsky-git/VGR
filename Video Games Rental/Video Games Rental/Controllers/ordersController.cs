@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 using Video_Games_Rental.Models;
 
 namespace Video_Games_Rental.Controllers
@@ -135,6 +136,14 @@ namespace Video_Games_Rental.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult OrderList(int? page)
+        {
+            var pageNumber = page ?? 1;
+            var PageSize = 5;
+            var orderList = db.orders.OrderByDescending(x => x.order_id).ToPagedList(pageNumber, PageSize);
+            return View(orderList);
         }
     }
 }
