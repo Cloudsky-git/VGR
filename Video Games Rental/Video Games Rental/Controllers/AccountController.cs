@@ -127,26 +127,18 @@ namespace ASPNetIdentity.Controllers
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
             if (!ModelState.IsValid)
-            {     
+            {
+                string userID = User.Identity.GetUserId();
+                string roleID = db.AspNetUserRoles.Where(x => x.UserId == userID).Select(y => y.RoleId).FirstOrDefault();
+                string roleName = db.AspNetRoles.Where(x => x.Id == roleID).Select(y => y.Name).FirstOrDefault();
+                Session["myRole"] = roleName;
                 return View(model);               
             }
           
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
-                case SignInStatus.Success:
-                    var userID = User.Identity.GetUserId();
-                    List<AspNetUserRole> roleList = db.AspNetUserRoles.Where(x => x.UserId == userID).ToList();
-                    roleList.Where(x=>x.UserId == userID)
-                    
-                    if (roleList.Count() > 0)
-                    {
-                        Session["myRole"] = "1";
-                    }
-                    else
-                    {
-                        Session["myRole"] = "2";
-                    }
+                case SignInStatus.Success:                    
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -187,6 +179,7 @@ namespace ASPNetIdentity.Controllers
         {
             if (ModelState.IsValid)
             {
+
                 customer.AspNetUsers_id = User.Identity.GetUserId();               
                 customer.Email = User.Identity.Name;            
                 db.customers.Add(customer);
