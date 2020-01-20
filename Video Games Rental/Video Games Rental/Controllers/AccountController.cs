@@ -9,6 +9,7 @@ using System.Web;
 using System.Linq;
 using System.Collections.Generic;
 
+
 namespace ASPNetIdentity.Controllers
 {
     public class AccountController : Controller
@@ -17,7 +18,7 @@ namespace ASPNetIdentity.Controllers
         // GET: /Account/Register
         [AllowAnonymous]
         public ActionResult Register()
-        {
+        {        
             return View();
         }
 
@@ -34,6 +35,14 @@ namespace ASPNetIdentity.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    AspNetUserRole role = new AspNetUserRole()
+                    {
+                        RoleId = "1",
+                        UserId = user.Id,                        
+                };
+                    db.AspNetUserRoles.Add(role);                  
+                    db.SaveChanges();
+                    
                     //await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
@@ -95,7 +104,7 @@ namespace ASPNetIdentity.Controllers
         // GET: ../Account/Login
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
-        {
+        {        
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
@@ -118,16 +127,26 @@ namespace ASPNetIdentity.Controllers
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
             if (!ModelState.IsValid)
-            {
-                return View(model);
+            {     
+                return View(model);               
             }
-
-            // This doesn't count login failures towards account lockout
-            // To enable password failures to trigger account lockout, change to shouldLockout: true
+          
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
+                    var userID = User.Identity.GetUserId();
+                    List<AspNetUserRole> roleList = db.AspNetUserRoles.Where(x => x.UserId == userID).ToList();
+                    roleList.Where(x=>x.UserId == userID)
+                    
+                    if (roleList.Count() > 0)
+                    {
+                        Session["myRole"] = "1";
+                    }
+                    else
+                    {
+                        Session["myRole"] = "2";
+                    }
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -147,6 +166,7 @@ namespace ASPNetIdentity.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            Session.Remove("myRole");
             return RedirectToAction("Index", "Home");
         }
 

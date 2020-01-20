@@ -569,6 +569,8 @@
     <Content Include="Views\Home\RegisterSuccess.cshtml" />
     <Content Include="Views\Account\AspNetUsersList.cshtml" />
     <Content Include="Views\orders\OrderList.cshtml" />
+    <Content Include="Views\ShoppingCart\RentalCheckOut.cshtml" />
+    <Content Include="Views\ShoppingCart\Rental.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

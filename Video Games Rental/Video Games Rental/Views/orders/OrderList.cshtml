@@ -4,7 +4,7 @@
 @model PagedList.IPagedList<order>
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "OrderList";
     Layout = "~/Views/Shared/_SearchLayout.cshtml";
 }
 
@@ -22,79 +22,96 @@
 <div id="preloader">
     <div class="news-load"></div>
 </div>
+<main>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-
-            <table class="table w-50 order-table">
-                <tr>
-                    <th>
-                        Data zamówienia
-                    </th>
-                    <th>
-                        Cena
-                    </th>
-                    <th>
-                        Typ zamówienia
-                    </th>
-                    <th>
-                        Status zamówienia
-                    </th>
-                    <th>
-                        Klient
-                    </th>
-                    <th>
-                        Numer telefonu
-                    </th>
-                    <th>
-                        Adres
-                    </th>
-                    <th>
-                        Miejscowość
-                    </th>
-                    <th></th>
-                </tr>
-
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.date)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.price)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.order_type.type)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.status.status1)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.customer.Email)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.customer.PhoneNumber)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.customer.address_line1)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.customer.address_line2)
-                        </td>
-                        <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.order_id }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.order_id }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.order_id })
-                        </td>
-                    </tr>
-                }
-
-            </table>
-            <div class="clearfix"></div>
-
-            <div class="page-count">Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount</div>
-            <div class="pagination">
-                @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page, platform = ViewBag.platform, language = ViewBag.language, condition = ViewBag.condition, @class = "btn-pages" }))
+    <section class="bg-dark p-3">
+        <div class="row">
+            <div class="col-lg-2 col-xl-2">
             </div>
+            <div class=" col-lg-8 col-xl-8 col-12 text-center bg-light">
+                <p>
+                    @Html.ActionLink("Create New", "Create")
+                </p>
+                <table class="table w-50 order-table">
+                    <tr>
+                        <th>
+                            Numer Zamówienia
+                        </th>
+                        <th>
+                            Data zamówienia
+                        </th>
+                        <th>
+                            Cena
+                        </th>
+                        <th>
+                            Typ zamówienia
+                        </th>
+                        <th>
+                            Status zamówienia
+                        </th>
+                        <th>
+                            Klient
+                        </th>
+                        <th>
+                            Numer telefonu
+                        </th>
+                        <th>
+                            Adres
+                        </th>
+                        <th>
+                            Miejscowość
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.order_id)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.date)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.price)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.order_type.type)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.status.status1)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.customer.Email)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.customer.PhoneNumber)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.customer.address_line1)
+                            </td>
+                            <td class="ml-5">
+                                @Html.DisplayFor(modelItem => item.customer.address_line2)
+                            </td>
+                            <td class="order-edit">
+                                @Html.ActionLink("Edit", "Edit", new { id = item.order_id }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.order_id }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.order_id })
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+                <div class="clearfix"></div>
+
+                <div class="page-count">Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount</div>
+                <div class="pagination">
+                    @Html.PagedListPager(Model, page => Url.Action("OrderList", new { page = page, @class = "btn-pages" }))
+                </div>
+            </div>
+            <div class="col-lg-2 col-xl-2">
+            </div>
+        </div>
+        </section>
+</main>
