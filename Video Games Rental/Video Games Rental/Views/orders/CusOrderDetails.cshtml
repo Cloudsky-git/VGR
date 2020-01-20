@@ -1,0 +1,88 @@
+﻿@using Video_Games_Rental.Models;
+@model Video_Games_Rental.Models.order
+
+
+@{
+    ViewBag.Title = "CusOrderDetails";
+    Layout = "~/Views/Shared/_SearchLayout.cshtml";
+}
+
+<!-- Header -->
+<header class="masthead">
+    <div class="container">
+        <div class="intro-text">
+            <div class="intro-lead-in">Witamy w świecie gier!</div>
+            <div class="intro-heading text-uppercase">Wymieniaj • Kupuj • Rezerwuj</div>
+            <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">Dowiedz się więcej</a>
+        </div>
+    </div>
+</header>
+
+<div id="preloader">
+    <div class="news-load"></div>
+</div>
+<main>
+
+    <section class="bg-dark p-3">
+        <div class="row">
+            <div class="col-lg-2 col-xl-2">
+            </div>
+            <div class=" col-lg-8 col-xl-8 col-12 text-center bg-light">
+
+                <div>
+                    <h4 class="text-secondary mt-3">Szczegóły zamówienia</h4>
+                    <hr />
+                    <table class="table w-50 order-details-table">
+                        <tr>
+                            <th>
+                                Numer Zamówienia
+                            </th>
+                            <th>
+                                Data zamówienia
+                            </th>
+                            <th>
+                                Cena
+                            </th>
+                            <th>
+                                Typ zamówienia
+                            </th>
+                            <th>
+                                Status produktu
+                            </th>
+                            <th>
+                                Stan
+                            </th>
+                            <th></th>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(model => model.order_id)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.date)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.price)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.order_type.type)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.status.status1)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.status.status1)
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="py-1">
+                        @Html.ActionLink("Zamówienia", "OrderList", "orders", new { area = "" }, new { @class = "btn btn-lg btn-primary btn-block btn-login btn-back text-uppercase font-weight-bold mb-2" })
+                    </div>
+                </div>
+            <div class="col-lg-2 col-xl-2">
+            </div>
+        </div>
+      </div>
+    </section>
+</main>

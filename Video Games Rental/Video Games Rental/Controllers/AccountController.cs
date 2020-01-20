@@ -128,17 +128,17 @@ namespace ASPNetIdentity.Controllers
         {
             if (!ModelState.IsValid)
             {
-                string userID = User.Identity.GetUserId();
-                string roleID = db.AspNetUserRoles.Where(x => x.UserId == userID).Select(y => y.RoleId).FirstOrDefault();
-                string roleName = db.AspNetRoles.Where(x => x.Id == roleID).Select(y => y.Name).FirstOrDefault();
-                Session["myRole"] = roleName;
-                return View(model);               
+                return View(model);
             }
-          
+
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
-                case SignInStatus.Success:                    
+                case SignInStatus.Success:
+                    string userID = SignInManager.AuthenticationManager.AuthenticationResponseGrant.Identity.GetUserId();
+                    string roleID = db.AspNetUserRoles.Where(x => x.UserId == userID).Select(y => y.RoleId).FirstOrDefault();
+                    string roleName = db.AspNetRoles.Where(x => x.Id == roleID).Select(y => y.Name).FirstOrDefault();
+                    Session["myRole"] = roleName;
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");

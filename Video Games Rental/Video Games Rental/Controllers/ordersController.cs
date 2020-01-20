@@ -37,6 +37,21 @@ namespace Video_Games_Rental.Controllers
             return View(order);
         }
 
+        public ActionResult CusOrderDetails(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            order order = db.orders.Find(id);
+            if (order == null)
+            {
+                return HttpNotFound();
+            }
+            return View(order);
+        }
+
+
         // GET: orders/Create
         public ActionResult Create()
         {

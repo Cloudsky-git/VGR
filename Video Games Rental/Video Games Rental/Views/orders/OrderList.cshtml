@@ -29,80 +29,148 @@
             <div class="col-lg-2 col-xl-2">
             </div>
             <div class=" col-lg-8 col-xl-8 col-12 text-center bg-light">
-                <p>
-                    @Html.ActionLink("Create New", "Create")
-                </p>
-                <table class="table w-50 order-table">
-                    <tr>
-                        <th>
-                            Numer Zamówienia
-                        </th>
-                        <th>
-                            Data zamówienia
-                        </th>
-                        <th>
-                            Cena
-                        </th>
-                        <th>
-                            Typ zamówienia
-                        </th>
-                        <th>
-                            Status zamówienia
-                        </th>
-                        <th>
-                            Klient
-                        </th>
-                        <th>
-                            Numer telefonu
-                        </th>
-                        <th>
-                            Adres
-                        </th>
-                        <th>
-                            Miejscowość
-                        </th>
-                        <th></th>
-                    </tr>
-
-                    @foreach (var item in Model)
-                    {
+                @if ((string)Session["myRole"] == "admin")
+                {
+                    <p>
+                        @Html.ActionLink("Create New", "Create")
+                    </p>
+                    <table class="table w-50 order-table">
                         <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.order_id)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.date)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.price)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.order_type.type)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.status.status1)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.customer.Email)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.customer.PhoneNumber)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.customer.address_line1)
-                            </td>
-                            <td class="ml-5">
-                                @Html.DisplayFor(modelItem => item.customer.address_line2)
-                            </td>
-                            <td class="order-edit">
-                                @Html.ActionLink("Edit", "Edit", new { id = item.order_id }) |
-                                @Html.ActionLink("Details", "Details", new { id = item.order_id }) |
-                                @Html.ActionLink("Delete", "Delete", new { id = item.order_id })
-                            </td>
+                            <th>
+                                Numer Zamówienia
+                            </th>
+                            <th>
+                                Data zamówienia
+                            </th>
+                            <th>
+                                Cena
+                            </th>
+                            <th>
+                                Typ zamówienia
+                            </th>
+                            <th>
+                                Klient
+                            </th>
+                            <th>
+                                Numer telefonu
+                            </th>
+                            <th>
+                                Adres
+                            </th>
+                            <th>
+                                Miejscowość
+                            </th>
+                            <th></th>
                         </tr>
-                    }
 
-                </table>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.order_id)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.date)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.price)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.order_type.type)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.customer.Email)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.customer.PhoneNumber)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.customer.address_line1)
+                                </td>
+                                <td class="ml-5">
+                                    @Html.DisplayFor(modelItem => item.customer.address_line2)
+                                </td>
+                                <td class="order-edit">
+                                    @Html.ActionLink("Edytuj", "Edit", new { id = item.order_id }) 
+                                    @Html.ActionLink("Szczegóły", "Details", new { id = item.order_id }) 
+                                    @Html.ActionLink("Usuń", "Delete", new { id = item.order_id })
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                }
+
+                else
+                {
+                    <table class="table w-50 order-table">
+                        <tr>
+                            <th>
+                                Numer Zamówienia
+                            </th>
+                            <th>
+                                Data zamówienia
+                            </th>
+                            <th>
+                                Cena
+                            </th>
+                            <th>
+                                Typ zamówienia
+                            </th>
+                            <th>
+                                Klient
+                            </th>
+                            <th>
+                                Numer telefonu
+                            </th>
+                            <th>
+                                Adres
+                            </th>
+                            <th>
+                                Miejscowość
+                            </th>
+                            <th></th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            if (User.Identity.Name == item.customer.Email)
+                            {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.order_id)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.date)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.price)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.order_type.type)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.customer.Email)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.customer.PhoneNumber)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.customer.address_line1)
+                                </td>
+                                <td class="ml-5">
+                                    @Html.DisplayFor(modelItem => item.customer.address_line2)
+                                </td>
+                                <td class="order-edit">           
+                                    @Html.ActionLink("Szczegóły", "CusOrderDetails", new { id = item.order_id })                                   
+                                </td>
+                            </tr>
+                            }
+                        }
+
+                    </table>
+                }
+
                 <div class="clearfix"></div>
 
                 <div class="page-count">Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount</div>
