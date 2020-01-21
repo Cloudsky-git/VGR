@@ -91,8 +91,8 @@
                                     @Html.DisplayFor(modelItem => item.customer.address_line2)
                                 </td>
                                 <td class="order-edit">
-                                    @Html.ActionLink("Edytuj", "Edit", new { id = item.order_id }) 
-                                    @Html.ActionLink("Szczegóły", "Details", new { id = item.order_id }) 
+                                    @Html.ActionLink("Edytuj", "Edit", new { id = item.order_id })
+                                    @Html.ActionLink("Szczegóły", "Details", new { id = item.order_id })
                                     @Html.ActionLink("Usuń", "Delete", new { id = item.order_id })
                                 </td>
                             </tr>
@@ -136,39 +136,40 @@
                         {
                             if (User.Identity.Name == item.customer.Email)
                             {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.order_id)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.date)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.price)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.order_type.type)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.customer.Email)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.customer.PhoneNumber)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.customer.address_line1)
-                                </td>
-                                <td class="ml-5">
-                                    @Html.DisplayFor(modelItem => item.customer.address_line2)
-                                </td>
-                                <td class="order-edit">           
-                                    @Html.ActionLink("Szczegóły", "CusOrderDetails", new { id = item.order_id })                                   
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.order_id)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.date)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.price)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.order_type.type)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.customer.Email)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.customer.PhoneNumber)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.customer.address_line1)
+                                    </td>
+                                    <td class="ml-5">
+                                        @Html.DisplayFor(modelItem => item.customer.address_line2)
+                                    </td>
+                                    <td class="order-edit">
+                                        @Html.ActionLink("Szczegóły", "CusOrderDetails", new { id = item.order_id })
+                                    </td>
+                                </tr>
                             }
                         }
 
                     </table>
+                    @Html.ActionLink("Wróć do konta", "../Account/Account_details", "Account", new { area = "" }, new { @class = "btn btn-default btn-undo-own" })
                 }
 
                 <div class="clearfix"></div>

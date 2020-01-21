@@ -1,5 +1,5 @@
 ﻿@using Microsoft.AspNet.Identity;
-
+@using Video_Games_Rental.Models;
 @{
     Layout = "~/Views/Shared/_EntryLayout.cshtml";
 }
@@ -61,18 +61,15 @@
                     <li class="nav-item">
                         @Html.ActionLink("Kontakt", "Contact", "Home", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
                     </li>
-                    <li class="nav-item">
-                        @Html.ActionLink("Zamówienia", "../orders/OrderList", "orders", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
-                    </li>
-                    <li class="nav-item" id="login-menu">
-                        @Html.ActionLink("Koszyk", "../ShoppingCart/Index", "ShoppingCart", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
-                    </li>
                      @if ((string)Session["myRole"] == "admin" )
                     {
                      <li class="nav-item">
                           @Html.ActionLink("Zamówienia", "../orders/OrderList", "orders", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
                      </li>
-                    }        
+                    } 
+                    <li class="nav-item" id="login-menu">
+                        @Html.ActionLink("Koszyk", "../ShoppingCart/Index", "ShoppingCart", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
+                    </li>
                     <li class="nav-item" id="login-menu">
                         @Html.ActionLink("Ulubione", "../ShoppingCart/Index", "ShoppingCart", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
                     </li>
@@ -84,9 +81,9 @@
                     </li>
                     <li class="nav-item">
                         <a href="@Url.Action("../ShoppingCart/Index", "ShoppingCart")">
-                           <i class="fa fa-shopping-cart navbar-icon"></i>
+                            <i class="fa fa-shopping-cart navbar-icon"></i>
                         </a>
-                    </li> 
+                    </li>
                     <li class="nav-item">
                         <a href="@Url.Action("../ShoppingCart/Index", "ShoppingCart")">
                             <i class="fa fa-heart navbar-icon-heart"></i>
@@ -94,9 +91,9 @@
                     </li>
                     <li class="nav-item">
                         <a href="@Url.Action("../Account/Account_details", "Account")">
-                           <i class="fa fa-user navbar-icon-user"></i>
+                            <i class="fa fa-user navbar-icon-user"></i>
                         </a>
-                    </li> 
+                    </li>
                 </ul>
 
                 using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
@@ -105,8 +102,8 @@
 
                     <ul class="nav navbar-nav ml-5">
                         @*<li class="nav-item logged-in">
-                        @Html.ActionLink("Witaj " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { @class = "nav-link js-scroll-trigger", title = "Manage" })
-                    </li>*@
+                                @Html.ActionLink("Witaj " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { @class = "nav-link js-scroll-trigger", title = "Manage" })
+                            </li>*@
                         <li class="nav-item">
                             <input class="form-control search" type="search" placeholder="Wyszukaj">
                         </li>
@@ -170,14 +167,14 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                            <a href="@Url.Action("../Account/Login", "Account")">
-                                <span title="Ulubione"><i class="fa fa-heart navbar-icon-heart"></i></span>
-                            </a>
+                        <a href="@Url.Action("../Account/Login", "Account")">
+                            <span title="Ulubione"><i class="fa fa-heart navbar-icon-heart"></i></span>
+                        </a>
                     </li>
                     <li class="nav-item">
-                            <a href="@Url.Action("../Account/Login", "Account")">
-                                <span title="Twoje konto"><i class="fa fa-user navbar-icon-user"></i></span>
-                            </a>
+                        <a href="@Url.Action("../Account/Login", "Account")">
+                            <span title="Twoje konto"><i class="fa fa-user navbar-icon-user"></i></span>
+                        </a>
                     </li>
                 </ul>
 

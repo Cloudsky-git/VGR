@@ -18,12 +18,6 @@
         <EntityTypeShape EntityType="Model.AspNetUserLogin" Width="1.5" PointX="9.75" PointY="6" />
         <EntityTypeShape EntityType="Model.AspNetUserRole" Width="1.5" PointX="11.25" PointY="2.75" />
         <EntityTypeShape EntityType="Model.condition" Width="1.5" PointX="7" PointY="0.5" />
-        <EntityTypeShape EntityType="Model.game" Width="1.5" PointX="9.125" PointY="1.625" />
-        <AssociationConnector Association="Model.FK_game_condition" />
-        <AssociationConnector Association="Model.FK_order_detail_game1" />
-        <AssociationConnector Association="Model.game_genre" />
-        <AssociationConnector Association="Model.game_language" />
-        <AssociationConnector Association="Model.game_platform" />
         <EntityTypeShape EntityType="Model.AspNetUser" Width="1.5" PointX="2.75" PointY="5.75" />
         <AssociationConnector Association="Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
@@ -35,6 +29,12 @@
         <EntityTypeShape EntityType="Model.customer" Width="1.5" PointX="7.125" PointY="2.375" />
         <AssociationConnector Association="Model.FK_customer_AspNetUsers" />
         <AssociationConnector Association="Model.FK_order_customer" />
+        <EntityTypeShape EntityType="Model.game" Width="1.5" PointX="9.25" PointY="1.25" />
+        <AssociationConnector Association="Model.FK_game_condition" />
+        <AssociationConnector Association="Model.FK_order_detail_game1" />
+        <AssociationConnector Association="Model.game_genre" />
+        <AssociationConnector Association="Model.game_language" />
+        <AssociationConnector Association="Model.game_platform" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

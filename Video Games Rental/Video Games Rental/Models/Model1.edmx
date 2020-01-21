@@ -100,6 +100,7 @@
           <Property Name="amount" Type="int" Nullable="false" />
           <Property Name="price" Type="decimal" Precision="8" Scale="2" Nullable="false" />
           <Property Name="image" Type="nvarchar" MaxLength="100" />
+          <Property Name="description" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="genre">
           <Key>
@@ -123,7 +124,7 @@
           <Property Name="customer_id" Type="int" Nullable="false" />
           <Property Name="order_type_id" Type="int" Nullable="false" />
           <Property Name="status_id" Type="int" Nullable="false" />
-          <Property Name="date" Type="date" Nullable="false" />
+          <Property Name="date" Type="datetime" Nullable="false" />
           <Property Name="price" Type="decimal" Precision="8" Scale="2" Nullable="false" />
         </EntityType>
         <EntityType Name="order_detail">
@@ -467,27 +468,6 @@
           <EntitySet Name="AspNetUserLogins" EntityType="Model.AspNetUserLogin" />
           <EntitySet Name="AspNetUserRoles" EntityType="Model.AspNetUserRole" />
           <EntitySet Name="conditions" EntityType="Model.condition" />
-          <EntitySet Name="games" EntityType="Model.game" />
-          <AssociationSet Name="FK_game_condition" Association="Model.FK_game_condition">
-            <End Role="condition" EntitySet="conditions" />
-            <End Role="game" EntitySet="games" />
-          </AssociationSet>
-          <AssociationSet Name="FK_order_detail_game1" Association="Model.FK_order_detail_game1">
-            <End Role="game" EntitySet="games" />
-            <End Role="order_detail" EntitySet="order_detail" />
-          </AssociationSet>
-          <AssociationSet Name="game_genre" Association="Model.game_genre">
-            <End Role="genre" EntitySet="genres" />
-            <End Role="game" EntitySet="games" />
-          </AssociationSet>
-          <AssociationSet Name="game_language" Association="Model.game_language">
-            <End Role="language" EntitySet="languages" />
-            <End Role="game" EntitySet="games" />
-          </AssociationSet>
-          <AssociationSet Name="game_platform" Association="Model.game_platform">
-            <End Role="platform" EntitySet="platforms" />
-            <End Role="game" EntitySet="games" />
-          </AssociationSet>
           <EntitySet Name="AspNetUsers" EntityType="Model.AspNetUser" />
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
@@ -523,6 +503,27 @@
             <End Role="customer" EntitySet="customers" />
             <End Role="order" EntitySet="orders" />
           </AssociationSet>
+          <EntitySet Name="games" EntityType="Model.game" />
+          <AssociationSet Name="FK_game_condition" Association="Model.FK_game_condition">
+            <End Role="condition" EntitySet="conditions" />
+            <End Role="game" EntitySet="games" />
+          </AssociationSet>
+          <AssociationSet Name="FK_order_detail_game1" Association="Model.FK_order_detail_game1">
+            <End Role="game" EntitySet="games" />
+            <End Role="order_detail" EntitySet="order_detail" />
+          </AssociationSet>
+          <AssociationSet Name="game_genre" Association="Model.game_genre">
+            <End Role="genre" EntitySet="genres" />
+            <End Role="game" EntitySet="games" />
+          </AssociationSet>
+          <AssociationSet Name="game_language" Association="Model.game_language">
+            <End Role="language" EntitySet="languages" />
+            <End Role="game" EntitySet="games" />
+          </AssociationSet>
+          <AssociationSet Name="game_platform" Association="Model.game_platform">
+            <End Role="platform" EntitySet="platforms" />
+            <End Role="game" EntitySet="games" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="order_detail">
           <Key>
@@ -532,8 +533,8 @@
           <Property Name="order_id" Type="Int32" Nullable="false" />
           <Property Name="game_id" Type="Int32" Nullable="false" />
           <Property Name="amount" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="game" Relationship="Model.FK_order_detail_game1" FromRole="order_detail" ToRole="game" />
           <NavigationProperty Name="order" Relationship="Model.FK_order_detail_order" FromRole="order_detail" ToRole="order" />
+          <NavigationProperty Name="game" Relationship="Model.FK_order_detail_game1" FromRole="order_detail" ToRole="game" />
         </EntityType>
         <EntityType Name="C__MigrationHistory">
           <Key>
@@ -590,85 +591,6 @@
           <Property Name="condition1" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="games" Relationship="Model.FK_game_condition" FromRole="condition" ToRole="game" />
         </EntityType>
-        <EntityType Name="game">
-          <Key>
-            <PropertyRef Name="game_id" />
-          </Key>
-          <Property Name="game_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="platform_id" Type="Int32" Nullable="false" />
-          <Property Name="language_id" Type="Int32" Nullable="false" />
-          <Property Name="genre_id" Type="Int32" Nullable="false" />
-          <Property Name="condition_id" Type="Int32" Nullable="false" />
-          <Property Name="title" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Name="amount" Type="Int32" Nullable="false" />
-          <Property Name="price" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
-          <Property Name="image" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="condition" Relationship="Model.FK_game_condition" FromRole="game" ToRole="condition" />
-          <NavigationProperty Name="order_detail" Relationship="Model.FK_order_detail_game1" FromRole="game" ToRole="order_detail" />
-          <NavigationProperty Name="genre" Relationship="Model.game_genre" FromRole="game" ToRole="genre" />
-          <NavigationProperty Name="language" Relationship="Model.game_language" FromRole="game" ToRole="language" />
-          <NavigationProperty Name="platform" Relationship="Model.game_platform" FromRole="game" ToRole="platform" />
-        </EntityType>
-        <Association Name="FK_game_condition">
-          <End Type="Model.condition" Role="condition" Multiplicity="1" />
-          <End Type="Model.game" Role="game" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="condition">
-              <PropertyRef Name="condition_id" />
-            </Principal>
-            <Dependent Role="game">
-              <PropertyRef Name="condition_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_order_detail_game1">
-          <End Type="Model.game" Role="game" Multiplicity="1" />
-          <End Type="Model.order_detail" Role="order_detail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="game">
-              <PropertyRef Name="game_id" />
-            </Principal>
-            <Dependent Role="order_detail">
-              <PropertyRef Name="game_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="game_genre">
-          <End Type="Model.genre" Role="genre" Multiplicity="1" />
-          <End Type="Model.game" Role="game" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="genre">
-              <PropertyRef Name="genre_id" />
-            </Principal>
-            <Dependent Role="game">
-              <PropertyRef Name="genre_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="game_language">
-          <End Type="Model.language" Role="language" Multiplicity="1" />
-          <End Type="Model.game" Role="game" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="language">
-              <PropertyRef Name="language_id" />
-            </Principal>
-            <Dependent Role="game">
-              <PropertyRef Name="language_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="game_platform">
-          <End Type="Model.platform" Role="platform" Multiplicity="1" />
-          <End Type="Model.game" Role="game" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="platform">
-              <PropertyRef Name="platform_id" />
-            </Principal>
-            <Dependent Role="game">
-              <PropertyRef Name="platform_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="AspNetUser">
           <Key>
             <PropertyRef Name="Id" />
@@ -740,7 +662,7 @@
           <Property Name="customer_id" Type="Int32" Nullable="false" />
           <Property Name="order_type_id" Type="Int32" Nullable="false" />
           <Property Name="status_id" Type="Int32" Nullable="false" />
-          <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="price" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
           <NavigationProperty Name="order_detail" Relationship="Model.FK_order_detail_order" FromRole="order" ToRole="order_detail" />
           <NavigationProperty Name="order_type" Relationship="Model.FK_order_order_type" FromRole="order" ToRole="order_type" />
@@ -820,6 +742,86 @@
             </Principal>
             <Dependent Role="order">
               <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="game">
+          <Key>
+            <PropertyRef Name="game_id" />
+          </Key>
+          <Property Name="game_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="platform_id" Type="Int32" Nullable="false" />
+          <Property Name="language_id" Type="Int32" Nullable="false" />
+          <Property Name="genre_id" Type="Int32" Nullable="false" />
+          <Property Name="condition_id" Type="Int32" Nullable="false" />
+          <Property Name="title" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="amount" Type="Int32" Nullable="false" />
+          <Property Name="price" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
+          <Property Name="image" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="condition" Relationship="Model.FK_game_condition" FromRole="game" ToRole="condition" />
+          <NavigationProperty Name="order_detail" Relationship="Model.FK_order_detail_game1" FromRole="game" ToRole="order_detail" />
+          <NavigationProperty Name="genre" Relationship="Model.game_genre" FromRole="game" ToRole="genre" />
+          <NavigationProperty Name="language" Relationship="Model.game_language" FromRole="game" ToRole="language" />
+          <NavigationProperty Name="platform" Relationship="Model.game_platform" FromRole="game" ToRole="platform" />
+        </EntityType>
+        <Association Name="FK_game_condition">
+          <End Type="Model.condition" Role="condition" Multiplicity="1" />
+          <End Type="Model.game" Role="game" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="condition">
+              <PropertyRef Name="condition_id" />
+            </Principal>
+            <Dependent Role="game">
+              <PropertyRef Name="condition_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_order_detail_game1">
+          <End Type="Model.game" Role="game" Multiplicity="1" />
+          <End Type="Model.order_detail" Role="order_detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="game">
+              <PropertyRef Name="game_id" />
+            </Principal>
+            <Dependent Role="order_detail">
+              <PropertyRef Name="game_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="game_genre">
+          <End Type="Model.genre" Role="genre" Multiplicity="1" />
+          <End Type="Model.game" Role="game" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="genre">
+              <PropertyRef Name="genre_id" />
+            </Principal>
+            <Dependent Role="game">
+              <PropertyRef Name="genre_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="game_language">
+          <End Type="Model.language" Role="language" Multiplicity="1" />
+          <End Type="Model.game" Role="game" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="language">
+              <PropertyRef Name="language_id" />
+            </Principal>
+            <Dependent Role="game">
+              <PropertyRef Name="language_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="game_platform">
+          <End Type="Model.platform" Role="platform" Multiplicity="1" />
+          <End Type="Model.game" Role="game" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="platform">
+              <PropertyRef Name="platform_id" />
+            </Principal>
+            <Dependent Role="game">
+              <PropertyRef Name="platform_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -943,21 +945,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="games">
-            <EntityTypeMapping TypeName="Model.game">
-              <MappingFragment StoreEntitySet="game">
-                <ScalarProperty Name="image" ColumnName="image" />
-                <ScalarProperty Name="price" ColumnName="price" />
-                <ScalarProperty Name="amount" ColumnName="amount" />
-                <ScalarProperty Name="title" ColumnName="title" />
-                <ScalarProperty Name="condition_id" ColumnName="condition_id" />
-                <ScalarProperty Name="genre_id" ColumnName="genre_id" />
-                <ScalarProperty Name="language_id" ColumnName="language_id" />
-                <ScalarProperty Name="platform_id" ColumnName="platform_id" />
-                <ScalarProperty Name="game_id" ColumnName="game_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="AspNetUsers">
             <EntityTypeMapping TypeName="Model.AspNetUser">
               <MappingFragment StoreEntitySet="AspNetUsers">
@@ -1000,6 +987,22 @@
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="AspNetUsers_id" ColumnName="AspNetUsers_id" />
                 <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="games">
+            <EntityTypeMapping TypeName="Model.game">
+              <MappingFragment StoreEntitySet="game">
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="condition_id" ColumnName="condition_id" />
+                <ScalarProperty Name="genre_id" ColumnName="genre_id" />
+                <ScalarProperty Name="language_id" ColumnName="language_id" />
+                <ScalarProperty Name="platform_id" ColumnName="platform_id" />
+                <ScalarProperty Name="game_id" ColumnName="game_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -27,27 +27,27 @@
     <div class="details-card">
         <div class="container-fluid">
             <div class="wrapper row">
-                <div class="preview col-md-6">
+                <div class="preview col-md-6">                   
 
                     <div class="preview-pic tab-content">
                         <div class="tab-pane active" id="pic-1"><img src="@Url.Content("~/Content/img/games/" +Model.image)" /></div>
-                        <div class="tab-pane" id="pic-2"><img class="details-img" src="@Url.Content("~/Content/img/games/" +Model.image)" /></div>
-                        <div class="tab-pane" id="pic-3"><img class="details-img" src="@Url.Content("~/Content/img/games/" +Model.image)" /></div>
-                        <div class="tab-pane" id="pic-4"><img class="details-img" src="@Url.Content("~/Content/img/games/" +Model.image)" /></div>
-                        <div class="tab-pane" id="pic-5"><img class="details-img" src="@Url.Content("~/Content/img/games/" +Model.image)" /></div>
+                        <div class="tab-pane" id="pic-2"><img class="details-img" src="@Url.Content("~/Content/img/game_slides/"+Model.game_id+"/img1.jpg")" /></div>
+                        <div class="tab-pane" id="pic-3"><img class="details-img" src="@Url.Content("~/Content/img/game_slides/"+Model.game_id+"/img2.jpg")" /></div>
+                        <div class="tab-pane" id="pic-4"><img class="details-img" src="@Url.Content("~/Content/img/game_slides/"+Model.game_id+"/img3.jpg")" /></div>
+                        <div class="tab-pane" id="pic-5"><img class="details-img" src="@Url.Content("~/Content/img/game_slides/"+Model.game_id+"/img4.jpg")" /></div>
                     </div>
                     <ul class="preview-thumbnail nav nav-tabs">
                         <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="@Url.Content("~/Content/img/games/" +Model.image)" /></a></li>
-                        <li><a data-target="#pic-2" data-toggle="tab"><img class="details-img" src="@Url.Content("~/Content/img/games/" +Model.image)" /></a></li>
-                        <li><a data-target="#pic-3" data-toggle="tab"><img class="details-img" src="@Url.Content("~/Content/img/games/" +Model.image)" /></a></li>
-                        <li><a data-target="#pic-4" data-toggle="tab"><img class="details-img" src="@Url.Content("~/Content/img/games/" +Model.image)" /></a></li>
-                        <li><a data-target="#pic-5" data-toggle="tab"><img class="details-img" src="@Url.Content("~/Content/img/games/" +Model.image)" /></a></li>
+                        <li><a data-target="#pic-2" data-toggle="tab"><img class="details-img" src="@Url.Content("~/Content/img/game_slides/"+Model.game_id+"/img1.jpg")" /></a></li>
+                        <li><a data-target="#pic-3" data-toggle="tab"><img class="details-img" src="@Url.Content("~/Content/img/game_slides/"+Model.game_id+"/img2.jpg")" /></a></li>
+                        <li><a data-target="#pic-4" data-toggle="tab"><img class="details-img" src="@Url.Content("~/Content/img/game_slides/"+Model.game_id+"/img3.jpg")" /></a></li>
+                        <li><a data-target="#pic-5" data-toggle="tab"><img class="details-img" src="@Url.Content("~/Content/img/game_slides/"+Model.game_id+"/img4.jpg")" /></a></li>
                     </ul>
 
                 </div>
                 <div class="details col-md-6">
                     <h3 class="product-title">@Model.title @Model.platform.platform1 [@Model.language.language1]</h3>
-                    <p class="product-description">Mortal Kombat 11 is a fighting game developed by NetherRealm Studios and published by Warner Bros. Interactive Entertainment. Running on a heavily modified version of Unreal Engine 3, it is the eleventh main installment in the Mortal Kombat series and a sequel to 2015's Mortal Kombat X.</p>
+                    <p class="product-description">@Model.description</p>
                     <h4 class="price">aktualna cena: <span>@(String.Format("{0:N0}", @Model.price))</span><span class="zl">zł</span></h4>                    
                     <div class="action mt-3">
                         @Html.ActionLink("Dodaj do koszyka", "OrderNow", "ShoppingCart", new { id = Model.game_id }, new { @class = "btn add-to-cart btn-default m-0" })
