@@ -1,4 +1,7 @@
-﻿@{
+﻿@using Video_Games_Rental.Models;
+@model List<game>
+
+@{
     ViewBag.Title = "Shop";
     Layout = "~/Views/Shared/_SearchLayout.cshtml";
 }
@@ -8,7 +11,7 @@
     <div class="container">
         <div class="intro-text">
             <div class="intro-lead-in">Witamy w świecie gier!</div>
-            <div class="intro-heading text-uppercase">Wymieniaj • Kupuj • Rezerwuj</div>           
+            <div class="intro-heading text-uppercase">Wymieniaj • Kupuj • Rezerwuj</div>
             @Html.ActionLink("Przejdź do sklepu", "../Shop", "Shop", new { area = "" }, new { @class = "btn btn-primary btn-xl text-uppercase js-scroll-trigger" })
         </div>
     </div>
@@ -20,7 +23,7 @@
 </div>
 
 <section class="bg-dark p-4" id="carousel">
-    
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12 text-center">
@@ -28,100 +31,105 @@
                 <h6 class="mb-3 mt-1" id="desc">Najnowsze dostępne tytuły.</h6>
             </div>
         </div>
-        <div class="row">
-            <div class="owl-carousel owl-theme">
-                <div class="single-slide">
-                    <img src="~/Content/img/slides/Call of Duty Modern Warfare 2019.jpg" class="img-fluid" alt="COD MW 2019" />
-                    <div class="project_title">
-                        <a href="#">
-                            <h5>
-                                Call of Duty: Modern Warfare 2
-                            </h5>
-                            <p id="overlay_text">
-                                FPS video game developed by Infinity Ward and published by Activision.
-                            </p>                            
-                        </a>
+        <div class="row">           
+                <div class="row">
+                    <div class="owl-carousel owl-theme">
+                        @*@{ 
+                            int product = (int)Session["product"];
+                        }*@
+                        <div class="single-slide">
+                            <img src="~/Content/img/slides/Call of Duty Modern Warfare 2019.jpg" class="img-fluid" />
+                            <div class="project_title">
+                                <a href="#">
+                                    <h5>
+                                        Call of Duty: Modern Warfare 2
+                                    </h5>
+                                    <p id="overlay_text">
+                                        FPS video game developed by Infinity Ward and published by Activision.
+                                    </p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="single-slide">
+                            <img src="~/Content/img/slides/death_stranding_full_1573020168356.jpg" class="img-fluid" />
+                            <div class="project_title">
+                                <a href="#">
+                                    <h5>
+                                        Death Stranding
+                                    </h5>
+                                    <p id="overlay_text">
+                                        Open world action game developed by Kojima Productions.
+                                    </p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="single-slide">
+                            <img src="~/Content/img/slides/outer_worlds.jpg" class="img-fluid" />
+                            <div class="project_title">
+                                <a href="#">
+                                    <h5>
+                                        The Outer Worlds
+                                    </h5>
+                                    <p id="overlay_text">
+                                        Action role-playing game developed by Obsidian Entertainment and published by Private Division.
+                                    </p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="single-slide">
+                            <img src="~/Content/img/slides/Ghost Recon Breakpoint.jpg" class="img-fluid" />
+                            <div class="project_title">
+                                <a href="#">
+                                    <h5>
+                                        Tom Clancy's Ghost Recon Breakpoint
+                                    </h5>
+                                    <p id="overlay_text">
+                                        Online tactical shooter video game developed by Ubisoft Paris and published by Ubisoft.
+                                    </p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="single-slide">
+                            <img src="~/Content/img/slides/Need For Speed Heat.jpg" class="img-fluid" />
+                            <div class="project_title">
+                                <a href="#">
+                                    <h5>
+                                        Need for Speed: Heat
+                                    </h5>
+                                    <p id="overlay_text">
+                                        Racing video game developed by Ghost Games and published by Electronic Arts.
+                                    </p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="single-slide">
+                            <img src="~/Content/img/slides/Sekiro.jpg" class="img-fluid" />
+                            <div class="project_title">
+                                <a href="#">
+                                    <h5>
+                                        Sekiro: Shadows Die Twice
+                                    </h5>
+                                    <p id="overlay_text">Action-adventure video game developed by FromSoftware and published by Activision.</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="single-slide">
+                            <img src="~/Content/img/slides/borderlands 3.jpg" class="img-fluid" />
+                            <div class="project_title">
+                                <a href="#">
+                                    <h5>
+                                        Borderlands 3
+                                    </h5>
+                                    <p id="overlay_text">
+                                        Action role-playing FPS
+                                    </p>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="single-slide">
-                    <img src="~/Content/img/slides/death_stranding_full_1573020168356.jpg" class="img-fluid" alt="Death Stranding" />
-                    <div class="project_title">
-                        <a href="#">
-                            <h5>
-                                Death Stranding
-                            </h5>
-                            <p id="overlay_text">
-                                Open world action game developed by Kojima Productions.
-                            </p>
-                        </a>
-                    </div>
-                </div>
-                <div class="single-slide">
-                    <img src="~/Content/img/slides/outer_worlds.jpg" class="img-fluid" alt="Outer Worlds" />
-                    <div class="project_title">
-                        <a href="#">
-                            <h5>
-                                The Outer Worlds
-                            </h5>
-                            <p id="overlay_text">
-                                Action role-playing game developed by Obsidian Entertainment and published by Private Division.
-                            </p>                          
-                        </a>
-                    </div>
-                </div>
-                <div class="single-slide">
-                    <img src="~/Content/img/slides/Ghost Recon Breakpoint.jpg" class="img-fluid" alt="Ghost Recon Breakpoint" />
-                    <div class="project_title">
-                        <a href="#">
-                            <h5>
-                                Tom Clancy's Ghost Recon Breakpoint
-                            </h5>
-                            <p id="overlay_text">
-                                Online tactical shooter video game developed by Ubisoft Paris and published by Ubisoft.
-                            </p>                           
-                        </a>
-                    </div>
-                </div>
-                <div class="single-slide">
-                    <img src="~/Content/img/slides/Need For Speed Heat.jpg" class="img-fluid" alt="NFS HEAT" />
-                    <div class="project_title">
-                        <a href="#">
-                            <h5>
-                                Need for Speed: Heat
-                            </h5>
-                            <p id="overlay_text">
-                                Racing video game developed by Ghost Games and published by Electronic Arts.
-                            </p>
-                        </a>
-                    </div>
-                </div>
-                <div class="single-slide">
-                    <img src="~/Content/img/slides/Sekiro.jpg" class="img-fluid" alt="Sekiro" />
-                    <div class="project_title">
-                        <a href="#">
-                            <h5>
-                                Sekiro: Shadows Die Twice
-                            </h5>
-                            <p id="overlay_text">Action-adventure video game developed by FromSoftware and published by Activision.</p>
-                        </a>
-                    </div>
-                </div>
-                <div class="single-slide">
-                    <img src="~/Content/img/slides/borderlands 3.jpg" class="img-fluid" alt="Borderlands 3" />
-                    <div class="project_title">
-                        <a href="#">
-                            <h5>
-                                Borderlands 3
-                            </h5>
-                            <p id="overlay_text">
-                                Action role-playing FPS
-                            </p>                      
-                        </a>
-                    </div>
-                </div>              
             </div>
         </div>
-    </div>
 </section>
 
 <!-- popular Grid -->
@@ -130,7 +138,7 @@
         <div class="row">
             <div class="col-lg-12 text-center">
                 <h2 class="section-heading text-uppercase">popularne tytuły</h2>
-                <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                <h3 class="section-subheading text-muted">Najpopularniejsze tytuły w ostatnich tygodniach.</h3>
             </div>
         </div>
         <div class="row">
@@ -173,7 +181,7 @@
                 </a>
                 <div class="popular-caption">
                     <a href="#"><h4>Wiedźmin 3: Dziki Gon - Edycja Gry Roku</h4></a>
-                    <p class="text-muted">139,00 zł</p>
+                    <p class="text-muted">89,00 zł</p>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 col-sm-12 popular-item">
@@ -186,7 +194,7 @@
                     <img class="img-fluid" src="~/Content/img/popular/04-thumbnail.jpg" alt="">
                 </a>
                 <div class="popular-caption">
-                    <a href="#"><h4>Cyberpunk 2077 - Premiera 16.04.2020.</h4></a>
+                    <a href="#"><h4>Cyberpunk 2077 - Premiera 17.09.2020</h4></a>
                     <p class="text-muted">199,00 zł</p>
                 </div>
             </div>
@@ -241,14 +249,9 @@
                             <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
                             <img class="img-fluid d-block mx-auto" src="~/Content/img/popular/01-full.jpg" alt="">
                             <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                            <ul class="list-inline">
-                                <li>Date: January 2017</li>
-                                <li>Client: Threads</li>
-                                <li>Category: Illustration</li>
-                            </ul>
                             <button class="btn btn-primary" data-dismiss="modal" type="button">
                                 <i class="fas fa-times"></i>
-                                Close Project
+                                Zamknij
                             </button>
                         </div>
                     </div>
@@ -276,14 +279,9 @@
                             <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
                             <img class="img-fluid d-block mx-auto" src="~/Content/img/popular/02-full.jpg" alt="">
                             <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                            <ul class="list-inline">
-                                <li>Date: January 2017</li>
-                                <li>Client: Explore</li>
-                                <li>Category: Graphic Design</li>
-                            </ul>
                             <button class="btn btn-primary" data-dismiss="modal" type="button">
                                 <i class="fas fa-times"></i>
-                                Close Project
+                                Zamknij
                             </button>
                         </div>
                     </div>
@@ -311,14 +309,9 @@
                             <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
                             <img class="img-fluid d-block mx-auto" src="~/Content/img/popular/03-full.jpg" alt="">
                             <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                            <ul class="list-inline">
-                                <li>Date: January 2017</li>
-                                <li>Client: Finish</li>
-                                <li>Category: Identity</li>
-                            </ul>
                             <button class="btn btn-primary" data-dismiss="modal" type="button">
                                 <i class="fas fa-times"></i>
-                                Close Project
+                                Zamknij
                             </button>
                         </div>
                     </div>
@@ -346,14 +339,9 @@
                             <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
                             <img class="img-fluid d-block mx-auto" src="~/Content/img/popular/04-full.jpg" alt="">
                             <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                            <ul class="list-inline">
-                                <li>Date: January 2017</li>
-                                <li>Client: Lines</li>
-                                <li>Category: Branding</li>
-                            </ul>
                             <button class="btn btn-primary" data-dismiss="modal" type="button">
                                 <i class="fas fa-times"></i>
-                                Close Project
+                                Zamknij
                             </button>
                         </div>
                     </div>
@@ -381,14 +369,9 @@
                             <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
                             <img class="img-fluid d-block mx-auto" src="~/Content/img/popular/05-full.jpg" alt="">
                             <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                            <ul class="list-inline">
-                                <li>Date: January 2017</li>
-                                <li>Client: Southwest</li>
-                                <li>Category: Website Design</li>
-                            </ul>
                             <button class="btn btn-primary" data-dismiss="modal" type="button">
                                 <i class="fas fa-times"></i>
-                                Close Project
+                                Zamknij
                             </button>
                         </div>
                     </div>
@@ -416,14 +399,9 @@
                             <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
                             <img class="img-fluid d-block mx-auto" src="~/Content/img/popular/06-full.jpg" alt="">
                             <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                            <ul class="list-inline">
-                                <li>Date: January 2017</li>
-                                <li>Client: Window</li>
-                                <li>Category: Photography</li>
-                            </ul>
                             <button class="btn btn-primary" data-dismiss="modal" type="button">
                                 <i class="fas fa-times"></i>
-                                Close Project
+                                Zamknij
                             </button>
                         </div>
                     </div>

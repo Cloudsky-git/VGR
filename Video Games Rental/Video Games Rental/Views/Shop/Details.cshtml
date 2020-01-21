@@ -21,6 +21,7 @@
     <div class="news-load"></div>
 </div>
 
+
 <h2 class="product-detail-title mt-4">Product Detail</h2>
 
 <div class="container">
@@ -30,18 +31,18 @@
                 <div class="preview col-md-6">                   
 
                     <div class="preview-pic tab-content">
-                        <div class="tab-pane active" id="pic-1"><img src="@Url.Content("~/Content/img/games/" +Model.image)" /></div>
-                        <div class="tab-pane" id="pic-2"><img class="details-img" src="@Url.Content("~/Content/img/game_slides/"+Model.game_id+"/img1.jpg")" /></div>
-                        <div class="tab-pane" id="pic-3"><img class="details-img" src="@Url.Content("~/Content/img/game_slides/"+Model.game_id+"/img2.jpg")" /></div>
-                        <div class="tab-pane" id="pic-4"><img class="details-img" src="@Url.Content("~/Content/img/game_slides/"+Model.game_id+"/img3.jpg")" /></div>
-                        <div class="tab-pane" id="pic-5"><img class="details-img" src="@Url.Content("~/Content/img/game_slides/"+Model.game_id+"/img4.jpg")" /></div>
+                        <div class="tab-pane active" id="pic-1"><img src="@Url.Content("~/Content/img/games/" + Model.image)" /></div>
+                        <div class="tab-pane" id="pic-2"><img class="details-img" src="@Url.Content("~/Content/img/game_slides/" + Model.game_id + "/img1.jpg")" /></div>
+                        <div class="tab-pane" id="pic-3"><img class="details-img" src="@Url.Content("~/Content/img/game_slides/" + Model.game_id + "/img2.jpg")" /></div>
+                        <div class="tab-pane" id="pic-4"><img class="details-img" src="@Url.Content("~/Content/img/game_slides/" + Model.game_id + "/img3.jpg")" /></div>
+                        <div class="tab-pane" id="pic-5"><img class="details-img" src="@Url.Content("~/Content/img/game_slides/" + Model.game_id + "/img4.jpg")" /></div>
                     </div>
                     <ul class="preview-thumbnail nav nav-tabs">
-                        <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="@Url.Content("~/Content/img/games/" +Model.image)" /></a></li>
-                        <li><a data-target="#pic-2" data-toggle="tab"><img class="details-img" src="@Url.Content("~/Content/img/game_slides/"+Model.game_id+"/img1.jpg")" /></a></li>
-                        <li><a data-target="#pic-3" data-toggle="tab"><img class="details-img" src="@Url.Content("~/Content/img/game_slides/"+Model.game_id+"/img2.jpg")" /></a></li>
-                        <li><a data-target="#pic-4" data-toggle="tab"><img class="details-img" src="@Url.Content("~/Content/img/game_slides/"+Model.game_id+"/img3.jpg")" /></a></li>
-                        <li><a data-target="#pic-5" data-toggle="tab"><img class="details-img" src="@Url.Content("~/Content/img/game_slides/"+Model.game_id+"/img4.jpg")" /></a></li>
+                        <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="@Url.Content("~/Content/img/games/" + Model.image)" /></a></li>
+                        <li><a data-target="#pic-2" data-toggle="tab"><img class="details-img" src="@Url.Content("~/Content/img/game_slides/" + Model.game_id + "/img1.jpg")" /></a></li>
+                        <li><a data-target="#pic-3" data-toggle="tab"><img class="details-img" src="@Url.Content("~/Content/img/game_slides/" + Model.game_id + "/img2.jpg")" /></a></li>
+                        <li><a data-target="#pic-4" data-toggle="tab"><img class="details-img" src="@Url.Content("~/Content/img/game_slides/" + Model.game_id + "/img3.jpg")" /></a></li>
+                        <li><a data-target="#pic-5" data-toggle="tab"><img class="details-img" src="@Url.Content("~/Content/img/game_slides/" + Model.game_id + "/img4.jpg")" /></a></li>
                     </ul>
 
                 </div>
@@ -51,12 +52,15 @@
                     <h4 class="price">aktualna cena: <span>@(String.Format("{0:N0}", @Model.price))</span><span class="zl">zł</span></h4>                    
                     <div class="action mt-3">
                         @Html.ActionLink("Dodaj do koszyka", "OrderNow", "ShoppingCart", new { id = Model.game_id }, new { @class = "btn add-to-cart btn-default m-0" })
-                        @*<button class="add-to-cart btn btn-default" type="button">Dodaj do koszyka</button>*@
-                        @Html.ActionLink("Rezerwuj", "RentNow", "ShoppingCart", new { id = Model.game_id }, new { @class = "btn add-to-cart btn-default m-0" })
+                      
+                        @if ((string)Session["condition"] == "Używana") 
+                        {
+                            @Html.ActionLink("Rezerwuj", "RentNow", "ShoppingCart", new { id = Model.game_id }, new { @class = "btn add-to-cart btn-default m-0" })
+                        }
+
                         <button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
                     </div>
                     <div>
-                        @*<button class="btn undo btn-default" type="button">Wróc do sklepu</button>*@
                         @Html.ActionLink("Wróc do sklepu", "../Shop", "Shop", new { area = "" }, new { @class = "btn undo btn-default" })
                     </div>
                 </div>

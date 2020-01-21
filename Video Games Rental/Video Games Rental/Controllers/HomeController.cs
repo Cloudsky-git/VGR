@@ -18,7 +18,6 @@ namespace video_games_rental.Controllers
 
         public ActionResult Shop()
         {
-
             return View();
         }
 

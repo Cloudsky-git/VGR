@@ -16,9 +16,9 @@ namespace Video_Games_Rental.Controllers
 
         // GET: games
         public ActionResult Index()
-        {
+        {                       
             var games = db.games.Include(g => g.condition).Include(g => g.genre).Include(g => g.language).Include(g => g.platform);
-            return View(games.ToList());
+            return View(games.ToList());            
         }
 
         // GET: games/Details/5

@@ -12,9 +12,14 @@ namespace Video_Games_Rental.Controllers
     {
         private VGR_DBEntities db = new VGR_DBEntities();
         // GET: Shop
-        public ActionResult Index()
+        public ActionResult Index(string SearchName)
         {
-            return View();
+            var titles = from g in db.games select g;
+            if (!String.IsNullOrEmpty(SearchName))
+            {
+                titles = titles.Where(c => c.title.Contains(SearchName));
+            }
+            return View(titles);
         }
 
         public PartialViewResult GameListPartial(int? page,int? platform, int? language, int? condition)
@@ -82,7 +87,10 @@ namespace Video_Games_Rental.Controllers
         }
         public ActionResult Details(int? id)
         {
-            if(id == null)
+            var conID = db.games.Where(x => x.game_id == id).Select(y => y.condition_id).FirstOrDefault();
+            string conName = db.conditions.Where(x => x.condition_id == conID).Select(y => y.condition1).FirstOrDefault();
+            Session["condition"] = conName;
+            if (id == null)
             {
                 return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
             }
@@ -92,6 +100,7 @@ namespace Video_Games_Rental.Controllers
             {
                 return HttpNotFound();
             }
+            
             return View(product);
         }
 
