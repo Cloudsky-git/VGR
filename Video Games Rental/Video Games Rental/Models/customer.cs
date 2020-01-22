@@ -18,6 +18,7 @@ namespace Video_Games_Rental.Models
         public customer()
         {
             this.orders = new HashSet<order>();
+            this.waitings = new HashSet<waiting>();
         }
     
         public int customer_id { get; set; }
@@ -33,5 +34,7 @@ namespace Video_Games_Rental.Models
         public virtual AspNetUser AspNetUser { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<order> orders { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<waiting> waitings { get; set; }
     }
 }

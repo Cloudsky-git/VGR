@@ -35,6 +35,12 @@
         <AssociationConnector Association="Model.game_genre" />
         <AssociationConnector Association="Model.game_language" />
         <AssociationConnector Association="Model.game_platform" />
+        <EntityTypeShape EntityType="Model.waiting" Width="1.5" PointX="12.375" PointY="5.25" />
+        <AssociationConnector Association="Model.FK_waiting_condition" />
+        <AssociationConnector Association="Model.FK_waiting_customer" />
+        <AssociationConnector Association="Model.FK_waiting_genre" />
+        <AssociationConnector Association="Model.FK_waiting_language" />
+        <AssociationConnector Association="Model.FK_waiting_platform" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

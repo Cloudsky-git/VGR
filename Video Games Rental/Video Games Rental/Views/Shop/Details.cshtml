@@ -56,9 +56,7 @@
                         @if ((string)Session["condition"] == "Używana") 
                         {
                             @Html.ActionLink("Rezerwuj", "RentNow", "ShoppingCart", new { id = Model.game_id }, new { @class = "btn add-to-cart btn-default m-0" })
-                        }
-
-                        <button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
+                        }                        
                     </div>
                     <div>
                         @Html.ActionLink("Wróc do sklepu", "../Shop", "Shop", new { area = "" }, new { @class = "btn undo btn-default" })

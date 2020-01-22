@@ -1,0 +1,163 @@
+﻿@using Video_Games_Rental.Models;
+@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<waiting>
+
+@{
+    ViewBag.Title = "WaitingList";
+    Layout = "~/Views/Shared/_SearchLayout.cshtml";
+}
+
+<!-- Header -->
+<header class="masthead">
+    <div class="container">
+        <div class="intro-text">
+            <div class="intro-lead-in">Witamy w świecie gier!</div>
+            <div class="intro-heading text-uppercase">Wymieniaj • Kupuj • Rezerwuj</div>
+            <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">Dowiedz się więcej</a>
+        </div>
+    </div>
+</header>
+
+<div id="preloader">
+    <div class="news-load"></div>
+</div>
+<main>
+
+    <section class="bg-dark p-3">
+        <div class="row">
+            <div class="col-lg-2 col-xl-2">
+            </div>
+            <div class=" col-lg-8 col-xl-8 col-12 text-center bg-light">
+                @if ((string)Session["myRole"] == "admin")
+                {
+                    <p>
+                        @Html.ActionLink("Create New", "Create")
+                    </p>
+                    <table class="table w-50 order-table">
+                        <tr>
+                            <th>
+                                Numer
+                            </th>
+                            <th>
+                                Tytuł
+                            </th>
+                            <th>
+                                Platforma
+                            </th>
+                            <th>
+                                Stan
+                            </th>
+                            <th>
+                                Język
+                            </th>
+                            <th>
+                                Gatunek
+                            </th>
+                            <th>
+                                Cena
+                            </th>
+                            <th></th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.waiting_id)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.title)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.platform.platform1)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.condition.condition1)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.language.language1)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.genre.genre1)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.price)
+                                </td>                             
+                                <td class="order-edit">
+                                    @Html.ActionLink("Edytuj", "Edit", new { id = item.waiting_id })
+                                    @Html.ActionLink("Szczegóły", "Details", new { id = item.waiting_id })
+                                    @Html.ActionLink("Usuń", "Delete", new { id = item.waiting_id })
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                }
+
+                else
+                {
+                    <table class="table w-50 order-table">
+                        <tr> 
+                            <th>
+                                Tytuł
+                            </th>
+                            <th>
+                                Platforma
+                            </th>
+                            <th>
+                                Stan
+                            </th>
+                            <th>
+                                Język
+                            </th>
+                            <th>
+                                Gatunek
+                            </th>
+                            <th>
+                                Cena
+                            </th>                           
+
+                        @foreach (var item in Model)
+                        {
+                            if (User.Identity.Name == item.customer.Email)
+                            {
+                                <tr>
+                                    <td>
+                                    @Html.DisplayFor(modelItem => item.title)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.platform.platform1)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.condition.condition1)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.language.language1)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.genre.genre1)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.price)
+                                </td>
+                                </tr>
+                            }
+                        }
+
+                    </table>
+                    @Html.ActionLink("Wróć do konta", "../Account/Account_details", "Account", new { area = "" }, new { @class = "btn btn-default btn-undo-own" })
+                }
+
+                <div class="clearfix"></div>
+
+                <div class="page-count">Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount</div>
+                <div class="pagination">
+                    @Html.PagedListPager(Model, page => Url.Action("WaitingList", new { page = page, @class = "btn-pages" }))
+                </div>
+            </div>
+            <div class="col-lg-2 col-xl-2">
+            </div>
+        </div>
+        </section>
+</main>

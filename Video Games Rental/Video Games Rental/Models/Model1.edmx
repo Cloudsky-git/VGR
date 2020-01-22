@@ -167,6 +167,19 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
+        <EntityType Name="waiting">
+          <Key>
+            <PropertyRef Name="waiting_id" />
+          </Key>
+          <Property Name="waiting_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="customer_id" Type="int" />
+          <Property Name="platform_id" Type="int" />
+          <Property Name="langugae_id" Type="int" />
+          <Property Name="genre_id" Type="int" />
+          <Property Name="condiiton_id" Type="int" />
+          <Property Name="title" Type="nvarchar" MaxLength="64" />
+          <Property Name="price" Type="decimal" Precision="8" Scale="2" />
+        </EntityType>
         <Association Name="FK_customer_AspNetUsers">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
           <End Role="customer" Type="Self.customer" Multiplicity="*" />
@@ -293,6 +306,66 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_waiting_condition">
+          <End Role="condition" Type="Self.condition" Multiplicity="0..1" />
+          <End Role="waiting" Type="Self.waiting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="condition">
+              <PropertyRef Name="condition_id" />
+            </Principal>
+            <Dependent Role="waiting">
+              <PropertyRef Name="condiiton_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_waiting_customer">
+          <End Role="customer" Type="Self.customer" Multiplicity="0..1" />
+          <End Role="waiting" Type="Self.waiting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="customer_id" />
+            </Principal>
+            <Dependent Role="waiting">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_waiting_genre">
+          <End Role="genre" Type="Self.genre" Multiplicity="0..1" />
+          <End Role="waiting" Type="Self.waiting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="genre">
+              <PropertyRef Name="genre_id" />
+            </Principal>
+            <Dependent Role="waiting">
+              <PropertyRef Name="genre_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_waiting_language">
+          <End Role="language" Type="Self.language" Multiplicity="0..1" />
+          <End Role="waiting" Type="Self.waiting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="language">
+              <PropertyRef Name="language_id" />
+            </Principal>
+            <Dependent Role="waiting">
+              <PropertyRef Name="langugae_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_waiting_platform">
+          <End Role="platform" Type="Self.platform" Multiplicity="0..1" />
+          <End Role="waiting" Type="Self.waiting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="platform">
+              <PropertyRef Name="platform_id" />
+            </Principal>
+            <Dependent Role="waiting">
+              <PropertyRef Name="platform_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="game_genre">
           <End Role="genre" Type="Self.genre" Multiplicity="1" />
           <End Role="game" Type="Self.game" Multiplicity="*" />
@@ -347,6 +420,7 @@
           <EntitySet Name="platform" EntityType="Self.platform" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="status" EntityType="Self.status" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="waiting" EntityType="Self.waiting" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_customer_AspNetUsers" Association="Self.FK_customer_AspNetUsers">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="customer" EntitySet="customer" />
@@ -387,6 +461,26 @@
             <End Role="status" EntitySet="status" />
             <End Role="order" EntitySet="order" />
           </AssociationSet>
+          <AssociationSet Name="FK_waiting_condition" Association="Self.FK_waiting_condition">
+            <End Role="condition" EntitySet="condition" />
+            <End Role="waiting" EntitySet="waiting" />
+          </AssociationSet>
+          <AssociationSet Name="FK_waiting_customer" Association="Self.FK_waiting_customer">
+            <End Role="customer" EntitySet="customer" />
+            <End Role="waiting" EntitySet="waiting" />
+          </AssociationSet>
+          <AssociationSet Name="FK_waiting_genre" Association="Self.FK_waiting_genre">
+            <End Role="genre" EntitySet="genre" />
+            <End Role="waiting" EntitySet="waiting" />
+          </AssociationSet>
+          <AssociationSet Name="FK_waiting_language" Association="Self.FK_waiting_language">
+            <End Role="language" EntitySet="language" />
+            <End Role="waiting" EntitySet="waiting" />
+          </AssociationSet>
+          <AssociationSet Name="FK_waiting_platform" Association="Self.FK_waiting_platform">
+            <End Role="platform" EntitySet="platform" />
+            <End Role="waiting" EntitySet="waiting" />
+          </AssociationSet>
           <AssociationSet Name="game_genre" Association="Self.game_genre">
             <End Role="genre" EntitySet="genre" />
             <End Role="game" EntitySet="game" />
@@ -411,6 +505,7 @@
           <Property Name="genre_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="genre1" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="games" Relationship="Model.game_genre" FromRole="genre" ToRole="game" />
+          <NavigationProperty Name="waitings" Relationship="Model.FK_waiting_genre" FromRole="genre" ToRole="waiting" />
         </EntityType>
         <EntityType Name="language">
           <Key>
@@ -419,6 +514,7 @@
           <Property Name="language_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="language1" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="games" Relationship="Model.game_language" FromRole="language" ToRole="game" />
+          <NavigationProperty Name="waitings" Relationship="Model.FK_waiting_language" FromRole="language" ToRole="waiting" />
         </EntityType>
         <EntityType Name="order_type">
           <Key>
@@ -435,6 +531,7 @@
           <Property Name="platform_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="platform1" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="games" Relationship="Model.game_platform" FromRole="platform" ToRole="game" />
+          <NavigationProperty Name="waitings" Relationship="Model.FK_waiting_platform" FromRole="platform" ToRole="waiting" />
         </EntityType>
         <EntityType Name="status">
           <Key>
@@ -524,6 +621,27 @@
             <End Role="platform" EntitySet="platforms" />
             <End Role="game" EntitySet="games" />
           </AssociationSet>
+          <EntitySet Name="waitings" EntityType="Model.waiting" />
+          <AssociationSet Name="FK_waiting_condition" Association="Model.FK_waiting_condition">
+            <End Role="condition" EntitySet="conditions" />
+            <End Role="waiting" EntitySet="waitings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_waiting_customer" Association="Model.FK_waiting_customer">
+            <End Role="customer" EntitySet="customers" />
+            <End Role="waiting" EntitySet="waitings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_waiting_genre" Association="Model.FK_waiting_genre">
+            <End Role="genre" EntitySet="genres" />
+            <End Role="waiting" EntitySet="waitings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_waiting_language" Association="Model.FK_waiting_language">
+            <End Role="language" EntitySet="languages" />
+            <End Role="waiting" EntitySet="waitings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_waiting_platform" Association="Model.FK_waiting_platform">
+            <End Role="platform" EntitySet="platforms" />
+            <End Role="waiting" EntitySet="waitings" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="order_detail">
           <Key>
@@ -590,6 +708,7 @@
           <Property Name="condition_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="condition1" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="games" Relationship="Model.FK_game_condition" FromRole="condition" ToRole="game" />
+          <NavigationProperty Name="waitings" Relationship="Model.FK_waiting_condition" FromRole="condition" ToRole="waiting" />
         </EntityType>
         <EntityType Name="AspNetUser">
           <Key>
@@ -720,6 +839,7 @@
           <Property Name="PhoneNumber" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="AspNetUser" Relationship="Model.FK_customer_AspNetUsers" FromRole="customer" ToRole="AspNetUser" />
           <NavigationProperty Name="orders" Relationship="Model.FK_order_customer" FromRole="customer" ToRole="order" />
+          <NavigationProperty Name="waitings" Relationship="Model.FK_waiting_customer" FromRole="customer" ToRole="waiting" />
         </EntityType>
         <Association Name="FK_customer_AspNetUsers">
           <End Type="Model.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
@@ -821,6 +941,84 @@
               <PropertyRef Name="platform_id" />
             </Principal>
             <Dependent Role="game">
+              <PropertyRef Name="platform_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="waiting">
+          <Key>
+            <PropertyRef Name="waiting_id" />
+          </Key>
+          <Property Name="waiting_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="customer_id" Type="Int32" />
+          <Property Name="platform_id" Type="Int32" />
+          <Property Name="langugae_id" Type="Int32" />
+          <Property Name="genre_id" Type="Int32" />
+          <Property Name="condiiton_id" Type="Int32" />
+          <Property Name="title" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="price" Type="Decimal" Precision="8" Scale="2" />
+          <NavigationProperty Name="condition" Relationship="Model.FK_waiting_condition" FromRole="waiting" ToRole="condition" />
+          <NavigationProperty Name="customer" Relationship="Model.FK_waiting_customer" FromRole="waiting" ToRole="customer" />
+          <NavigationProperty Name="genre" Relationship="Model.FK_waiting_genre" FromRole="waiting" ToRole="genre" />
+          <NavigationProperty Name="language" Relationship="Model.FK_waiting_language" FromRole="waiting" ToRole="language" />
+          <NavigationProperty Name="platform" Relationship="Model.FK_waiting_platform" FromRole="waiting" ToRole="platform" />
+        </EntityType>
+        <Association Name="FK_waiting_condition">
+          <End Type="Model.condition" Role="condition" Multiplicity="0..1" />
+          <End Type="Model.waiting" Role="waiting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="condition">
+              <PropertyRef Name="condition_id" />
+            </Principal>
+            <Dependent Role="waiting">
+              <PropertyRef Name="condiiton_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_waiting_customer">
+          <End Type="Model.customer" Role="customer" Multiplicity="0..1" />
+          <End Type="Model.waiting" Role="waiting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="customer_id" />
+            </Principal>
+            <Dependent Role="waiting">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_waiting_genre">
+          <End Type="Model.genre" Role="genre" Multiplicity="0..1" />
+          <End Type="Model.waiting" Role="waiting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="genre">
+              <PropertyRef Name="genre_id" />
+            </Principal>
+            <Dependent Role="waiting">
+              <PropertyRef Name="genre_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_waiting_language">
+          <End Type="Model.language" Role="language" Multiplicity="0..1" />
+          <End Type="Model.waiting" Role="waiting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="language">
+              <PropertyRef Name="language_id" />
+            </Principal>
+            <Dependent Role="waiting">
+              <PropertyRef Name="langugae_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_waiting_platform">
+          <End Type="Model.platform" Role="platform" Multiplicity="0..1" />
+          <End Type="Model.waiting" Role="waiting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="platform">
+              <PropertyRef Name="platform_id" />
+            </Principal>
+            <Dependent Role="waiting">
               <PropertyRef Name="platform_id" />
             </Dependent>
           </ReferentialConstraint>
@@ -1003,6 +1201,20 @@
                 <ScalarProperty Name="language_id" ColumnName="language_id" />
                 <ScalarProperty Name="platform_id" ColumnName="platform_id" />
                 <ScalarProperty Name="game_id" ColumnName="game_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="waitings">
+            <EntityTypeMapping TypeName="Model.waiting">
+              <MappingFragment StoreEntitySet="waiting">
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="condiiton_id" ColumnName="condiiton_id" />
+                <ScalarProperty Name="genre_id" ColumnName="genre_id" />
+                <ScalarProperty Name="langugae_id" ColumnName="langugae_id" />
+                <ScalarProperty Name="platform_id" ColumnName="platform_id" />
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="waiting_id" ColumnName="waiting_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

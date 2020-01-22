@@ -179,6 +179,7 @@
     <Compile Include="Controllers\ShopController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Controllers\statusController.cs" />
+    <Compile Include="Controllers\waitingsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -249,6 +250,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\waiting.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -769,6 +773,12 @@
     <Content Include="Views\games\Details.cshtml" />
     <Content Include="Views\games\Edit.cshtml" />
     <Content Include="Views\games\Index.cshtml" />
+    <Content Include="Views\waitings\Create.cshtml" />
+    <Content Include="Views\waitings\Delete.cshtml" />
+    <Content Include="Views\waitings\Details.cshtml" />
+    <Content Include="Views\waitings\Edit.cshtml" />
+    <Content Include="Views\waitings\Index.cshtml" />
+    <Content Include="Views\waitings\WaitingList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

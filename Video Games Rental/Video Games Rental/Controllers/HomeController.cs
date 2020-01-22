@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -23,9 +24,37 @@ namespace video_games_rental.Controllers
 
         public ActionResult AddProduct()
         {
-
+            ViewBag.condiiton_id = new SelectList(db.conditions, "condition_id", "condition1");
+            ViewBag.genre_id = new SelectList(db.genres, "genre_id", "genre1");
+            ViewBag.langugae_id = new SelectList(db.languages, "language_id", "language1");
+            ViewBag.platform_id = new SelectList(db.platforms, "platform_id", "platform1");            
             return View();
-        }      
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddProduct([Bind(Include = "waiting_id,customer_id,platform_id,langugae_id,genre_id,condiiton_id,title,price")] waiting waiting)
+        {
+            if (ModelState.IsValid)
+            {
+                string aspnetuserID = User.Identity.GetUserId();
+                List<customer> custList = db.customers.Where(x => x.AspNetUsers_id == aspnetuserID).ToList();
+                if (custList.Count() > 0)
+                {
+                    int cust = custList.First().customer_id;
+                    waiting.customer_id = cust;
+                }
+                db.waitings.Add(waiting);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.condiiton_id = new SelectList(db.conditions, "condition_id", "condition1", waiting.condiiton_id);           
+            ViewBag.genre_id = new SelectList(db.genres, "genre_id", "genre1", waiting.genre_id);
+            ViewBag.langugae_id = new SelectList(db.languages, "language_id", "language1", waiting.langugae_id);
+            ViewBag.platform_id = new SelectList(db.platforms, "platform_id", "platform1", waiting.platform_id);
+            return View(waiting);
+        }
 
         public ActionResult About()
         {
@@ -79,24 +108,6 @@ namespace video_games_rental.Controllers
         {
 
             return View();
-        } 
-
-        //public ActionResult GameRegister(FormCollection frc)
-        //{
-        //    game game = new game()
-        //    {
-        //        title = frc["gameTitle"],
-        //        genre_id = frc[""],
-        //        language = frc["gameLanguage"],
-        //        platform = frc["gamePlatform"],
-        //        condition = frc["gameCondition"],
-        //        price = frc["gamePrice"],               
-        //    };
-
-        //    db.games.Add(game);
-        //    db.SaveChanges();
-
-        //    return View("RegisterSuccess");
-        //}
+        }      
     }
 }

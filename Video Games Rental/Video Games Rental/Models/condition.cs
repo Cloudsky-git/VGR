@@ -18,6 +18,7 @@ namespace Video_Games_Rental.Models
         public condition()
         {
             this.games = new HashSet<game>();
+            this.waitings = new HashSet<waiting>();
         }
     
         public int condition_id { get; set; }
@@ -25,5 +26,7 @@ namespace Video_Games_Rental.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<game> games { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<waiting> waitings { get; set; }
     }
 }
