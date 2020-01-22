@@ -1,4 +1,6 @@
-﻿using PagedList;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -29,7 +31,8 @@ namespace Video_Games_Rental.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            waiting waiting = db.waitings.Find(id);
+            waiting waiting = db.waitings.Find(id);           
+
             if (waiting == null)
             {
                 return HttpNotFound();

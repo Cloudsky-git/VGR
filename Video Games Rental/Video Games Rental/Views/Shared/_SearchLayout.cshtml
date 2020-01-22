@@ -93,11 +93,12 @@
                     </a>
                 </li>
                 </ul>
-                using (Html.BeginForm())
+                using (Html.BeginForm("Index", "Shop"))
                 {
                 <ul class="nav navbar-nav ml-5">
                     <li class="nav-item">
                         <input class="form-control search" type="search" placeholder="Wyszukaj" name="SearchName">
+                        @*@Html.TextBox("SearchName")*@
                     </li>
                     <li>
                         <input class="btn btn-search btn-primary mt-1 mt-xl-auto ml-xl-1" type="submit" value="Znajdź">

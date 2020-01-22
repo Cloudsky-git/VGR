@@ -38,11 +38,12 @@ namespace video_games_rental.Controllers
             if (ModelState.IsValid)
             {
                 string aspnetuserID = User.Identity.GetUserId();
-                List<customer> custList = db.customers.Where(x => x.AspNetUsers_id == aspnetuserID).ToList();
+                List<customer> custList = db.customers.Where(x => x.AspNetUsers_id == aspnetuserID).ToList();                                
+
                 if (custList.Count() > 0)
                 {
                     int cust = custList.First().customer_id;
-                    waiting.customer_id = cust;
+                    waiting.customer_id = cust;                    
                 }
                 db.waitings.Add(waiting);
                 db.SaveChanges();

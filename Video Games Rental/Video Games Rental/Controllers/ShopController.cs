@@ -12,18 +12,13 @@ namespace Video_Games_Rental.Controllers
     {
         private VGR_DBEntities db = new VGR_DBEntities();
         // GET: Shop
-        public ActionResult Index(string SearchName)
-        {
-            var titles = from g in db.games select g;
-            if (!String.IsNullOrEmpty(SearchName))
-            {
-                titles = titles.Where(c => c.title.Contains(SearchName));
-            }
-            return View(titles);
+        public ActionResult Index()
+        {                 
+            return View();
         }
 
-        public PartialViewResult GameListPartial(int? page,int? platform, int? language, int? condition)
-        {           
+        public PartialViewResult GameListPartial(int? page,int? platform, int? language, int? condition, string SearchName)
+        {
             var pageNumber = page ?? 1;
             var pageSize = 9;
            
@@ -60,11 +55,26 @@ namespace Video_Games_Rental.Controllers
                 return PartialView(gameList);
             }
 
+            else if (SearchName != null)
+            {
+                var titles = from g in db.games select g;
+                if (!String.IsNullOrEmpty(SearchName))
+                {
+                    titles = titles.Where(c => c.title.Contains(SearchName));
+                }
+                var gameList = db.games
+                    .OrderByDescending(x => x.game_id)
+                    .Where(x => x.title.Contains(SearchName))
+                    .ToPagedList(pageNumber, pageSize);
+
+                return PartialView(gameList);
+            }
+
             else
             {
                 var gameList = db.games.OrderByDescending(x => x.game_id).ToPagedList(pageNumber, pageSize);
                 return PartialView(gameList);
-            }   
+            }              
         }
 
         public PartialViewResult PlatformListPartial()
