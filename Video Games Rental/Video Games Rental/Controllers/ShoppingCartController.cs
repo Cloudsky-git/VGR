@@ -154,6 +154,10 @@ namespace Video_Games_Rental.Controllers
                 db.orders.Add(order);
                 db.SaveChanges();
             }
+            else if (custList.Count() == 0)
+            {
+                return RedirectToAction("../Account/User_details");
+            }
             else
             {
                 db.customers.Add(customer);
@@ -218,9 +222,7 @@ namespace Video_Games_Rental.Controllers
             List<customer> custList = db.customers.Where(x => x.AspNetUsers_id == aspnetuserID).ToList();
             if (custList.Count() > 0)
             {
-                int cust = custList.First().customer_id;
-                
-
+                int cust = custList.First().customer_id;               
                 foreach (Cart cart in lsCart)
                 {                   
                     total +=  cart.Quantity * cart.Product.price;
@@ -238,7 +240,7 @@ namespace Video_Games_Rental.Controllers
             }
             else if (custList.Count() == 0)
             {
-                RedirectToAction("../Account/User_details");
+                return RedirectToAction("../Account/User_details");
             }
             else
             {                

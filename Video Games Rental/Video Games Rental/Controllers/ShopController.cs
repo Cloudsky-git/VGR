@@ -17,7 +17,7 @@ namespace Video_Games_Rental.Controllers
             return View();
         }
 
-        public PartialViewResult GameListPartial(int? page,int? platform, int? language, int? condition, string SearchName)
+        public PartialViewResult GameListPartial(int? page, int? platform, int? language, int? condition, string SearchName)
         {
             var pageNumber = page ?? 1;
             var pageSize = 9;

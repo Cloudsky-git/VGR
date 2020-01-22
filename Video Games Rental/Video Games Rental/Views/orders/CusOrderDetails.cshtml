@@ -49,9 +49,6 @@
                             <th>
                                 Status produktu
                             </th>
-                            <th>
-                                Stan
-                            </th>
                             <th></th>
                         </tr>
 
@@ -71,18 +68,15 @@
                             <td>
                                 @Html.DisplayFor(model => model.status.status1)
                             </td>
-                            <td>
-                                @Html.DisplayFor(model => model.status.status1)
-                            </td>
                         </tr>
                     </table>
                     <div class="py-1">
                         @Html.ActionLink("Wróć do zamówień", "OrderList", "orders", new { area = "" }, new { @class = "btn btn-lg btn-primary btn-block btn-login btn-back text-uppercase font-weight-bold mb-2" })
                     </div>
                 </div>
-            <div class="col-lg-2 col-xl-2">
+                <div class="col-lg-2 col-xl-2">
+                </div>
             </div>
         </div>
-      </div>
     </section>
 </main>

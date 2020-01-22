@@ -35,7 +35,7 @@ namespace Video_Games_Rental.Controllers
             }
             return View(order_detail);
         }
-
+ 
         // GET: order_detail/Create
         public ActionResult Create()
         {
