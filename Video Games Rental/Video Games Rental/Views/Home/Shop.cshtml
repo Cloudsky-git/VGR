@@ -37,20 +37,27 @@
                         @*@{ 
                             int product = (int)Session["product"];
                         }*@
+                        @{ 
+                            //int gameID = (int)Session["gameID"];
+                            //for(var i = gameID; i > gameID-5; --i) 
+                            foreach(var item in Model)
+                            {
                         <div class="single-slide">
-                            <img src="~/Content/img/slides/Call of Duty Modern Warfare 2019.jpg" class="img-fluid" />
+                            <a href="@Url.Action("Details", "Shop", new { id = item.game_id }, null)"><img class="img-thumbnail" src="@Url.Content("~/Content/img/games/" + item.image)" /></a>
                             <div class="project_title">
                                 <a href="#">
                                     <h5>
-                                        Call of Duty: Modern Warfare 2
+                                        @item.title
                                     </h5>
                                     <p id="overlay_text">
-                                        FPS video game developed by Infinity Ward and published by Activision.
+                                        @Html.ActionLink(@item.description, "Details", "Shop", new { id = item.game_id }, null)
                                     </p>
                                 </a>
                             </div>
                         </div>
-                        <div class="single-slide">
+                                }
+                            }
+                        @*<div class="single-slide">
                             <img src="~/Content/img/slides/death_stranding_full_1573020168356.jpg" class="img-fluid" />
                             <div class="project_title">
                                 <a href="#">
@@ -125,7 +132,7 @@
                                     </p>
                                 </a>
                             </div>
-                        </div>
+                        </div>*@
                     </div>
                 </div>
             </div>

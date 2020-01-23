@@ -19,7 +19,10 @@ namespace video_games_rental.Controllers
 
         public ActionResult Shop()
         {
-            return View();
+            var gameList = db.games.OrderByDescending(x => x.game_id).ToList();
+            //int gameID = db.games.Select(x => x.game_id).Last();
+            //Session["gameID"] = gameID;
+            return View(gameList);
         }
 
         public ActionResult AddProduct()

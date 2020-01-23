@@ -136,7 +136,7 @@ ol {
 .single-slide .project_title {
     position: absolute;
     content: "";
-    bottom: -250px;
+    bottom: -400px;
     left: 0;
     z-index: 3;
     background: #368dfe;
