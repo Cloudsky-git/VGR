@@ -118,7 +118,7 @@ ol {
 
 .single-slide .project_title a > h5 {
     color: #ffffff;
-    font-size: 20px;
+    font-size: 10px;
     font-weight: 700;
     margin-bottom: 0;
 }
@@ -145,6 +145,10 @@ ol {
     height: auto;
     -webkit-transition-duration: 750ms;
     transition-duration: 750ms;
+}
+
+.slide{
+    height: 500px;
 }
 
 .single-slide:hover .project_title {
