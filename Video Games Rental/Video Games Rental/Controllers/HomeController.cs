@@ -45,6 +45,7 @@ namespace video_games_rental.Controllers
 
                 if (custList.Count() > 0)
                 {
+                    waiting.status_id = 1;
                     int cust = custList.First().customer_id;
                     waiting.customer_id = cust;                    
                 }

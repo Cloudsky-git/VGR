@@ -148,8 +148,7 @@ namespace Video_Games_Rental.Controllers
                     customer_id = cust,
                     price = total,
                     date = DateTime.Now,
-                    order_type_id = 1,
-                    status_id = 2
+                    order_type_id = 1
                 };
                 db.orders.Add(order);
                 db.SaveChanges();
@@ -174,8 +173,7 @@ namespace Video_Games_Rental.Controllers
                     customer_id = idCust,
                     price = total,
                     date = DateTime.Now,
-                    order_type_id = 3,
-                    status_id = 2
+                    order_type_id = 3
                 };
                 db.orders.Add(order);
                 db.SaveChanges();
@@ -232,8 +230,7 @@ namespace Video_Games_Rental.Controllers
                     customer_id = cust,
                     price = total,
                     date = DateTime.Now,
-                    order_type_id = 3,
-                    status_id = 2
+                    order_type_id = 3
                 };
                 db.orders.Add(order);
                 db.SaveChanges();
@@ -258,8 +255,7 @@ namespace Video_Games_Rental.Controllers
                         customer_id = idCust,
                         price = total,                      
                         date = DateTime.Now,
-                        order_type_id = 3,
-                        status_id = 2
+                        order_type_id = 3
                     };
                     db.orders.Add(order);
                     db.SaveChanges();

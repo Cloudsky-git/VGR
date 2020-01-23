@@ -20,6 +20,7 @@ namespace Video_Games_Rental.Models
         public Nullable<int> langugae_id { get; set; }
         public Nullable<int> genre_id { get; set; }
         public Nullable<int> condiiton_id { get; set; }
+        public Nullable<int> status_id { get; set; }
         public string title { get; set; }
         public Nullable<decimal> price { get; set; }
     
@@ -28,5 +29,6 @@ namespace Video_Games_Rental.Models
         public virtual genre genre { get; set; }
         public virtual language language { get; set; }
         public virtual platform platform { get; set; }
+        public virtual status status { get; set; }
     }
 }

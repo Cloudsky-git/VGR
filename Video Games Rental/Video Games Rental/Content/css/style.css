@@ -118,7 +118,7 @@ ol {
 
 .single-slide .project_title a > h5 {
     color: #ffffff;
-    font-size: 10px;
+    font-size: 20px;
     font-weight: 700;
     margin-bottom: 0;
 }
@@ -136,7 +136,7 @@ ol {
 .single-slide .project_title {
     position: absolute;
     content: "";
-    bottom: -400px;
+    bottom: -600px;
     left: 0;
     z-index: 3;
     background: #368dfe;
@@ -147,9 +147,6 @@ ol {
     transition-duration: 750ms;
 }
 
-.slide{
-    height: 500px;
-}
 
 .single-slide:hover .project_title {
     bottom: 0;
@@ -291,9 +288,17 @@ ol {
 }
 
 .game-image img {
-    width: 250px;
+    width: 200px;
     height: 375px;
     opacity: 0.8;
+}
+
+@media (min-width: 300px){
+  
+    .game-image img {      
+        height: 200px;
+        opacity: 0.8;
+    }
 }
 
 .game-image img:hover{

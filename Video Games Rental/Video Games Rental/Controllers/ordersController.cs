@@ -18,7 +18,7 @@ namespace Video_Games_Rental.Controllers
         // GET: orders
         public ActionResult Index()
         {
-            var orders = db.orders.Include(o => o.customer).Include(o => o.order_type).Include(o => o.status);
+            var orders = db.orders.Include(o => o.customer).Include(o => o.order_type);
             return View(orders.ToList());
         }
 
@@ -37,27 +37,11 @@ namespace Video_Games_Rental.Controllers
             return View(order);
         }
 
-        public ActionResult CusOrderDetails(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            order order = db.orders.Find(id);
-            if (order == null)
-            {
-                return HttpNotFound();
-            }
-            return View(order);
-        }
-
-
         // GET: orders/Create
         public ActionResult Create()
         {
             ViewBag.customer_id = new SelectList(db.customers, "customer_id", "AspNetUsers_id");
             ViewBag.order_type_id = new SelectList(db.order_type, "order_type_id", "type");
-            ViewBag.status_id = new SelectList(db.status, "status_id", "status1");
             return View();
         }
 
@@ -66,7 +50,7 @@ namespace Video_Games_Rental.Controllers
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "order_id,customer_id,order_type_id,status_id,date,price")] order order)
+        public ActionResult Create([Bind(Include = "order_id,customer_id,order_type_id,price,date")] order order)
         {
             if (ModelState.IsValid)
             {
@@ -77,7 +61,6 @@ namespace Video_Games_Rental.Controllers
 
             ViewBag.customer_id = new SelectList(db.customers, "customer_id", "AspNetUsers_id", order.customer_id);
             ViewBag.order_type_id = new SelectList(db.order_type, "order_type_id", "type", order.order_type_id);
-            ViewBag.status_id = new SelectList(db.status, "status_id", "status1", order.status_id);
             return View(order);
         }
 
@@ -95,7 +78,6 @@ namespace Video_Games_Rental.Controllers
             }
             ViewBag.customer_id = new SelectList(db.customers, "customer_id", "AspNetUsers_id", order.customer_id);
             ViewBag.order_type_id = new SelectList(db.order_type, "order_type_id", "type", order.order_type_id);
-            ViewBag.status_id = new SelectList(db.status, "status_id", "status1", order.status_id);
             return View(order);
         }
 
@@ -104,7 +86,7 @@ namespace Video_Games_Rental.Controllers
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "order_id,customer_id,order_type_id,status_id,date,price")] order order)
+        public ActionResult Edit([Bind(Include = "order_id,customer_id,order_type_id,price,date")] order order)
         {
             if (ModelState.IsValid)
             {
@@ -114,7 +96,6 @@ namespace Video_Games_Rental.Controllers
             }
             ViewBag.customer_id = new SelectList(db.customers, "customer_id", "AspNetUsers_id", order.customer_id);
             ViewBag.order_type_id = new SelectList(db.order_type, "order_type_id", "type", order.order_type_id);
-            ViewBag.status_id = new SelectList(db.status, "status_id", "status1", order.status_id);
             return View(order);
         }
 

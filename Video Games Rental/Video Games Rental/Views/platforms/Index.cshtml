@@ -6,66 +6,68 @@
 }
 
 <h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.platform1)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+@if ((string)Session["myRole"] == "admin")
+{
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.platform1)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.platform_id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.platform_id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.platform_id })
-            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.platform1)
+            </th>
+            <th></th>
         </tr>
-    }
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.platform1)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.platform_id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.platform_id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.platform_id })
+                </td>
+            </tr>
+        }
 
-<section>
-    <div class="panel-menu text-center">
+    </table>
 
-        <ul class="panel-list list-unstyled">
-            <li class="panel-list-item">
-                @Html.ActionLink("Status", "../status/Index", new { area = "" })
-            </li>
-            <li class="panel-list-item">
-                @Html.ActionLink("Games", "../games/Index", new { area = "" })
-            </li>
-            <li class="panel-list-item">
-                @Html.ActionLink("Genres", "../genres/Index", new { area = "" })
-            </li>
-            <li class="panel-list-item">
-                @Html.ActionLink("Languages", "../languages/Index", new { area = "" })
-            </li>
-            <li class="panel-list-item">
-                @Html.ActionLink("Orders", "../orders/Index", new { area = "" })
-            </li>
-            <li class="panel-list-item">
-                @Html.ActionLink("Order details", "../order_detail/Index", new { area = "" })
-            </li>
-            <li class="panel-list-item">
-                @Html.ActionLink("Order types", "../order_type/Index", new { area = "" })
-            </li>
-            <li class="panel-list-item">
-                @Html.ActionLink("Users", "../AspNetUsers/Index", new { area = "" })
-            </li>
-            <li class="panel-list-item">
-                @Html.ActionLink("Conditions", "../conditions/Index", new { area = "" })
-            </li>
-        </ul>
+    <section>
+        <div class="panel-menu text-center">
 
-    </div>
-</section>
+            <ul class="panel-list list-unstyled">
+                <li class="panel-list-item">
+                    @Html.ActionLink("Status", "../status/Index", new { area = "" })
+                </li>
+                <li class="panel-list-item">
+                    @Html.ActionLink("Games", "../games/Index", new { area = "" })
+                </li>
+                <li class="panel-list-item">
+                    @Html.ActionLink("Genres", "../genres/Index", new { area = "" })
+                </li>
+                <li class="panel-list-item">
+                    @Html.ActionLink("Languages", "../languages/Index", new { area = "" })
+                </li>
+                <li class="panel-list-item">
+                    @Html.ActionLink("Orders", "../orders/Index", new { area = "" })
+                </li>
+                <li class="panel-list-item">
+                    @Html.ActionLink("Order details", "../order_detail/Index", new { area = "" })
+                </li>
+                <li class="panel-list-item">
+                    @Html.ActionLink("Order types", "../order_type/Index", new { area = "" })
+                </li>
+                <li class="panel-list-item">
+                    @Html.ActionLink("Users", "../AspNetUsers/Index", new { area = "" })
+                </li>
+                <li class="panel-list-item">
+                    @Html.ActionLink("Conditions", "../conditions/Index", new { area = "" })
+                </li>
+            </ul>
+
+        </div>
+    </section>
+}

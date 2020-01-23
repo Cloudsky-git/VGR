@@ -20,7 +20,7 @@ namespace Video_Games_Rental.Controllers
         // GET: waitings
         public ActionResult Index()
         {
-            var waitings = db.waitings.Include(w => w.condition).Include(w => w.customer).Include(w => w.genre).Include(w => w.language).Include(w => w.platform);
+            var waitings = db.waitings.Include(w => w.condition).Include(w => w.customer).Include(w => w.genre).Include(w => w.language).Include(w => w.platform).Include(w => w.status);
             return View(waitings.ToList());
         }
 
@@ -31,8 +31,7 @@ namespace Video_Games_Rental.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            waiting waiting = db.waitings.Find(id);           
-
+            waiting waiting = db.waitings.Find(id);
             if (waiting == null)
             {
                 return HttpNotFound();
@@ -43,11 +42,10 @@ namespace Video_Games_Rental.Controllers
         public ActionResult WaitingList(int? page)
         {
             var pageNumber = page ?? 1;
-            var PageSize = 5;
+            var PageSize = 5;           
             var orderList = db.waitings.OrderByDescending(x => x.waiting_id).ToPagedList(pageNumber, PageSize);
             return View(orderList);
         }
-
         // GET: waitings/Create
         public ActionResult Create()
         {
@@ -56,6 +54,7 @@ namespace Video_Games_Rental.Controllers
             ViewBag.genre_id = new SelectList(db.genres, "genre_id", "genre1");
             ViewBag.langugae_id = new SelectList(db.languages, "language_id", "language1");
             ViewBag.platform_id = new SelectList(db.platforms, "platform_id", "platform1");
+            ViewBag.status_id = new SelectList(db.status, "status_id", "status1");
             return View();
         }
 
@@ -64,7 +63,7 @@ namespace Video_Games_Rental.Controllers
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "waiting_id,customer_id,platform_id,langugae_id,genre_id,condiiton_id,title,price")] waiting waiting)
+        public ActionResult Create([Bind(Include = "waiting_id,customer_id,platform_id,langugae_id,genre_id,condiiton_id,status_id,title,price")] waiting waiting)
         {
             if (ModelState.IsValid)
             {
@@ -78,6 +77,7 @@ namespace Video_Games_Rental.Controllers
             ViewBag.genre_id = new SelectList(db.genres, "genre_id", "genre1", waiting.genre_id);
             ViewBag.langugae_id = new SelectList(db.languages, "language_id", "language1", waiting.langugae_id);
             ViewBag.platform_id = new SelectList(db.platforms, "platform_id", "platform1", waiting.platform_id);
+            ViewBag.status_id = new SelectList(db.status, "status_id", "status1", waiting.status_id);
             return View(waiting);
         }
 
@@ -98,6 +98,7 @@ namespace Video_Games_Rental.Controllers
             ViewBag.genre_id = new SelectList(db.genres, "genre_id", "genre1", waiting.genre_id);
             ViewBag.langugae_id = new SelectList(db.languages, "language_id", "language1", waiting.langugae_id);
             ViewBag.platform_id = new SelectList(db.platforms, "platform_id", "platform1", waiting.platform_id);
+            ViewBag.status_id = new SelectList(db.status, "status_id", "status1", waiting.status_id);
             return View(waiting);
         }
 
@@ -106,7 +107,7 @@ namespace Video_Games_Rental.Controllers
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "waiting_id,customer_id,platform_id,langugae_id,genre_id,condiiton_id,title,price")] waiting waiting)
+        public ActionResult Edit([Bind(Include = "waiting_id,customer_id,platform_id,langugae_id,genre_id,condiiton_id,status_id,title,price")] waiting waiting)
         {
             if (ModelState.IsValid)
             {
@@ -119,6 +120,7 @@ namespace Video_Games_Rental.Controllers
             ViewBag.genre_id = new SelectList(db.genres, "genre_id", "genre1", waiting.genre_id);
             ViewBag.langugae_id = new SelectList(db.languages, "language_id", "language1", waiting.langugae_id);
             ViewBag.platform_id = new SelectList(db.platforms, "platform_id", "platform1", waiting.platform_id);
+            ViewBag.status_id = new SelectList(db.status, "status_id", "status1", waiting.status_id);
             return View(waiting);
         }
 

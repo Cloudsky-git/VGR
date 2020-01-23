@@ -29,7 +29,6 @@ namespace Video_Games_Rental.Models
         public virtual DbSet<language> languages { get; set; }
         public virtual DbSet<order_type> order_type { get; set; }
         public virtual DbSet<platform> platforms { get; set; }
-        public virtual DbSet<status> status { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<order_detail> order_detail { get; set; }
         public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
@@ -39,9 +38,10 @@ namespace Video_Games_Rental.Models
         public virtual DbSet<AspNetUserRole> AspNetUserRoles { get; set; }
         public virtual DbSet<condition> conditions { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
-        public virtual DbSet<order> orders { get; set; }
         public virtual DbSet<customer> customers { get; set; }
         public virtual DbSet<game> games { get; set; }
+        public virtual DbSet<order> orders { get; set; }
+        public virtual DbSet<status> status { get; set; }
         public virtual DbSet<waiting> waitings { get; set; }
     }
 }

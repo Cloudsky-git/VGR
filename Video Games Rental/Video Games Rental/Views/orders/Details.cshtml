@@ -6,54 +6,48 @@
 }
 
 <h2>Details</h2>
+@if ((string)Session["myRole"] == "admin")
+{
+    <div>
+        <h4>order</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.price)
+            </dt>
 
-<div>
-    <h4>order</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.date)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.price)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.date)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.date)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.price)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.date)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.price)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.customer.AspNetUsers_id)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.customer.AspNetUsers_id)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.customer.AspNetUsers_id)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.customer.AspNetUsers_id)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.order_type.type)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.order_type.type)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.order_type.type)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.order_type.type)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.status.status1)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.status.status1)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.order_id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.order_id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

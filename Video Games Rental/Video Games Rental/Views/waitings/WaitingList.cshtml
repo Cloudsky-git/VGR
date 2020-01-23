@@ -57,6 +57,9 @@
                             <th>
                                 Cena
                             </th>
+                            <th>
+                                Status
+                            </th>
                             <th></th>
                         </tr>
 
@@ -83,7 +86,10 @@
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.price)
-                                </td>                             
+                                </td>   
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.status.status1)
+                                </td> 
                                 <td class="order-edit">
                                     @Html.ActionLink("Edytuj", "Edit", new { id = item.waiting_id })
                                     @Html.ActionLink("Szczegóły", "Details", new { id = item.waiting_id })
@@ -116,7 +122,10 @@
                             </th>
                             <th>
                                 Cena
-                            </th>                           
+                            </th>   
+                            <th>
+                                Status
+                            </th>
 
                         @foreach (var item in Model)
                         {
@@ -140,6 +149,9 @@
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.price)
+                                </td>
+                                    <td>
+                                    @Html.DisplayFor(modelItem => item.status.status1)
                                 </td>
                                 </tr>
                             }

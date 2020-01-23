@@ -6,60 +6,55 @@
 }
 
 <h2>Delete</h2>
+@if ((string)Session["myRole"] == "admin")
+{
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>order</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.price)
+            </dt>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>order</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.date)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.price)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.date)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.date)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.price)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.date)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.price)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.customer.AspNetUsers_id)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.customer.AspNetUsers_id)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.customer.AspNetUsers_id)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.customer.AspNetUsers_id)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.order_type.type)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.order_type.type)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.order_type.type)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.order_type.type)
-        </dd>
+        </dl>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.status.status1)
-        </dt>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-        <dd>
-            @Html.DisplayFor(model => model.status.status1)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
-</div>
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+}

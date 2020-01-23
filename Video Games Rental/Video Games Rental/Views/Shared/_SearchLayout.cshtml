@@ -22,97 +22,97 @@
             @if (Request.IsAuthenticated)
             {
 
-            <ul class="navbar-nav text-uppercase ml-5">
-                <li class="nav-item">
-                    @Html.ActionLink("Sklep", "Shop", "Home", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
-                </li>
-                <li class="nav-item">
-                    @Html.ActionLink("Dodaj Produkt", "AddProduct", "Home", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
-                </li>
-                <li class="nav-item dropdown" id="menu-item-platform">
-                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button">Play Station</a>
-                    <div class="dropdown-menu platform-list-menu">
-                        <div class="dropdown-item small pt-2">
-                            @Html.ActionLink("PS 3", "Index", "Shop", new { page = 1, platform = 2 }, null)
-                        </div>
-                        <div class="dropdown-divider"></div>
-                        <div class="dropdown-item small">
-                            @Html.ActionLink("PS 4", "Index", "Shop", new { page = 1, platform = 1 }, null)
-                        </div>
-                    </div>
-                </li>
-                <li class="nav-item dropdown" id="menu-item-platform">
-                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button">XBOX</a>
-                    <div class="dropdown-menu platform-list-menu">
-                        <div class="dropdown-item small pt-2">
-                            @Html.ActionLink("XBOX 360", "Index", "Shop", new { page = 1, platform = 4 }, null)
-                        </div>
-                        <div class="dropdown-divider"></div>
-                        <div class="dropdown-item small">
-                            @Html.ActionLink("XBOX ONE", "Index", "Shop", new { page = 1, platform = 5 }, null)
-                        </div>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <div class="nav-link js-scroll-trigger">
-                        @Html.ActionLink("PC", "Index", "Shop", new { page = 1, platform = 3 }, null)
-                    </div>
-                </li>
-                <li class="nav-item">
-                    @Html.ActionLink("Kontakt", "Contact", "Home", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
-                </li>
-                @if ((string)Session["myRole"] == "admin")
-                {
+                <ul class="navbar-nav text-uppercase ml-5">
                     <li class="nav-item">
-                        @Html.ActionLink("Zamówienia", "../orders/OrderList", "orders", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
+                        @Html.ActionLink("Sklep", "Shop", "Home", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
                     </li>
                     <li class="nav-item">
-                        @Html.ActionLink("Oczekujące", "../waitings/WaitingList", "waitings", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
-                     </li>
-                }
-                <li class="nav-item" id="login-menu">
-                    @Html.ActionLink("Koszyk", "../ShoppingCart/Index", "ShoppingCart", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
-                </li>
-                <li class="nav-item" id="login-menu">
-                    @Html.ActionLink("Ulubione", "../ShoppingCart/Index", "ShoppingCart", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
-                </li>
-                <li class="nav-item" id="login-menu">
-                    @Html.ActionLink("Konto", "../ShoppingCart/Index", "ShoppingCart", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
-                </li>
-                <li class="nav-item" id="login-menu">
-                    @Html.ActionLink("Wyloguj", "Index", "Home", new { @class = "nav-link js-scroll-trigger", href = "javascript:document.getElementById('logoutForm').submit()" })
-                </li>
-                <li class="nav-item">
-                    <a href="@Url.Action("../ShoppingCart/Index", "ShoppingCart")">
-                        <i class="fa fa-shopping-cart navbar-icon"></i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="@Url.Action("../Account/Account_details", "Account")">
-                        <i class="fa fa-user navbar-icon-user"></i>
-                    </a>
-                </li>
+                        @Html.ActionLink("Dodaj Produkt", "AddProduct", "Home", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
+                    </li>
+                    <li class="nav-item dropdown" id="menu-item-platform">
+                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button">Play Station</a>
+                        <div class="dropdown-menu platform-list-menu">
+                            <div class="dropdown-item small pt-2">
+                                @Html.ActionLink("PS 3", "Index", "Shop", new { page = 1, platform = 2 }, null)
+                            </div>
+                            <div class="dropdown-divider"></div>
+                            <div class="dropdown-item small">
+                                @Html.ActionLink("PS 4", "Index", "Shop", new { page = 1, platform = 1 }, null)
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown" id="menu-item-platform">
+                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button">XBOX</a>
+                        <div class="dropdown-menu platform-list-menu">
+                            <div class="dropdown-item small pt-2">
+                                @Html.ActionLink("XBOX 360", "Index", "Shop", new { page = 1, platform = 4 }, null)
+                            </div>
+                            <div class="dropdown-divider"></div>
+                            <div class="dropdown-item small">
+                                @Html.ActionLink("XBOX ONE", "Index", "Shop", new { page = 1, platform = 5 }, null)
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="nav-link js-scroll-trigger">
+                            @Html.ActionLink("PC", "Index", "Shop", new { page = 1, platform = 3 }, null)
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Kontakt", "Contact", "Home", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
+                    </li>
+                    @if ((string)Session["myRole"] == "admin")
+                    {
+                        <li class="nav-item">
+                            @Html.ActionLink("Zamówienia", "../orders/OrderList", "orders", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Oczekujące", "../waitings/WaitingList", "waitings", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
+                        </li>
+                    }
+                    <li class="nav-item" id="login-menu">
+                        @Html.ActionLink("Koszyk", "../ShoppingCart/Index", "ShoppingCart", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
+                    </li>
+                    <li class="nav-item" id="login-menu">
+                        @Html.ActionLink("Ulubione", "../ShoppingCart/Index", "ShoppingCart", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
+                    </li>
+                    <li class="nav-item" id="login-menu">
+                        @Html.ActionLink("Konto", "../ShoppingCart/Index", "ShoppingCart", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
+                    </li>
+                    <li class="nav-item" id="login-menu">
+                        @Html.ActionLink("Wyloguj", "Index", "Home", new { @class = "nav-link js-scroll-trigger", href = "javascript:document.getElementById('logoutForm').submit()" })
+                    </li>
+                    <li class="nav-item">
+                        <a href="@Url.Action("../ShoppingCart/Index", "ShoppingCart")">
+                            <i class="fa fa-shopping-cart navbar-icon"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="@Url.Action("../Account/Account_details", "Account")">
+                            <i class="fa fa-user navbar-icon-user"></i>
+                        </a>
+                    </li>
                 </ul>
                 using (Html.BeginForm("Index", "Shop"))
                 {
-                <ul class="nav navbar-nav ml-5">
-                    <li class="nav-item">
-                        <input class="form-control search" type="search" placeholder="Wyszukaj" name="SearchName">
-                        @*@Html.TextBox("SearchName")*@
-                    </li>
-                    <li>
-                        <input class="btn btn-search btn-primary mt-1 mt-xl-auto ml-xl-1" type="submit" value="Znajdź">
-                    </li>
-                </ul>
-                }                     
+                    <ul class="nav navbar-nav ml-5">
+                        <li class="nav-item">
+                            <input class="form-control search" type="search" placeholder="Wyszukaj" name="SearchName">
+                            @*@Html.TextBox("SearchName")*@
+                        </li>
+                        <li>
+                            <input class="btn btn-search btn-primary mt-1 mt-xl-auto ml-xl-1" type="submit" value="Znajdź">
+                        </li>
+                    </ul>
+                }
                 using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
                 {
                     @Html.AntiForgeryToken()
 
                     <ul class="nav navbar-nav ml-5">
                         @*<li class="nav-item logged-in">
-                          @Html.ActionLink("Witaj " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { @class = "nav-link js-scroll-trigger", title = "Manage" })*@
-                   
+                    @Html.ActionLink("Witaj " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { @class = "nav-link js-scroll-trigger", title = "Manage" })*@
+
                         <li class="nav-item  d-none d-xl-block"><a class="btn btn-primary btn-wyloguj js-scroll-trigger after-login" href="javascript:document.getElementById('logoutForm').submit()">Wyloguj</a></li>
                     </ul>
                 }
@@ -175,17 +175,18 @@
                         </a>
                     </li>
                 </ul>
-
-                <ul class="nav navbar-nav ml-5">
-                    <li class="nav-item">
-                        <input class="form-control search" type="search" placeholder="Wyszukaj">
-                    </li>
-                    <li>
-                        <button class="btn btn-search btn-primary mt-1 mt-xl-auto ml-xl-1" type="submit">Znajdź</button>
-                    </li>
-                </ul>
-
-
+                using (Html.BeginForm("Index", "Shop"))
+                {
+                    <ul class="nav navbar-nav ml-5">
+                        <li class="nav-item">
+                            <input class="form-control search" type="search" placeholder="Wyszukaj" name="SearchName">
+                            @*@Html.TextBox("SearchName")*@
+                        </li>
+                        <li>
+                            <input class="btn btn-search btn-primary mt-1 mt-xl-auto ml-xl-1" type="submit" value="Znajdź">
+                        </li>
+                    </ul>
+                }
                 <ul class="d-none d-xl-block nav navbar-nav ml-auto">
                     <li class="dropdown order-1">
                         <button type="button" id="dropdownMenu1" data-toggle="dropdown" class="btn btn-primary dropdown-toggle mr-auto"> Zaloguj się </button>

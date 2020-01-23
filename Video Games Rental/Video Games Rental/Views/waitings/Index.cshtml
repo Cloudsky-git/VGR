@@ -33,6 +33,9 @@
         <th>
             @Html.DisplayNameFor(model => model.platform.platform1)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.status.status1)
+        </th>
         <th></th>
     </tr>
 
@@ -58,6 +61,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.platform.platform1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.status.status1)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.waiting_id }) |

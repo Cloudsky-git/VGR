@@ -6,87 +6,88 @@
 }
 
 <h2>Details</h2>
+@if ((string)Session["myRole"] == "admin")
+{
+    <div>
+        <h4>game</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.title)
+            </dt>
 
-<div>
-    <h4>game</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.title)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.title)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.title)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.amount)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.amount)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.amount)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.amount)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.price)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.price)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.price)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.price)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.image)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.image)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.image)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.image)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.description)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.description)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.description)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.description)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.condition.condition1)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.condition.condition1)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.condition.condition1)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.condition.condition1)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.genre.genre1)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.genre.genre1)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.genre.genre1)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.genre.genre1)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.language.language1)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.language.language1)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.language.language1)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.language.language1)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.platform.platform1)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.platform.platform1)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.platform.platform1)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.platform.platform1)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.game_id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
-
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.game_id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

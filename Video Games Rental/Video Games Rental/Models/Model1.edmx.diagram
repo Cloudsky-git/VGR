@@ -9,7 +9,6 @@
         <EntityTypeShape EntityType="Model.language" Width="1.5" PointX="2.875" PointY="3.875" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.order_type" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.platform" Width="1.5" PointX="4.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.status" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.sysdiagram" Width="1.5" PointX="5" PointY="3.375" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.order_detail" Width="1.5" PointX="4.75" PointY="0.5" />
         <EntityTypeShape EntityType="Model.C__MigrationHistory" Width="1.5" PointX="18.375" PointY="1.25" />
@@ -22,25 +21,26 @@
         <AssociationConnector Association="Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="Model.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" />
-        <EntityTypeShape EntityType="Model.order" Width="1.5" PointX="2.625" PointY="0.5" />
-        <AssociationConnector Association="Model.FK_order_detail_order" />
-        <AssociationConnector Association="Model.FK_order_order_type" />
-        <AssociationConnector Association="Model.FK_order_status" />
         <EntityTypeShape EntityType="Model.customer" Width="1.5" PointX="7.125" PointY="2.375" />
         <AssociationConnector Association="Model.FK_customer_AspNetUsers" />
-        <AssociationConnector Association="Model.FK_order_customer" />
         <EntityTypeShape EntityType="Model.game" Width="1.5" PointX="9.25" PointY="1.25" />
         <AssociationConnector Association="Model.FK_game_condition" />
         <AssociationConnector Association="Model.FK_order_detail_game1" />
         <AssociationConnector Association="Model.game_genre" />
         <AssociationConnector Association="Model.game_language" />
         <AssociationConnector Association="Model.game_platform" />
-        <EntityTypeShape EntityType="Model.waiting" Width="1.5" PointX="12.375" PointY="5.25" />
+        <EntityTypeShape EntityType="Model.order" Width="1.5" PointX="2.625" PointY="0.625" />
+        <EntityTypeShape EntityType="Model.status" Width="1.5" PointX="9.5" PointY="8.25" />
+        <EntityTypeShape EntityType="Model.waiting" Width="1.5" PointX="11.75" PointY="4.75" />
         <AssociationConnector Association="Model.FK_waiting_condition" />
+        <AssociationConnector Association="Model.FK_order_customer" />
         <AssociationConnector Association="Model.FK_waiting_customer" />
         <AssociationConnector Association="Model.FK_waiting_genre" />
         <AssociationConnector Association="Model.FK_waiting_language" />
+        <AssociationConnector Association="Model.FK_order_detail_order" />
+        <AssociationConnector Association="Model.FK_order_order_type" />
         <AssociationConnector Association="Model.FK_waiting_platform" />
+        <AssociationConnector Association="Model.FK_waiting_status" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
