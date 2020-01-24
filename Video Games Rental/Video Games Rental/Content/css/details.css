@@ -201,16 +201,19 @@
 }
 
 
-.undo {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    float: right;
+@media (min-width: 500px) {
+    .undo {
+        position: absolute!important;
+        bottom: 0;
+        right: 0;
+        float: right;
+        margin: 0px!important;
+    }
 }
 
 @media (min-width: 300px) {
     .undo {
-        position:relative;
+        position: relative;
         margin-top: 10px;
     }
 }
@@ -274,6 +277,12 @@
 
 .cart-table{
     color: #333!important;
+}
+
+@media (min-width: 300px) {
+    .checkout-table {
+        width: 100%!important;
+    }
 }
 
 .cart-table, .title-row {

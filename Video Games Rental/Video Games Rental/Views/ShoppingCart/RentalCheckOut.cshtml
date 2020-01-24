@@ -20,8 +20,7 @@
 <div id="preloader">
     <div class="news-load"></div>
 </div>
-
-<div class="container">
+<section class="bg-dark p-3">
     <div class="cart-card">
         <div class="container-fluid">
             @{
@@ -154,10 +153,10 @@
 
                     using (Html.BeginForm("ProcessRentalOrder", "ShoppingCart", FormMethod.Post, new { id = "customer-form" }))
                     {
-
-                        <table class="table cart-table w-50 mt-3">
+                    <div class="table-responsive">
+                        <table class="table cart-table w-50 mt-3 table-responsive">
                             <tr class="title-row">
-                                <td class="border-0 bg-secondary text-center">
+                                <td class="border-0 bg-secondary text-center" colspan="2">
                                     <div class="py-1 text-uppercase">Dane zamawiającego</div>
                                 </td>
                             </tr>
@@ -234,11 +233,12 @@
                             <tr>
                                 <td colspan="3">
                                     <div class="py-1">
-                                        <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Zamów</button>
+                                        <button class="btn btn-lg btn-primary btn-block btn-apply text-uppercase font-weight-bold mb-2" type="submit">Zamów</button>
                                     </div>
                                 </td>
                             </tr>
                         </table>
+                        </div>
                     }
                 }
             }
@@ -271,3 +271,4 @@
         </div>
     </div>
 </div>
+</section>
