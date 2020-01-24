@@ -31,8 +31,21 @@ body
   padding: 0.75rem 1rem;
 }
 
-.btn-back{
-    position:relative;
+@media (min-width: 300px){
+    .btn-login{
+        width: 100%!important;
+    }
+}
+
+.btn-apply {
+    font-size: 1rem;
+    letter-spacing: 0.05rem;
+    padding: 0.75rem 1rem;
+}
+}
+
+.btn-back {
+    position: relative;
     left: 43%;
     margin-top: 20px;
     width: 200px;

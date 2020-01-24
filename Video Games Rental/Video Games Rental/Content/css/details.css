@@ -300,3 +300,8 @@ thead {
 .card-group-item a{
     color: #333!important;
 }
+@media (min-width:300px){
+    .details-table {
+        max-width:100%!important;
+    }
+}

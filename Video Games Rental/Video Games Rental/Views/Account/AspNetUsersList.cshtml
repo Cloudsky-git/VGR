@@ -2,81 +2,104 @@
 @using PagedList;
 @using PagedList.Mvc;
 @model Video_Games_Rental.Models.customer
-
-    <table class="table cart-table w-50 mt-3">
-        <tr class="title-row">
-            <td class="border-0 bg-secondary text-center">
-                <div class="py-1 text-uppercase">Dane użytkownika</div>
-            </td>
-        </tr>
-        <tr>
-            <td scope="col" class="border-0 bg-light">
-                <div class="py-1">E-mail</div>
-            </td>
-            <td class="border-0 bg-light text-center">
-                <div class="py-1 ">
-                    @User.Identity.Name
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td scope="col" class="border-0 bg-light">
-                <div class="py-1">Imię</div>
-            </td>
-            <td class="border-0 bg-light text-center">
-                <div class="py-1">
-                    @Html.DisplayFor(modelItem => Model.name)
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td scope="col" class="border-0 bg-light">
-                <div class="py-1">Nazwisko </div>
-            </td>
-            <td class="border-0 bg-light text-center">
-                <div class="py-1">
-                    @Html.DisplayFor(modelItem => Model.surname)
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td scope="col" class="border-0 bg-light">
-                <div class="py-1">Nr Tel.</div>
-            </td>
-            <td class="border-0 bg-light text-center">
-                <div class="py-1">
-                    @Html.DisplayFor(modelItem => Model.PhoneNumber)
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td scope="col" class="border-0 bg-light">
-                <div class="py-1">Adres</div>
-            </td>
-            <td class="border-0 bg-light text-center">
-                <div class="py-1">
-                    @Html.DisplayFor(modelItem => Model.address_line1)
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td scope="col" class="border-0 bg-light">
-                <div class="py-1">Miejscowość</div>
-            </td>
-            <td class="border-0 bg-light text-center">
-                <div class="py-1">
-                    @Html.DisplayFor(modelItem => Model.address_line2)
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td scope="col" class="border-0 bg-light">
-                <div class="py-1">Kod Pocztowy</div>
-            </td>
-            <td class="border-0 bg-light text-center">
-                <div class="py-1">
-                    @Html.DisplayFor(modelItem => Model.postal_code)
-                </div>
-            </td>
-        </tr>
-    </table>
+    
+    <div class="table-responsive">
+        <table class="table cart-table w-50 mt-3">
+            <tr class="title-row">
+                <td class="border-0 bg-secondary text-center">
+                    <div class="py-1 text-uppercase">Dane użytkownika</div>
+                </td>
+            </tr>
+            <tr>
+                <td scope="col" class="border-0 bg-light">
+                    <div class="py-1">E-mail</div>
+                </td>
+                <td class="border-0 bg-light text-center">
+                    <div class="py-1 ">
+                        @User.Identity.Name
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td scope="col" class="border-0 bg-light">
+                    <div class="py-1">Imię</div>
+                </td>
+                <td class="border-0 bg-light text-center">
+                    <div class="py-1">
+                        @Html.DisplayFor(modelItem => Model.name)
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td scope="col" class="border-0 bg-light">
+                    <div class="py-1">Nazwisko </div>
+                </td>
+                <td class="border-0 bg-light text-center">
+                    <div class="py-1">
+                        @Html.DisplayFor(modelItem => Model.surname)
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td scope="col" class="border-0 bg-light">
+                    <div class="py-1">Nr Tel.</div>
+                </td>
+                <td class="border-0 bg-light text-center">
+                    <div class="py-1">
+                        @Html.DisplayFor(modelItem => Model.PhoneNumber)
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td scope="col" class="border-0 bg-light">
+                    <div class="py-1">Adres</div>
+                </td>
+                <td class="border-0 bg-light text-center">
+                    <div class="py-1">
+                        @Html.DisplayFor(modelItem => Model.address_line1)
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td scope="col" class="border-0 bg-light">
+                    <div class="py-1">Miejscowość</div>
+                </td>
+                <td class="border-0 bg-light text-center">
+                    <div class="py-1">
+                        @Html.DisplayFor(modelItem => Model.address_line2)
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td scope="col" class="border-0 bg-light">
+                    <div class="py-1">Kod Pocztowy</div>
+                </td>
+                <td class="border-0 bg-light text-center">
+                    <div class="py-1">
+                        @Html.DisplayFor(modelItem => Model.postal_code)
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="py-1 w-auto">
+                        @Html.ActionLink("Uzupełnij dane", "User_details", "Account", new { area = "" }, new { @class = "btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2 w-50" })
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="py-1 w-auto">
+                        @Html.ActionLink("Twoje zamówienia", "../orders/OrderList", "orders", new { area = "" }, new { @class = "btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2 w-50" })
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="py-1">
+                        @Html.ActionLink("Twoje produkty", "../waitings/WaitingList", "waitings", new { area = "" }, new { @class = "btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2 w-50" })
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>

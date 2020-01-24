@@ -383,3 +383,7 @@ ol {
 .text-area-mvc{
     width: 100%!important;
 }
+
+.myCustomClass{
+    width: 250px!important;
+}
