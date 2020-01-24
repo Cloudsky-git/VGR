@@ -41,6 +41,7 @@
         <AssociationConnector Association="Model.FK_order_order_type" />
         <AssociationConnector Association="Model.FK_waiting_platform" />
         <AssociationConnector Association="Model.FK_waiting_status" />
+        <EntityTypeShape EntityType="Model.request" Width="1.5" PointX="0.5" PointY="2.75" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

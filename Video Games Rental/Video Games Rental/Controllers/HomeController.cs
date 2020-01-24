@@ -75,6 +75,20 @@ namespace video_games_rental.Controllers
             return View();
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Contact([Bind(Include = "request_id,name,e_mail,request1,phonenumber")] request request)
+        {
+            if (ModelState.IsValid)
+            {
+                db.requests.Add(request);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(request);
+        }
+
         public ActionResult Login()
         {
             return View();

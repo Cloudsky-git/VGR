@@ -43,5 +43,6 @@ namespace Video_Games_Rental.Models
         public virtual DbSet<order> orders { get; set; }
         public virtual DbSet<status> status { get; set; }
         public virtual DbSet<waiting> waitings { get; set; }
+        public virtual DbSet<request> requests { get; set; }
     }
 }

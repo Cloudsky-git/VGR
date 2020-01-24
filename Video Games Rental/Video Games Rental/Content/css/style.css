@@ -373,3 +373,13 @@ ol {
     .form-header {
         right: 20px;
     }
+
+.dropdown-item.active, .dropdown-item:active {
+    color: #fff;
+    text-decoration: none;
+    background-color: transparent!important;   
+}
+
+.text-area-mvc{
+    width: 100%!important;
+}

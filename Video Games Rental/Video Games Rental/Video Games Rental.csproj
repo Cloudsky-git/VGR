@@ -176,6 +176,7 @@
     <Compile Include="Controllers\order_detailController.cs" />
     <Compile Include="Controllers\order_typeController.cs" />
     <Compile Include="Controllers\platformsController.cs" />
+    <Compile Include="Controllers\requestsController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Controllers\statusController.cs" />
@@ -244,6 +245,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\platform.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\request.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\status.cs">
@@ -779,6 +783,11 @@
     <Content Include="Views\orders\OrderList.cshtml" />
     <Content Include="Views\orders\CusOrderDetails.cshtml" />
     <Content Include="Views\waitings\WaitingList.cshtml" />
+    <Content Include="Views\requests\Create.cshtml" />
+    <Content Include="Views\requests\Delete.cshtml" />
+    <Content Include="Views\requests\Details.cshtml" />
+    <Content Include="Views\requests\Edit.cshtml" />
+    <Content Include="Views\requests\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

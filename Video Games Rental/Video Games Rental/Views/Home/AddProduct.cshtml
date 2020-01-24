@@ -13,7 +13,7 @@
             <div class="intro-text">
                 <div class="intro-lead-in">Witamy w świecie gier!</div>
                 <div class="intro-heading text-uppercase">Wymieniaj • Kupuj • Rezerwuj</div>
-                <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#AddProduct">Sprawdź dostępność</a>
+                <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#AddProduct">Przejdź do formularza</a>
             </div>
         </div>
     </header>
@@ -23,11 +23,11 @@
     </div>
 
     <!-- ADD PRODUCT -->
-    <section class="page-section" id="AddProduct">
+    <section class="page-section bg-dark" id="AddProduct">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading text-uppercase">Zarezerwuj tytuł dla siebie</h2>
+                    <h2 class="section-heading text-uppercase">Sprzedaj lub wypożycz swoje gry!</h2>
                     <h3 class="section-subheading text-muted">Prosimy wypełnić poniższe pola.</h3>
                 </div>
             </div>
@@ -81,17 +81,17 @@
                                         @Html.LabelFor(model => model.price, "Cena", htmlAttributes: new { @class = "control-label col-md-2" })
                                         <div class="col-md-10">
                                             @Html.EditorFor(model => model.price, new { htmlAttributes = new { @class = "form-control" } })
-                                            @Html.ValidationMessageFor(model => model.price, "", new { @class = "text-danger" })
+                                            @Html.ValidationMessageFor(model => model.price, "", new { @class = "text-danger" })                                           
                                         </div>
                                     </div>                                    
                                 </div>
-                                <div class="col-md-5">
+                                <div class="col-md-5 mt-4">
                                     <img class="img-thumbnail" src="~/Content/img/register.jpg" alt="Rezerwacja">
                                 </div>
                                 <div class="clearfix"></div>
                                 <div class="col-lg-12 text-center">
                                     <div id="success"></div>
-                                    <button id="sendMessageButton" class="btn btn-primary btn-xl text-uppercase mt-3" type="submit">Dodaj produkt</button>
+                                    <button id="sendMessageButton" class="btn btn-primary btn-xl text-uppercase mt-3" type="submit">Dodaj gre</button>
                                 </div>
                             </div>
                         </form>

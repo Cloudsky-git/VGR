@@ -149,6 +149,16 @@
           <Property Name="platform_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="platform" Type="nvarchar" MaxLength="64" Nullable="false" />
         </EntityType>
+        <EntityType Name="request">
+          <Key>
+            <PropertyRef Name="request_id" />
+          </Key>
+          <Property Name="request_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="20" />
+          <Property Name="e-mail" Type="nvarchar" MaxLength="64" />
+          <Property Name="request" Type="nvarchar(max)" />
+          <Property Name="phonenumber" Type="nvarchar" MaxLength="64" />
+        </EntityType>
         <EntityType Name="status">
           <Key>
             <PropertyRef Name="status_id" />
@@ -418,6 +428,7 @@
           <EntitySet Name="order_detail" EntityType="Self.order_detail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="order_type" EntityType="Self.order_type" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="platform" EntityType="Self.platform" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="request" EntityType="Self.request" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="status" EntityType="Self.status" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="waiting" EntityType="Self.waiting" Schema="dbo" store:Type="Tables" />
@@ -634,6 +645,7 @@
             <End Role="status" EntitySet="status" />
             <End Role="waiting" EntitySet="waitings" />
           </AssociationSet>
+          <EntitySet Name="requests" EntityType="Model.request" />
           </EntityContainer>
         <EntityType Name="order_detail">
           <Key>
@@ -1023,6 +1035,16 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="request">
+          <Key>
+            <PropertyRef Name="request_id" />
+          </Key>
+          <Property Name="request_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="e_mail" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="request1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="phonenumber" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1215,6 +1237,17 @@
                 <ScalarProperty Name="platform_id" ColumnName="platform_id" />
                 <ScalarProperty Name="customer_id" ColumnName="customer_id" />
                 <ScalarProperty Name="waiting_id" ColumnName="waiting_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="requests">
+            <EntityTypeMapping TypeName="Model.request">
+              <MappingFragment StoreEntitySet="request">
+                <ScalarProperty Name="phonenumber" ColumnName="phonenumber" />
+                <ScalarProperty Name="request1" ColumnName="request" />
+                <ScalarProperty Name="e_mail" ColumnName="e-mail" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="request_id" ColumnName="request_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
