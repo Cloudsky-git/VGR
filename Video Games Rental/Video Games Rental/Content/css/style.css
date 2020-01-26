@@ -110,7 +110,11 @@ ol {
     }
 }
 
-.single-slide {
+.owl-carousel.owl-loaded {
+    display: inline-block;
+}
+
+    .single-slide {
     position: relative;
     z-index: 1;
     overflow: hidden;
