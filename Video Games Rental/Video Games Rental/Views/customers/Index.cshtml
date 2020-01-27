@@ -14,28 +14,28 @@
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.name)
+                Imie
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.surname)
+                Nazwisko
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.address_line1)
+                Adres zamieszkania
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.address_line2)
+                Miejscowość
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.postal_code)
+                Kod pocztowy
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Email)
+                E-mail klienta
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PhoneNumber)
+                Numer telefonu
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.AspNetUser.Email)
+                E-mail uzytkownika
             </th>
             <th></th>
         </tr>
@@ -77,3 +77,51 @@
 
     </table>
 }
+
+    <section>
+        <div class="panel-menu text-center">
+
+            <ul class="panel-list list-unstyled">
+                <li class="panel-list-item">
+                    @Html.ActionLink("Status", "../status/Index", new { area = "" })
+                </li>
+                <li class="panel-list-item">
+                    @Html.ActionLink("Genres", "../genres/Index", new { area = "" })
+                </li>
+                <li class="panel-list-item">
+                    @Html.ActionLink("Games", "../games/Index", new { area = "" })
+                </li>
+                <li class="panel-list-item">
+                    @Html.ActionLink("Platforms", "../platforms/Index", new { area = "" })
+                </li>
+                <li class="panel-list-item">
+                    @Html.ActionLink("Conditions", "../conditions/Index", new { area = "" })
+                </li>
+                <li class="panel-list-item">
+                    @Html.ActionLink("Languages", "../languages/Index", new { area = "" })
+                </li>
+                <li class="panel-list-item">
+                    @Html.ActionLink("Orders", "../orders/Index", new { area = "" })
+                </li>
+                <li class="panel-list-item">
+                    @Html.ActionLink("Order details", "../order_detail/Index", new { area = "" })
+                </li>
+                <li class="panel-list-item">
+                    @Html.ActionLink("Order types", "../order_type/Index", new { area = "" })
+                </li>
+                <li class="panel-list-item">
+                    @Html.ActionLink("Users", "../AspNetUsers/Index", new { area = "" })
+                </li>
+                <li class="panel-list-item">
+                    @Html.ActionLink("Requests", "../requests/Index", new { area = "" })
+                </li>
+                <li class="panel-list-item">
+                    @Html.ActionLink("Waitings", "../waitings/Index", new { area = "" })
+                </li>
+                <li class="panel-list-item mt-5">
+                    @Html.ActionLink("Wróć do strony głównej", "../Home/Index", new { area = "" })
+                </li>
+            </ul>
+
+        </div>
+    </section>
