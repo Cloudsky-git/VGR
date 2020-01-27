@@ -272,7 +272,7 @@
     <Content Include="Content\css\details.css" />
     <Content Include="Content\css\agency.css" />
     <Content Include="Content\css\agency.min.css" />
-    <Content Include="Content\css\owl.carousel.css" />
+    <Content Include="Content\css\owl.carousel.min.css" />
     <Content Include="Content\css\owl.theme.default.min.css" />
     <Content Include="Content\css\reg.css" />
     <Content Include="Content\css\reg.min.css" />
@@ -601,7 +601,7 @@
     <Content Include="Scripts\js\contact_me.js" />
     <Content Include="Scripts\js\jqBootstrapValidation.js" />
     <Content Include="Scripts\js\jquery2.min.js" />
-    <Content Include="Scripts\js\owl.carousel.js" />
+    <Content Include="Scripts\js\owl.carousel.min.js" />
     <Content Include="Scripts\js\owl_basic.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\popper-utils.js" />
