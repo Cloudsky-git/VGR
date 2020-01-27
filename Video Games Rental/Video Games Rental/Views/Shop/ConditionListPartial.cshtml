@@ -6,7 +6,7 @@
         foreach (var item in Model)
         {           
             <li>
-                @Html.ActionLink(item.condition1, "Index", "Shop", new { page = 1, language = item.condition_id }, null)
+                @Html.ActionLink(item.condition1, "Index", "Shop", new { page = 1, condition = item.condition_id }, null)
             </li>
         }
     }

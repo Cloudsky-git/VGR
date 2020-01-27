@@ -29,14 +29,14 @@ namespace video_games_rental.Controllers
         {
             ViewBag.condiiton_id = new SelectList(db.conditions, "condition_id", "condition1");
             ViewBag.genre_id = new SelectList(db.genres, "genre_id", "genre1");
-            ViewBag.langugae_id = new SelectList(db.languages, "language_id", "language1");
+            ViewBag.language_id = new SelectList(db.languages, "language_id", "language1");
             ViewBag.platform_id = new SelectList(db.platforms, "platform_id", "platform1");            
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AddProduct([Bind(Include = "waiting_id,customer_id,platform_id,langugae_id,genre_id,condiiton_id,title,price")] waiting waiting)
+        public ActionResult AddProduct([Bind(Include = "waiting_id,customer_id,platform_id,language_id,genre_id,condiiton_id,title,price")] waiting waiting)
         {
             if (ModelState.IsValid)
             {
@@ -56,7 +56,7 @@ namespace video_games_rental.Controllers
 
             ViewBag.condiiton_id = new SelectList(db.conditions, "condition_id", "condition1", waiting.condiiton_id);           
             ViewBag.genre_id = new SelectList(db.genres, "genre_id", "genre1", waiting.genre_id);
-            ViewBag.langugae_id = new SelectList(db.languages, "language_id", "language1", waiting.langugae_id);
+            ViewBag.language_id = new SelectList(db.languages, "language_id", "language1", waiting.language_id);
             ViewBag.platform_id = new SelectList(db.platforms, "platform_id", "platform1", waiting.platform_id);
             return View(waiting);
         }

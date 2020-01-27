@@ -17,7 +17,7 @@ namespace Video_Games_Rental.Models
         public int waiting_id { get; set; }
         public Nullable<int> customer_id { get; set; }
         public Nullable<int> platform_id { get; set; }
-        public Nullable<int> langugae_id { get; set; }
+        public Nullable<int> language_id { get; set; }
         public Nullable<int> genre_id { get; set; }
         public Nullable<int> condiiton_id { get; set; }
         public Nullable<int> status_id { get; set; }

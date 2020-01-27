@@ -183,7 +183,7 @@
           <Property Name="waiting_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="customer_id" Type="int" />
           <Property Name="platform_id" Type="int" />
-          <Property Name="langugae_id" Type="int" />
+          <Property Name="language_id" Type="int" />
           <Property Name="genre_id" Type="int" />
           <Property Name="condiiton_id" Type="int" />
           <Property Name="status_id" Type="int" />
@@ -348,7 +348,7 @@
               <PropertyRef Name="language_id" />
             </Principal>
             <Dependent Role="waiting">
-              <PropertyRef Name="langugae_id" />
+              <PropertyRef Name="language_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -914,7 +914,7 @@
           <Property Name="waiting_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="customer_id" Type="Int32" />
           <Property Name="platform_id" Type="Int32" />
-          <Property Name="langugae_id" Type="Int32" />
+          <Property Name="language_id" Type="Int32" />
           <Property Name="genre_id" Type="Int32" />
           <Property Name="condiiton_id" Type="Int32" />
           <Property Name="status_id" Type="Int32" />
@@ -983,7 +983,7 @@
               <PropertyRef Name="language_id" />
             </Principal>
             <Dependent Role="waiting">
-              <PropertyRef Name="langugae_id" />
+              <PropertyRef Name="language_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1233,7 +1233,7 @@
                 <ScalarProperty Name="status_id" ColumnName="status_id" />
                 <ScalarProperty Name="condiiton_id" ColumnName="condiiton_id" />
                 <ScalarProperty Name="genre_id" ColumnName="genre_id" />
-                <ScalarProperty Name="langugae_id" ColumnName="langugae_id" />
+                <ScalarProperty Name="language_id" ColumnName="language_id" />
                 <ScalarProperty Name="platform_id" ColumnName="platform_id" />
                 <ScalarProperty Name="customer_id" ColumnName="customer_id" />
                 <ScalarProperty Name="waiting_id" ColumnName="waiting_id" />

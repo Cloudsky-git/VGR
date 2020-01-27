@@ -24,7 +24,7 @@
                         @Html.ActionLink("Sklep", "Shop", "Home", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
                     </li>
                     <li class="nav-item">
-                        @Html.ActionLink("Dodaj gre", "AddProduct", "Home", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
+                        @Html.ActionLink("Dodaj grę", "AddProduct", "Home", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
                     </li>
                     <li class="nav-item dropdown" id="menu-item-platform">
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button">PlayStation</a>
@@ -85,14 +85,22 @@
                     </li>
                     <li class="nav-item">
                         <a href="@Url.Action("../ShoppingCart/Index", "ShoppingCart")">
-                            <i class="fa fa-shopping-cart navbar-icon mr-1 d-none d-md-flex"></i>
+                            <i class="fa fa-shopping-cart navbar-icon mr-1 d-none d-md-flex" title="Twój koszyk"></i>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="@Url.Action("../Account/Account_details", "Account")">
-                            <i class="fa fa-user navbar-icon-user d-none d-md-flex"></i>
+                            <i class="fa fa-user navbar-icon-user d-none d-md-flex" title="Twój profil"></i>
                         </a>
                     </li>
+                    @if ((string)Session["myRole"] == "admin")
+                    {
+                        <li class="nav-item">
+                            <a href="@Url.Action("../games/index", "games")">
+                                <i class="fa fa-user-cog navbar-icon-adm d-none d-md-flex" title="Panel Administratora"></i>
+                            </a>
+                        </li>
+                    }
                     </ul>
 
                     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
@@ -168,7 +176,7 @@
                             <a href="@Url.Action("../Account/Login", "Account")">
                                 <span title="Twoje konto"><i class="fa fa-user navbar-icon-user d-none d-md-flex"></i></span>
                             </a>
-                        </li>
+                        </li>                      
                     </ul>
 
                     <ul class="d-none d-xl-block nav navbar-nav ml-auto">

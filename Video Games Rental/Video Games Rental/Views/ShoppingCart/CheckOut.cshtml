@@ -146,100 +146,101 @@
                                     </tr>
                                 </table>
                             </div>
+                            using (Html.BeginForm("ProcessOrder", "ShoppingCart", FormMethod.Post, new { id = "customer-form" }))
+                            {
+                                <div class="table-responsive">
+                                    <table class="table cart-table checkout-table w-50 mt-3 table-responsive">
+                                        <tr class="title-row">
+                                            <td class="border-0 bg-secondary text-center" colspan="2">
+                                                <div class="py-1 text-uppercase">Dane zamawiającego</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="col" class="border-0 bg-light">
+                                                <div class="py-1">Imię</div>
+                                            </td>
+                                            <td class="border-0 bg-light text-center">
+                                                <div class="py-1">
+                                                    <input type="text" name="cusName" />
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="col" class="border-0 bg-light">
+                                                <div class="py-1">Nazwisko </div>
+                                            </td>
+                                            <td class="border-0 bg-light text-center">
+                                                <div class="py-1">
+                                                    <input type="text" name="cusSurname" />
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="col" class="border-0 bg-light">
+                                                <div class="py-1">E-mail</div>
+                                            </td>
+                                            <td class="border-0 bg-light text-center">
+                                                <div class="py-1 ">
+                                                    <input type="text" name="cusMail" />
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="col" class="border-0 bg-light">
+                                                <div class="py-1">Nr Tel.</div>
+                                            </td>
+                                            <td class="border-0 bg-light text-center">
+                                                <div class="py-1">
+                                                    <input type="text" name="cusPhone" />
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="col" class="border-0 bg-light">
+                                                <div class="py-1">Adres</div>
+                                            </td>
+                                            <td class="border-0 bg-light text-center">
+                                                <div class="py-1">
+                                                    <input type="text" name="cusAddress1" />
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="col" class="border-0 bg-light">
+                                                <div class="py-1">Miejscowość</div>
+                                            </td>
+                                            <td class="border-0 bg-light text-center">
+                                                <div class="py-1">
+                                                    <input type="text" name="cusAddress2" />
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="col" class="border-0 bg-light">
+                                                <div class="py-1">Kod Pocztowy</div>
+                                            </td>
+                                            <td class="border-0 bg-light text-center">
+                                                <div class="py-1">
+                                                    <input type="text" name="cusPostal" />
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3">
+                                                <div class="py-1">
+                                                    <button class="btn btn-lg btn-primary btn-block btn-apply text-uppercase font-weight-bold mb-2" type="submit">Zamów</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            }
+
                         }
                         else
                         {
                             <h3>Twój koszyk jest pusty!</h3>
-                        }
-
-                        using (Html.BeginForm("ProcessOrder", "ShoppingCart", FormMethod.Post, new { id = "customer-form" }))
-                        {
-            <div class="table-responsive">
-                <table class="table cart-table checkout-table w-50 mt-3 table-responsive">
-                    <tr class="title-row">
-                        <td class="border-0 bg-secondary text-center" colspan="2">
-                            <div class="py-1 text-uppercase">Dane zamawiającego</div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td scope="col" class="border-0 bg-light">
-                            <div class="py-1">Imię</div>
-                        </td>
-                        <td class="border-0 bg-light text-center">
-                            <div class="py-1">
-                                <input type="text" name="cusName" />
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td scope="col" class="border-0 bg-light">
-                            <div class="py-1">Nazwisko </div>
-                        </td>
-                        <td class="border-0 bg-light text-center">
-                            <div class="py-1">
-                                <input type="text" name="cusSurname" />
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td scope="col" class="border-0 bg-light">
-                            <div class="py-1">E-mail</div>
-                        </td>
-                        <td class="border-0 bg-light text-center">
-                            <div class="py-1 ">
-                                <input type="text" name="cusMail" />
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td scope="col" class="border-0 bg-light">
-                            <div class="py-1">Nr Tel.</div>
-                        </td>
-                        <td class="border-0 bg-light text-center">
-                            <div class="py-1">
-                                <input type="text" name="cusPhone" />
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td scope="col" class="border-0 bg-light">
-                            <div class="py-1">Adres</div>
-                        </td>
-                        <td class="border-0 bg-light text-center">
-                            <div class="py-1">
-                                <input type="text" name="cusAddress1"/>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td scope="col" class="border-0 bg-light">
-                            <div class="py-1">Miejscowość</div>
-                        </td>
-                        <td class="border-0 bg-light text-center">
-                            <div class="py-1">
-                                <input type="text" name="cusAddress2" />
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td scope="col" class="border-0 bg-light">
-                            <div class="py-1">Kod Pocztowy</div>
-                        </td>
-                        <td class="border-0 bg-light text-center">
-                            <div class="py-1">
-                                <input type="text" name="cusPostal" />
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="3">
-                            <div class="py-1">
-                                <button class="btn btn-lg btn-primary btn-block btn-apply text-uppercase font-weight-bold mb-2" type="submit">Zamów</button>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
-            </div>
+                            @Html.ActionLink("Przejdź do sklepu", "../Shop", "Shop", new { @class = "btn btn-continue-shopping btn-default mt-2" })
                         }
                     }
                 }

@@ -14,31 +14,31 @@
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.title)
+                Tytuł
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.amount)
+                Dostępna ilość
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.price)
+                Cena
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.image)
+               Zdjęcie
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.description)
+                Opis
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.condition.condition1)
+                Stan
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.genre.genre1)
+                Gatunek
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.language.language1)
+                Wersja językowa
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.platform.platform1)
+                Platforma
             </th>
             <th></th>
         </tr>
@@ -110,6 +110,15 @@
                 </li>
                 <li class="panel-list-item">
                     @Html.ActionLink("Users", "../AspNetUsers/Index", new { area = "" })
+                </li>
+                <li class="panel-list-item">
+                    @Html.ActionLink("Requests", "../requests/Index", new { area = "" })
+                </li>
+                <li class="panel-list-item">
+                    @Html.ActionLink("Waitings", "../waitings/Index", new { area = "" })
+                </li>
+                <li class="panel-list-item mt-5">
+                    @Html.ActionLink("Wróć do strony głównej", "../Home/Index", new { area = "" })
                 </li>
             </ul>
 

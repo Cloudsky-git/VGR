@@ -21,15 +21,15 @@ namespace Video_Games_Rental.Controllers
         {
             var pageNumber = page ?? 1;
             var pageSize = 9;
-           
+
             if (platform != null)
             {
                 ViewBag.platform = platform;
                 var gameList = db.games
                     .OrderByDescending(x => x.game_id)
-                    .Where(x=> x.platform_id == platform)
+                    .Where(x => x.platform_id == platform)
                     .ToPagedList(pageNumber, pageSize);
-                    
+
                 return PartialView(gameList);
             }
 
@@ -58,17 +58,19 @@ namespace Video_Games_Rental.Controllers
             else if (SearchName != null)
             {
                 var titles = from g in db.games select g;
+
+
                 if (!String.IsNullOrEmpty(SearchName))
                 {
-                    titles = titles.Where(c => c.title.Contains(SearchName));
+                    titles = titles.Where(c => c.title.Contains(SearchName) || c.condition.condition1.Contains(SearchName) || c.platform.platform1.Contains(SearchName));                   
                 }
+
                 var gameList = db.games
                     .OrderByDescending(x => x.game_id)
-                    .Where(x => x.title.Contains(SearchName))
-                    .ToPagedList(pageNumber, pageSize);
-
+                    .Where(x => x.title.Contains(SearchName) || x.condition.condition1.Contains(SearchName) || x.platform.platform1.Contains(SearchName))
+                    .ToPagedList(pageNumber, pageSize);                        
                 return PartialView(gameList);
-            }
+            }          
 
             else
             {
