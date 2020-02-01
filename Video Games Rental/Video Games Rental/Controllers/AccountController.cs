@@ -118,7 +118,6 @@ namespace ASPNetIdentity.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-
         //
         // POST: ../Account/Login
         [HttpPost]
@@ -139,6 +138,7 @@ namespace ASPNetIdentity.Controllers
                     string roleID = db.AspNetUserRoles.Where(x => x.UserId == userID).Select(y => y.RoleId).FirstOrDefault();
                     string roleName = db.AspNetRoles.Where(x => x.Id == roleID).Select(y => y.Name).FirstOrDefault();
                     Session["myRole"] = roleName;
+                    Session.Remove("Cart");
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -159,6 +159,7 @@ namespace ASPNetIdentity.Controllers
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             Session.Remove("myRole");
+            Session.Remove("Cart");
             return RedirectToAction("Index", "Home");
         }
 
