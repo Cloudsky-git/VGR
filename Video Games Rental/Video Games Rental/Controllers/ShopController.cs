@@ -35,7 +35,7 @@ namespace Video_Games_Rental.Controllers
 
             else if (language != null)
             {
-                ViewBag.language = platform;
+                ViewBag.language = language;
                 var gameList = db.games
                     .OrderByDescending(x => x.game_id)
                     .Where(x => x.language_id == language)
@@ -46,7 +46,7 @@ namespace Video_Games_Rental.Controllers
 
             else if (condition != null)
             {
-                ViewBag.condition = platform;
+                ViewBag.condition = condition;
                 var gameList = db.games
                     .OrderByDescending(x => x.game_id)
                     .Where(x => x.condition_id == condition)

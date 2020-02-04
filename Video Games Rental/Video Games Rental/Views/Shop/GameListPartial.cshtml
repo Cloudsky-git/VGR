@@ -35,5 +35,5 @@
 
     <div class="page-count">Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount</div>
     <div class="pagination">
-        @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page, platform = ViewBag.platform, language = ViewBag.language, condition = ViewBag.condition, @class = "btn-pages" }))
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page, platform = ViewBag.platform, language = ViewBag.language, condition = ViewBag.condition}))
     </div>
