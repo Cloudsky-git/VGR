@@ -153,10 +153,12 @@ namespace Video_Games_Rental.Controllers
                 db.orders.Add(order);
                 db.SaveChanges();
             }
-            else if (custList.Count() == 0)
+
+            else if (custList.Count() == 0 && Request.IsAuthenticated)
             {
                 return RedirectToAction("../Account/User_details");
             }
+
             else
             {
                 db.customers.Add(customer);
@@ -218,6 +220,7 @@ namespace Video_Games_Rental.Controllers
             string aspnetuserID = User.Identity.GetUserId();
             decimal total = 0;
             List<customer> custList = db.customers.Where(x => x.AspNetUsers_id == aspnetuserID).ToList();
+            var customerID = db.customers.Where(x => x.AspNetUsers_id == aspnetuserID);
             if (custList.Count() > 0)
             {
                 int cust = custList.First().customer_id;               
@@ -234,8 +237,8 @@ namespace Video_Games_Rental.Controllers
                 };
                 db.orders.Add(order);
                 db.SaveChanges();
-            }
-            else if (custList.Count() == 0)
+            }            
+            else if (custList.Count() == 0 && Request.IsAuthenticated)
             {
                 return RedirectToAction("../Account/User_details");
             }
